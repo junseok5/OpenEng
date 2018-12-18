@@ -1,0 +1,9 @@
+.page-template {
+  main {
+    margin-top: 4rem;
+
+    @include media('<medium') {
+      margin-top: 3rem;
+    }
+  }
+}
