@@ -1,0 +1,8 @@
+.main-template {
+  margin-left: 300px;
+  padding: 1rem;
+
+  @include media('<medium') {
+    margin-left: 0;
+  }
+}

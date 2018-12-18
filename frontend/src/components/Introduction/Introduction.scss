@@ -1,0 +1,38 @@
+.introduction {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $oc-gray-3;
+
+  .introduction-main {
+    // border: 1px solid $oc-gray-6;
+    span {
+      color: #ff2f6e;
+      font-weight: bold;
+
+      &.core {
+        color: black;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .intro-func {
+      padding-top: 0.5rem;
+      display: flex;
+
+      .intro-icon {
+        margin-right: 1rem;
+
+        display: flex;
+        align-items: center;
+
+        .intro-icon-text {
+          padding-left: 0.2rem;
+        }
+      }
+    }
+  }
+}
