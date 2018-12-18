@@ -8,10 +8,12 @@ const SearchBox = () => {
   return (
     <div className={cx('search-box')}>
       <div className={cx('search-form')}>
-        <div className={cx('search-icon')}>
-          <FiSearch fontSize="1.3rem" color="#747474" />
-        </div>
-        <input type="search" placeholder="검색" />
+        <label className={cx('search-label')}>
+          <div className={cx('search-icon')}>
+            <FiSearch fontSize="1.3rem" color="#747474" />
+          </div>
+          <input type="search" placeholder="검색" />
+        </label>
       </div>
     </div>
   )
