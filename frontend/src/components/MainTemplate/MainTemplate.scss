@@ -4,5 +4,7 @@
 
   @include media('<medium') {
     margin-left: 0;
+    padding: 0;
+    padding-top: 1rem;
   }
 }

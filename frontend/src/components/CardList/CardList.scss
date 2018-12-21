@@ -1,0 +1,52 @@
+.card-list {
+  padding-top: 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  .card {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+
+    @include media('<medium') {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    .card-thumbnail {
+      img {
+        border-radius: 4px;
+        cursor: pointer;
+
+        @include media('<medium') {
+          width: 100%;
+          border-radius: 0;
+        }
+      }
+    }
+
+    .card-contents {
+      @include media('<medium') {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+
+        span {
+          cursor: pointer;
+        }
+      }
+
+      .card-channel-name {
+        color: $oc-gray-7;
+        font-size: 0.9rem;
+
+        span {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
