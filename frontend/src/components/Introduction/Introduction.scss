@@ -1,8 +1,11 @@
 .introduction {
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid $oc-gray-3;
+
+  background: $oc-gray-1;
 
   .introduction-main {
     // border: 1px solid $oc-gray-6;

@@ -1,0 +1,53 @@
+.video-subtitle {
+  position: absolute;
+  top: 600px;
+  width: 100%;
+
+  user-select: none;
+
+  display: flex;
+  justify-content: center;
+
+  @include media('<large') {
+    top: 360px;
+  }
+
+  @include media('<medium') {
+    top: calc(230px + 4rem);
+  }
+
+  .subtitle-contents {
+    padding: 1rem;
+
+    @include media('<medium') {
+      padding: 0.5rem 1rem;
+    }
+
+    .front-subtitle {
+      margin-bottom: 1rem;
+
+      font-size: 1.8rem;
+
+      @include media('<large') {
+        font-size: 1.5rem;
+      }
+
+      @include media('<medium') {
+        font-size: 1.3rem;
+      }
+    }
+
+    .back-subtitle {
+      font-size: 1.3rem;
+      color: $oc-gray-4;
+
+      @include media('<large') {
+        font-size: 1.1rem;
+      }
+
+      @include media('<medium') {
+        font-size: 1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.video {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: calc(100% - 12rem);
+  height: 600px;
+  transform: translateX(-50%);
+
+  @include media('<large') {
+    height: 360px;
+  }
+
+  @include media('<medium') {
+    width: 100%;
+    height: 230px;
+    padding-top: 4rem;
+  }
+}

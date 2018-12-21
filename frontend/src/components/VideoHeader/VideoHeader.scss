@@ -1,0 +1,10 @@
+.video-header {
+  padding: 2rem;
+  @include media('<medium') {
+    padding: 1rem;
+  }
+
+  span {
+    cursor: pointer;
+  }
+}

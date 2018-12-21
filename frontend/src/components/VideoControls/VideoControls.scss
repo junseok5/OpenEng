@@ -1,0 +1,32 @@
+.video-controls {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  background: black;
+
+  display: flex;
+  justify-content: center;
+
+  .controls-view {
+    padding-bottom: 1rem;
+    font-size: 2.5rem;
+    display: flex;
+
+    @include media('<medium') {
+      font-size: 1.5rem;
+    }
+
+    .controls-icon {
+      margin-left: 2rem;
+      margin-right: 2rem;
+
+      cursor: pointer;
+
+      @include media('<medium') {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+}
