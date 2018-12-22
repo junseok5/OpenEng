@@ -9,7 +9,7 @@
   justify-content: center;
 
   .controls-view {
-    padding-bottom: 1rem;
+    padding-bottom: 1.2rem;
     font-size: 2.5rem;
     display: flex;
 
@@ -23,9 +23,20 @@
 
       cursor: pointer;
 
+      display: flex;
+      align-items: center;
+
       @include media('<medium') {
         margin-left: 1rem;
         margin-right: 1rem;
+      }
+    }
+
+    .controls-language {
+      font-size: 1.5rem;
+
+      @include media('<medium') {
+        font-size: 1.1rem;
       }
     }
   }

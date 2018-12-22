@@ -10,8 +10,10 @@ const VideoControls = () => {
   return (
     <div className={cx('video-controls')}>
       <div className={cx('controls-view')}>
-        <div className={cx('controls-icon')} title="자막 설정">
-          <MdSubtitles />
+        <div
+          className={cx('controls-icon controls-language')}
+          title="자막 설정">
+          한/영
         </div>
         <div className={cx('controls-icon')} title="이전 자막">
           <FaStepBackward />

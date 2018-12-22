@@ -5,13 +5,15 @@ import './Video.scss'
 const Video = () => {
   return (
     <div className={cx('video')}>
-      <iframe
-        style={youtubeStyle}
-        src="https://www.youtube.com/embed/A6imfUXiGTo?controls=0"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      />
+      <div className={cx('video-wrap')}>
+        <iframe
+          style={youtubeStyle}
+          src="https://www.youtube.com/embed/A6imfUXiGTo?controls=0"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </div>
     </div>
   )
 }
