@@ -19,16 +19,16 @@ const Introduction = () => {
           <span>심슨영어</span>에서 <b>영화 하이라이트 장면</b>으로 영어 공부를
           해보세요!{' '}
         </p>
-        <p className={cx('intro-func')}>
+        <div className={cx('intro-func')}>
           <div className={cx('intro-icon')}>
-            <FiRepeat color="" />
+            <FiRepeat color='' />
             <div className={cx('intro-icon-text')}>구간반복</div>
           </div>
           <div className={cx('intro-icon')}>
             <FaRegClosedCaptioning />
             <div className={cx('intro-icon-text')}>한글/영어 자막</div>
           </div>
-        </p>
+        </div>
       </div>
     </div>
   )

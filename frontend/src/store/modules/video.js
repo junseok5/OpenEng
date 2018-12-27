@@ -33,7 +33,8 @@ const initialState = {
     currentTime: 0,
     duration: 0,
     subtitleContents: '',
-    language: 'ko-en'
+    language: 'ko-en',
+    sectionRepeat: false
   }
 }
 

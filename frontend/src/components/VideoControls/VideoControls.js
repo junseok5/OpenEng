@@ -12,7 +12,8 @@ const VideoControls = ({
   language,
   changeLanguage,
   skipPrev,
-  skipNext
+  skipNext,
+  changeSectionRepeat
 }) => {
   return (
     <div className={cx('video-controls')}>
@@ -41,7 +42,11 @@ const VideoControls = ({
         >
           <FaStepForward />
         </div>
-        <div className={cx('controls-icon')} title='구간반복'>
+        <div
+          className={cx('controls-icon')}
+          title='구간반복'
+          onClick={changeSectionRepeat}
+        >
           <FiRepeat />
         </div>
       </div>

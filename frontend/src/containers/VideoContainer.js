@@ -48,7 +48,14 @@ class VideoContainer extends Component {
 
     if (playerState === 1) {
       const timer = setInterval(() => {
+        const { sectionRepeat } = this.props
         const currentTime = player.getCurrentTime()
+
+        // 구간 반복
+        if (sectionRepeat) {
+          this.sectionRepeat(currentTime)
+          return
+        }
 
         VideoActions.setYoutube({ currentTime, playing: true })
         this.autoChangeCursor(currentTime)
@@ -66,7 +73,7 @@ class VideoContainer extends Component {
 
     if (!this.props.subtitle || cursor >= subtitle.length - 1) return
 
-    if (currentTime >= subtitle[cursor].start) {
+    if (currentTime >= subtitle[cursor + 1].start) {
       const { VideoActions } = this.props
 
       VideoActions.setYoutube({
@@ -104,6 +111,25 @@ class VideoContainer extends Component {
       subtitleContents: nextSubtitle,
     })
     player.seekTo(nextStart)
+  }
+
+  changeSectionRepeat = () => {
+    const { sectionRepeat, VideoActions } = this.props
+    VideoActions.setYoutube({ sectionRepeat: !sectionRepeat })
+  }
+
+  sectionRepeat = currentTime => {
+    const { cursor, subtitle, player } = this.props
+
+    if (cursor === 0) {
+      this.autoChangeCursor(currentTime)
+      return
+    }
+
+    if (currentTime > subtitle[cursor].end) {
+      const start = subtitle[cursor].start
+      player.seekTo(start)
+    }
   }
 
   changeLanguage = () => {
@@ -146,6 +172,7 @@ class VideoContainer extends Component {
           changeLanguage={this.changeLanguage}
           skipPrev={this.skipPrev}
           skipNext={this.skipNext}
+          changeSectionRepeat={this.changeSectionRepeat}
         />
       </Fragment>
     )
@@ -162,6 +189,7 @@ export default connect(
     currentTime: state.video.youtube.currentTime,
     subtitleContents: state.video.youtube.subtitleContents,
     language: state.video.youtube.language,
+    sectionRepeat: state.video.youtube.sectionRepeat,
     subtitle: state.video.video.subtitles,
     loading: state.pender.pending['video/GET_VIDEO'],
   }),
