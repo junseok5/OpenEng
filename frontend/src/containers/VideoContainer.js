@@ -23,7 +23,10 @@ class VideoContainer extends Component {
     const { VideoActions } = this.props
     console.log(e.target)
 
-    VideoActions.setYoutube({ name: 'player', value: e.target })
+    VideoActions.setYoutube({
+      duration: e.target.getDuration(),
+      player: e.target,
+    })
   }
 
   _onStateControl = () => {
@@ -31,53 +34,85 @@ class VideoContainer extends Component {
     const playerState = player.getPlayerState()
 
     if (playerState === 2 || playerState === 5 || playerState === -1) {
-      VideoActions.setYoutube({ name: 'playing', value: true })
+      VideoActions.setYoutube({ playing: true })
       player.playVideo()
     } else {
-      VideoActions.setYoutube({ name: 'playing', value: false })
+      VideoActions.setYoutube({ playing: false })
       player.pauseVideo()
     }
   }
 
   _onStateChange = () => {
-    const { player } = this.props
+    const { player, VideoActions } = this.props
     const playerState = player.getPlayerState()
 
     if (playerState === 1) {
       const timer = setInterval(() => {
-        this.changeCursor(player.getCurrentTime())
+        const currentTime = player.getCurrentTime()
+
+        VideoActions.setYoutube({ currentTime, playing: true })
+        this.autoChangeCursor(currentTime)
       }, 100)
       const { VideoActions } = this.props
 
-      VideoActions.setYoutube({ name: 'timer', value: timer })
+      VideoActions.setYoutube({ timer })
     } else {
       clearInterval(this.props.timer)
     }
   }
 
-  changeCursor = currentTime => {
+  autoChangeCursor = currentTime => {
     const { cursor, subtitle } = this.props
 
     if (!this.props.subtitle || cursor >= subtitle.length - 1) return
 
     if (currentTime >= subtitle[cursor].start) {
-      console.log(currentTime)
       const { VideoActions } = this.props
-      VideoActions.setYoutube({ name: 'cursor', value: cursor + 1 })
+
       VideoActions.setYoutube({
-        name: 'subtitleContents',
-        value: subtitle[cursor + 1].contents,
+        cursor: cursor + 1,
+        subtitleContents: subtitle[cursor + 1].contents,
       })
     }
+  }
+
+  skipPrev = () => {
+    const { cursor, player, subtitle, VideoActions } = this.props
+
+    if (cursor === 0) return
+    const prevCursor = cursor - 1
+    const prevStart = subtitle[prevCursor].start
+    const prevSubtitle = subtitle[prevCursor].contents
+
+    VideoActions.setYoutube({
+      cursor: prevCursor,
+      subtitleContents: prevSubtitle,
+    })
+    player.seekTo(prevStart)
+  }
+
+  skipNext = () => {
+    const { cursor, player, subtitle, VideoActions } = this.props
+
+    if (cursor >= subtitle.length - 1) return
+    const nextCursor = cursor + 1
+    const nextStart = subtitle[nextCursor].start
+    const nextSubtitle = subtitle[nextCursor].contents
+
+    VideoActions.setYoutube({
+      cursor: nextCursor,
+      subtitleContents: nextSubtitle,
+    })
+    player.seekTo(nextStart)
   }
 
   changeLanguage = () => {
     const { language, VideoActions } = this.props
 
     if (language === 'ko-en') {
-      VideoActions.setYoutube({ name: 'language', value: 'en-ko' })
+      VideoActions.setYoutube({ language: 'en-ko' })
     } else if (language === 'en-ko') {
-      VideoActions.setYoutube({ name: 'language', value: 'ko-en' })
+      VideoActions.setYoutube({ language: 'ko-en' })
     }
   }
 
@@ -109,6 +144,8 @@ class VideoContainer extends Component {
           playing={this.props.playing}
           language={this.props.language}
           changeLanguage={this.changeLanguage}
+          skipPrev={this.skipPrev}
+          skipNext={this.skipNext}
         />
       </Fragment>
     )
@@ -122,6 +159,7 @@ export default connect(
     timer: state.video.youtube.timer,
     playing: state.video.youtube.playing,
     cursor: state.video.youtube.cursor,
+    currentTime: state.video.youtube.currentTime,
     subtitleContents: state.video.youtube.subtitleContents,
     language: state.video.youtube.language,
     subtitle: state.video.video.subtitles,

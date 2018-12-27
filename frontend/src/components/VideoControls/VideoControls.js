@@ -10,7 +10,9 @@ const VideoControls = ({
   _onStateControl,
   playing,
   language,
-  changeLanguage
+  changeLanguage,
+  skipPrev,
+  skipNext
 }) => {
   return (
     <div className={cx('video-controls')}>
@@ -22,13 +24,21 @@ const VideoControls = ({
         >
           <span>{language === 'ko-en' ? '한/영' : '영/한'}</span>
         </div>
-        <div className={cx('controls-icon')} title='이전 자막'>
+        <div
+          className={cx('controls-icon')}
+          title='이전 자막'
+          onClick={skipPrev}
+        >
           <FaStepBackward />
         </div>
         <div className={cx('controls-icon')} onClick={_onStateControl}>
           {!playing ? <FaPlay /> : <FaPause />}
         </div>
-        <div className={cx('controls-icon')} title='다음 자막'>
+        <div
+          className={cx('controls-icon')}
+          title='다음 자막'
+          onClick={skipNext}
+        >
           <FaStepForward />
         </div>
         <div className={cx('controls-icon')} title='구간반복'>

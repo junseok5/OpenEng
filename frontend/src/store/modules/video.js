@@ -30,6 +30,8 @@ const initialState = {
     timer: null,
     playing: false,
     cursor: 0,
+    currentTime: 0,
+    duration: 0,
     subtitleContents: '',
     language: 'ko-en'
   }
@@ -49,10 +51,10 @@ export default handleActions(
       }
     }),
     [SET_YOUTUBE]: (state, action) => {
-      const { name, value } = action.payload
-      return produce(state, draft => {
-        draft.youtube[name] = value
-      })
+      return {
+        ...state,
+        youtube: { ...state.youtube, ...action.payload }
+      }
     }
   },
   initialState
