@@ -57,6 +57,7 @@
     "react-icons": "^3.2.2",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "react-youtube": "^7.8.0",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "redux-pender": "^2.0.9",
@@ -78,11 +79,21 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "jest": {
-    "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}", "!src/**/*.d.ts"],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
     "resolver": "jest-pnp-resolver",
-    "setupFiles": ["react-app-polyfill/jsdom"],
+    "setupFiles": [
+      "react-app-polyfill/jsdom"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
@@ -116,7 +127,9 @@
     ]
   },
   "babel": {
-    "presets": ["react-app"]
+    "presets": [
+      "react-app"
+    ]
   },
   "proxy": "http://localhost:4000"
 }

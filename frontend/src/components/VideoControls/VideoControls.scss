@@ -29,14 +29,24 @@
       @include media('<medium') {
         margin-left: 1rem;
         margin-right: 1rem;
+        cursor: none;
+      }
+
+      &:active {
+        color: $oc-gray-3;
       }
     }
 
     .controls-language {
       font-size: 1.5rem;
+      user-select: none;
 
       @include media('<medium') {
         font-size: 1.1rem;
+      }
+
+      span {
+        color: $oc-gray-4;
       }
     }
   }

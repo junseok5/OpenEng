@@ -6,14 +6,33 @@ import * as VideoAPI from 'lib/api/video'
 // action types
 const INITIALIZE = 'video/INITIALIZE'
 const GET_VIDEO = 'video/GET_VIDEO'
+const SET_YOUTUBE = 'video/SET_YOUTUBE'
 
 // action creators
 export const initialize = createAction(INITIALIZE)
 export const getVideo = createAction(GET_VIDEO, VideoAPI.getVideo)
+export const setYoutube = createAction(SET_YOUTUBE)
 
 // initial state
 const initialState = {
-  video: null
+  video: {
+    _id: '',
+    youtubeId: '',
+    title: '',
+    overayTime: '',
+    category: '',
+    mainSentance: '',
+    views: 0,
+    subtitles: []
+  },
+  youtube: {
+    player: null,
+    timer: null,
+    playing: false,
+    cursor: 0,
+    subtitleContents: '',
+    language: 'ko-en'
+  }
 }
 
 // reducer
@@ -28,7 +47,13 @@ export default handleActions(
           draft.video = data
         })
       }
-    })
+    }),
+    [SET_YOUTUBE]: (state, action) => {
+      const { name, value } = action.payload
+      return produce(state, draft => {
+        draft.youtube[name] = value
+      })
+    }
   },
   initialState
 )

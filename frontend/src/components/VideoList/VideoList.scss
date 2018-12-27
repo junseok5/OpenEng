@@ -26,6 +26,8 @@
         border-radius: 0;
       }
 
+      width: 100%;
+
       img {
         cursor: pointer;
 
@@ -69,10 +71,13 @@
       }
 
       .video-card-expression {
-        color: $oc-gray-7;
+        .video-card-sentance {
+          color: $oc-blue-6;
+        }
 
         .video-card-sentance-meaning {
           font-size: 0.9rem;
+          color: $oc-gray-6;
         }
       }
     }

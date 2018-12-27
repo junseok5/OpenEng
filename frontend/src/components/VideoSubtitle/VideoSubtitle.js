@@ -2,13 +2,15 @@ import React from 'react'
 import cx from 'classnames'
 import './VideoSubtitle.scss'
 
-const VideoSubtitle = () => {
+const VideoSubtitle = ({ contents, language }) => {
   return (
     <div className={cx('video-subtitle')}>
       <div className={cx('subtitle-contents')}>
-        <div className={cx('front-subtitle')}>아직 완성된 건 아니지만,</div>
+        <div className={cx('front-subtitle')}>
+          {language === 'ko-en' ? contents.ko : contents.en}
+        </div>
         <div className={cx('back-subtitle')}>
-          It's still a work in progress.
+          {language === 'ko-en' ? contents.en : contents.ko}
         </div>
       </div>
     </div>
