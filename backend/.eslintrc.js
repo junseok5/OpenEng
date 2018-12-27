@@ -5,5 +5,6 @@ module.exports = {
     semi: 0,
     'arrow-parens': 0,
     'global-require': 1,
-  },
+    'import/no-unresolved': 0
+  }
 }

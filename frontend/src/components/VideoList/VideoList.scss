@@ -1,10 +1,10 @@
-.card-list {
+.video-card-list {
   padding-top: 1rem;
 
   display: flex;
   flex-wrap: wrap;
 
-  .card {
+  .video-card {
     margin-right: 1rem;
     margin-bottom: 1rem;
 
@@ -13,7 +13,7 @@
       margin-right: 0;
     }
 
-    .card-thumbnail {
+    .video-card-thumbnail {
       position: relative;
       background: black;
       border-radius: 4px;
@@ -38,7 +38,7 @@
         }
       }
 
-      .video-overaytime {
+      .video-card-overaytime {
         position: absolute;
         right: 4px;
         bottom: 8px;
@@ -53,13 +53,13 @@
       }
     }
 
-    .card-contents {
+    .video-card-contents {
       @include media('<medium') {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
       }
 
-      .card-title {
+      .video-card-title {
         font-size: 1.1rem;
         font-weight: bold;
 
@@ -68,22 +68,13 @@
         }
       }
 
-      .card-expression {
+      .video-card-expression {
         color: $oc-gray-7;
 
-        .card-sentance-meaning {
+        .video-card-sentance-meaning {
           font-size: 0.9rem;
         }
       }
-
-      // .card-channel-name {
-      //   color: $oc-gray-7;
-      //   font-size: 0.9rem;
-
-      //   span {
-      //     cursor: pointer;
-      //   }
-      // }
     }
   }
 }

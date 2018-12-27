@@ -3,10 +3,7 @@ const Router = require('koa-router')
 const videos = new Router()
 const videosCtrl = require('./videos.ctrl')
 
-videos.get('/', videosCtrl.getList)
-videos.get('/:id', videosCtrl.getVideo)
-videos.post('/', videosCtrl.writeVideo)
-videos.patch('/:id', videosCtrl.patchVideo)
-videos.delete('/:id', videosCtrl.deleteVideo)
+videos.get('/', videosCtrl.list)
+videos.get('/:id', videosCtrl.read)
 
 module.exports = videos

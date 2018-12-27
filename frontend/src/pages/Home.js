@@ -3,15 +3,17 @@ import PageTemplate from 'components/PageTemplate'
 import SideMenu from 'components/SideMenu'
 import MainTemplate from 'components/MainTemplate'
 import Introduction from 'components/Introduction'
-import CardList from 'components/CardList'
+import VideoListContainer from 'containers/VideoListContainer'
 
-const Home = () => {
+const Home = ({ match }) => {
+  const { category, keyword } = match.params
+
   return (
     <PageTemplate>
       <SideMenu />
       <MainTemplate>
         <Introduction />
-        <CardList />
+        <VideoListContainer category={category} keyword={keyword} />
       </MainTemplate>
     </PageTemplate>
   )
