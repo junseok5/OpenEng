@@ -10,6 +10,7 @@ const VideoControls = ({
   _onStateControl,
   playing,
   language,
+  sectionRepeat,
   changeLanguage,
   skipPrev,
   skipNext,
@@ -43,7 +44,7 @@ const VideoControls = ({
           <FaStepForward />
         </div>
         <div
-          className={cx('controls-icon')}
+          className={cx('controls-icon', sectionRepeat && 'active')}
           title='구간반복'
           onClick={changeSectionRepeat}
         >

@@ -3,13 +3,23 @@ import cx from 'classnames'
 import './VideoList.scss'
 
 import { Link } from 'react-router-dom'
+import Loading from 'react-loading'
 
-const VideoList = ({ videos }) => {
+const VideoList = ({ videos, loading }) => {
   const videoList = videos.map(video => {
     return <VideoCard video={video} key={video._id} />
   })
 
-  return <div className={cx('video-card-list')}>{videoList}</div>
+  return (
+    <div className={cx('video-card-list')}>
+      {videoList}
+      {loading && (
+        <div className={cx('list-loading')}>
+          <Loading type='bubbles' color='#ff2f6e' />
+        </div>
+      )}
+    </div>
+  )
 }
 
 const VideoCard = ({ video }) => {

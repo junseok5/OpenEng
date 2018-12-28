@@ -32,6 +32,10 @@
         cursor: none;
       }
 
+      &.active {
+        color: #ff2f6e;
+      }
+
       &:active {
         color: $oc-gray-3;
       }

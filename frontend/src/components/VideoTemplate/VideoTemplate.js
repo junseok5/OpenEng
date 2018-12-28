@@ -2,12 +2,12 @@ import React from 'react'
 import cx from 'classnames'
 import './VideoTemplate.scss'
 
-import VideoHeader from 'components/VideoHeader'
+import VideoHeaderContainer from 'containers/VideoHeaderContainer'
 
 const VideoTemplate = ({ children }) => {
   return (
     <div className={cx('video-template')}>
-      <VideoHeader />
+      <VideoHeaderContainer />
       <main>{children}</main>
     </div>
   )

@@ -31,7 +31,9 @@ class VideoListContainer extends Component {
   initialize = () => {
     const { videos } = this.props
     if (videos.length > 0) return
-    this.prefetch()
+    setTimeout(() => {
+      this.prefetch()
+    }, 1000)
   }
 
   onScroll = throttle(() => {
@@ -58,7 +60,7 @@ class VideoListContainer extends Component {
   }
 
   render() {
-    return <VideoList videos={this.props.videos} />
+    return <VideoList videos={this.props.videos} loading={this.props.loading} />
   }
 }
 

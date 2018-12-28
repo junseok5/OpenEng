@@ -5,8 +5,8 @@ import { Home, Videos } from 'pages'
 const App = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/videos/:id" component={Videos} />
+      <Route exact path='/' component={Home} />
+      <Route path='/videos/:id' component={Videos} />
     </Switch>
   )
 }

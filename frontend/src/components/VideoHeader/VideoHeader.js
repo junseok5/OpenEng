@@ -5,14 +5,14 @@ import './VideoHeader.scss'
 import { Link } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 
-const VideoHeader = () => {
+const VideoHeader = ({ goBack }) => {
   return (
     <div className={cx('video-header')}>
-      <Link to='/'>
-        <span>
-          <FiArrowLeft fontSize='3rem' />
-        </span>
-      </Link>
+      {/* <Link to='/'> */}
+      <span onClick={goBack}>
+        <FiArrowLeft fontSize='3rem' />
+      </span>
+      {/* </Link> */}
     </div>
   )
 }

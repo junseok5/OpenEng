@@ -11,7 +11,10 @@ class HeaderContainer extends Component {
 
   _onKeyPress = e => {}
 
-  submitSearch = () => {}
+  _onSearch = () => {
+    const { searchForm } = this.props
+    SearchActions.search()
+  }
 
   render() {
     return (

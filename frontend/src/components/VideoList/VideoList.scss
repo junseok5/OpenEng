@@ -15,6 +15,9 @@
 
     .video-card-thumbnail {
       position: relative;
+      min-width: 320px;
+      min-height: 180px;
+
       background: black;
       border-radius: 4px;
       overflow: hidden;
@@ -24,6 +27,7 @@
 
       @include media('<medium') {
         border-radius: 0;
+        min-height: 202.5px;
       }
 
       width: 100%;
@@ -81,5 +85,12 @@
         }
       }
     }
+  }
+
+  .list-loading {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
   }
 }
