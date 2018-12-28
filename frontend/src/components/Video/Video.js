@@ -9,7 +9,7 @@ const Video = ({ video, _onReady, _onStateChange }) => {
     playerVars: {
       cc_load_policy: 0,
       disablekb: 1,
-      // controls: 0,
+      controls: 0,
       modestbranding: 1,
       playsinline: 1,
       rel: 0,

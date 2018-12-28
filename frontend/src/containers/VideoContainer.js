@@ -41,12 +41,13 @@ class VideoContainer extends Component {
   _onStateChange = () => {
     const { player } = this.props
     const playerState = player.getPlayerState()
-    console.log('state: ' + playerState)
+    console.log(playerState)
 
     if (playerState === 1) {
       const timer = setInterval(() => {
         const { sectionRepeat } = this.props
         const currentTime = player.getCurrentTime()
+        console.log('hi')
 
         VideoActions.setYoutube({ currentTime, playing: true })
 
@@ -60,8 +61,8 @@ class VideoContainer extends Component {
       }, 100)
 
       VideoActions.setYoutube({ timer })
-      // } else if (playerState === 3 || playerState === 5) {
-      //   VideoActions.setYoutube({ playing: true })
+    } else if (playerState === 3) {
+      clearInterval(this.props.timer)
     } else {
       VideoActions.setYoutube({ playing: false })
       clearInterval(this.props.timer)
