@@ -3,11 +3,14 @@ import cx from 'classnames'
 import './Header.scss'
 
 import { FiSearch } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
-const Header = ({ searchForm, _onChange }) => (
+const Header = ({ searchForm, _onChange, _onKeyPress }) => (
   <header>
     <div className={cx('header-main')}>
-      <div className={cx('hm-logo _p-pm')}>심슨영어</div>
+      <div className={cx('hm-logo _p-pm')}>
+        <Link to='/'>심슨영어</Link>
+      </div>
       <div className={cx('hm-search')}>
         <label className={cx('search-label')}>
           <FiSearch fontSize='1.3rem' color='#747474' />
@@ -17,6 +20,7 @@ const Header = ({ searchForm, _onChange }) => (
               placeholder='검색'
               value={searchForm}
               onChange={_onChange}
+              onKeyPress={_onKeyPress}
             />
           </div>
         </label>

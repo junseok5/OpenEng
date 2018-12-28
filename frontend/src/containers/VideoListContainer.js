@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as listActions from 'store/modules/list'
+import { ListActions } from 'store/actionCreators'
 
 import VideoList from 'components/VideoList'
 import { getScrollBottom } from 'lib/common'
@@ -9,14 +8,7 @@ import throttle from 'lodash/throttle'
 
 class VideoListContainer extends Component {
   prefetch = async () => {
-    const {
-      category,
-      keyword,
-      page,
-      hasEnded,
-      loading,
-      ListActions,
-    } = this.props
+    const { category, keyword, page, hasEnded, loading } = this.props
 
     if (hasEnded || loading) return
 
@@ -31,9 +23,7 @@ class VideoListContainer extends Component {
   initialize = () => {
     const { videos } = this.props
     if (videos.length > 0) return
-    setTimeout(() => {
-      this.prefetch()
-    }, 1000)
+    this.prefetch()
   }
 
   onScroll = throttle(() => {
@@ -55,6 +45,17 @@ class VideoListContainer extends Component {
     this.listenScroll()
   }
 
+  componentDidUpdate = async (prevProps, prevState) => {
+    if (
+      prevProps.keyword !== this.props.keyword ||
+      prevProps.category !== this.props.category
+    ) {
+      await ListActions.initialize()
+      this.prefetch()
+      document.documentElement.scrollTop = 0
+    }
+  }
+
   componentWillUnmount() {
     this.unlistenScroll()
   }
@@ -64,14 +65,9 @@ class VideoListContainer extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    videos: state.list.recent.videos,
-    page: state.list.recent.page,
-    hasEnded: state.list.recent.end,
-    loading: state.pender.pending['list/GET_RECENT_VIDEOS'],
-  }),
-  dispatch => ({
-    ListActions: bindActionCreators(listActions, dispatch),
-  })
-)(VideoListContainer)
+export default connect(state => ({
+  videos: state.list.recent.videos,
+  page: state.list.recent.page,
+  hasEnded: state.list.recent.end,
+  loading: state.pender.pending['list/GET_RECENT_VIDEOS'],
+}))(VideoListContainer)

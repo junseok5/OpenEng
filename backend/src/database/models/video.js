@@ -4,7 +4,10 @@ const { Schema } = mongoose
 
 const Video = new Schema({
   youtubeId: String,
-  title: String,
+  title: {
+    type: String,
+    text: true,
+  },
   overayTime: String,
   category: String,
   genre: String,

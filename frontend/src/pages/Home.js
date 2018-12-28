@@ -10,7 +10,7 @@ const Home = ({ match }) => {
 
   return (
     <PageTemplate>
-      <SideMenu />
+      <SideMenu category={category} />
       <MainTemplate>
         <Introduction />
         <VideoListContainer category={category} keyword={keyword} />

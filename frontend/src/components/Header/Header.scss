@@ -32,6 +32,10 @@ header {
       @include media('<medium') {
         flex: 1;
       }
+
+      a {
+        cursor: pointer;
+      }
     }
 
     .hm-search {

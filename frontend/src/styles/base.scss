@@ -14,12 +14,17 @@ body {
 
 input {
   all: unset;
+  border: none;
 }
 
 ul {
   all: unset;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   all: unset;
+  text-decoration: none;
+  color: inherit;
 }
