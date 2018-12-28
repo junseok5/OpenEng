@@ -2,11 +2,11 @@ import React from 'react'
 import cx from 'classnames'
 import './PageTemplate.scss'
 
-import Header from 'components/Header'
+import HeaderContainer from 'containers/HeaderContainer'
 
 const PageTemplate = ({ children }) => (
   <div className={cx('page-template')}>
-    <Header />
+    <HeaderContainer />
     <main>{children}</main>
   </div>
 )

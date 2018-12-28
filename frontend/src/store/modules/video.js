@@ -41,7 +41,7 @@ const initialState = {
 // reducer
 export default handleActions(
   {
-    [INITIALIZE]: (state, action) => initialState,
+    [INITIALIZE]: () => initialState,
     ...pender({
       type: GET_VIDEO,
       onSuccess: (state, action) => {

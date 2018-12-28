@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as videoActions from 'store/modules/video'
+import { VideoActions } from 'store/actionCreators'
 
 import Video from 'components/Video'
 import VideoProgressbar from 'components/VideoProgressbar'
@@ -10,7 +9,7 @@ import VideoControls from 'components/VideoControls'
 
 class VideoContainer extends Component {
   prefetch = async () => {
-    const { id, VideoActions } = this.props
+    const { id } = this.props
 
     try {
       await VideoActions.getVideo(id)
@@ -20,7 +19,6 @@ class VideoContainer extends Component {
   }
 
   _onReady = e => {
-    const { VideoActions } = this.props
     console.log(e.target)
 
     VideoActions.setYoutube({
@@ -30,26 +28,27 @@ class VideoContainer extends Component {
   }
 
   _onStateControl = () => {
-    const { player, VideoActions } = this.props
+    const { player } = this.props
     const playerState = player.getPlayerState()
 
-    if (playerState === 2 || playerState === 5 || playerState === -1) {
-      VideoActions.setYoutube({ playing: true })
-      player.playVideo()
-    } else {
-      VideoActions.setYoutube({ playing: false })
+    if (playerState === 1 || playerState === 3) {
       player.pauseVideo()
+    } else {
+      player.playVideo()
     }
   }
 
   _onStateChange = () => {
-    const { player, VideoActions } = this.props
+    const { player } = this.props
     const playerState = player.getPlayerState()
+    console.log('state: ' + playerState)
 
     if (playerState === 1) {
       const timer = setInterval(() => {
         const { sectionRepeat } = this.props
         const currentTime = player.getCurrentTime()
+
+        VideoActions.setYoutube({ currentTime, playing: true })
 
         // 구간 반복
         if (sectionRepeat) {
@@ -57,13 +56,14 @@ class VideoContainer extends Component {
           return
         }
 
-        VideoActions.setYoutube({ currentTime, playing: true })
         this.autoChangeCursor(currentTime)
       }, 100)
-      const { VideoActions } = this.props
 
       VideoActions.setYoutube({ timer })
+      // } else if (playerState === 3 || playerState === 5) {
+      //   VideoActions.setYoutube({ playing: true })
     } else {
+      VideoActions.setYoutube({ playing: false })
       clearInterval(this.props.timer)
     }
   }
@@ -74,8 +74,6 @@ class VideoContainer extends Component {
     if (!this.props.subtitle || cursor >= subtitle.length - 1) return
 
     if (currentTime >= subtitle[cursor + 1].start) {
-      const { VideoActions } = this.props
-
       VideoActions.setYoutube({
         cursor: cursor + 1,
         subtitleContents: subtitle[cursor + 1].contents,
@@ -84,7 +82,7 @@ class VideoContainer extends Component {
   }
 
   skipPrev = () => {
-    const { cursor, player, subtitle, VideoActions } = this.props
+    const { cursor, player, subtitle } = this.props
 
     if (cursor === 0) return
     const prevCursor = cursor - 1
@@ -99,7 +97,7 @@ class VideoContainer extends Component {
   }
 
   skipNext = () => {
-    const { cursor, player, subtitle, VideoActions } = this.props
+    const { cursor, player, subtitle } = this.props
 
     if (cursor >= subtitle.length - 1) return
     const nextCursor = cursor + 1
@@ -114,7 +112,7 @@ class VideoContainer extends Component {
   }
 
   changeSectionRepeat = () => {
-    const { sectionRepeat, VideoActions } = this.props
+    const { sectionRepeat } = this.props
     VideoActions.setYoutube({ sectionRepeat: !sectionRepeat })
   }
 
@@ -133,7 +131,7 @@ class VideoContainer extends Component {
   }
 
   changeLanguage = () => {
-    const { language, VideoActions } = this.props
+    const { language } = this.props
 
     if (language === 'ko-en') {
       VideoActions.setYoutube({ language: 'en-ko' })
@@ -143,11 +141,16 @@ class VideoContainer extends Component {
   }
 
   initialize = () => {
+    VideoActions.initialize()
     this.prefetch()
   }
 
   componentDidMount() {
     this.initialize()
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.props.timer)
   }
 
   render() {
@@ -160,7 +163,10 @@ class VideoContainer extends Component {
           _onReady={this._onReady}
           _onStateChange={this._onStateChange}
         />
-        <VideoProgressbar />
+        <VideoProgressbar
+          currentTime={this.props.currentTime}
+          duration={this.props.duration}
+        />
         <VideoSubtitle
           contents={this.props.subtitleContents}
           language={this.props.language}
@@ -179,21 +185,17 @@ class VideoContainer extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    video: state.video.video,
-    player: state.video.youtube.player,
-    timer: state.video.youtube.timer,
-    playing: state.video.youtube.playing,
-    cursor: state.video.youtube.cursor,
-    currentTime: state.video.youtube.currentTime,
-    subtitleContents: state.video.youtube.subtitleContents,
-    language: state.video.youtube.language,
-    sectionRepeat: state.video.youtube.sectionRepeat,
-    subtitle: state.video.video.subtitles,
-    loading: state.pender.pending['video/GET_VIDEO'],
-  }),
-  dispatch => ({
-    VideoActions: bindActionCreators(videoActions, dispatch),
-  })
-)(VideoContainer)
+export default connect(state => ({
+  video: state.video.video,
+  player: state.video.youtube.player,
+  timer: state.video.youtube.timer,
+  playing: state.video.youtube.playing,
+  cursor: state.video.youtube.cursor,
+  currentTime: state.video.youtube.currentTime,
+  duration: state.video.youtube.duration,
+  subtitleContents: state.video.youtube.subtitleContents,
+  language: state.video.youtube.language,
+  sectionRepeat: state.video.youtube.sectionRepeat,
+  subtitle: state.video.video.subtitles,
+  loading: state.pender.pending['video/GET_VIDEO'],
+}))(VideoContainer)
