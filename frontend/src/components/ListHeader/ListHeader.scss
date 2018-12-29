@@ -1,0 +1,13 @@
+.list-header {
+  height: 3rem;
+  font-size: 1.1rem;
+
+  span {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+
+  @include media("<medium") {
+    padding-left: 0.5rem;
+  }
+}

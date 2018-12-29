@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { SearchActions } from 'store/actionCreators'
+import { SearchActions, ListActions } from 'store/actionCreators'
+import { withRouter } from 'react-router-dom'
 
 import SearchContents from 'components/SearchContents'
 import storage from 'lib/storage'
@@ -16,7 +17,6 @@ class SearchContentsContainer extends Component {
     originData.splice(index, 1)
 
     const removedData = originData
-    console.log(index, originData, removedData)
 
     storage.set('keywords', removedData)
     SearchActions.writeRecentKeywords(removedData)
@@ -27,6 +27,13 @@ class SearchContentsContainer extends Component {
     SearchActions.writeRecentKeywords([])
   }
 
+  _onSearch = keyword => {
+    const { history } = this.props
+
+    ListActions.initialize()
+    history.push(`/keyword/${keyword}`)
+  }
+
   componentDidMount() {
     this.getKeywordList()
   }
@@ -35,8 +42,9 @@ class SearchContentsContainer extends Component {
     return (
       <SearchContents
         recentKeywords={this.props.recentKeywords}
-        onRemove={this.removeKeyword}
-        onClear={this.clearKeywords}
+        _onRemove={this.removeKeyword}
+        _onClear={this.clearKeywords}
+        _onSearch={this._onSearch}
       />
     )
   }
@@ -44,4 +52,4 @@ class SearchContentsContainer extends Component {
 
 export default connect(state => ({
   recentKeywords: state.search.recentKeywords,
-}))(SearchContentsContainer)
+}))(withRouter(SearchContentsContainer))
