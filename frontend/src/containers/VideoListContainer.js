@@ -8,7 +8,7 @@ import { getScrollBottom } from 'lib/common'
 import throttle from 'lodash/throttle'
 
 class VideoListContainer extends Component {
-  prefetch = async () => {
+  _prefetch = async () => {
     const { category, keyword, page, hasEnded, loading } = this.props
 
     if (hasEnded || loading) return
@@ -20,29 +20,29 @@ class VideoListContainer extends Component {
     }
   }
 
-  initialize = () => {
+  _initialize = () => {
     const { videos } = this.props
     if (videos.length > 0) return
-    this.prefetch()
+    this._prefetch()
   }
 
-  onScroll = throttle(() => {
+  _onScroll = throttle(() => {
     const scrollBottom = getScrollBottom()
     if (scrollBottom > 500) return
-    this.prefetch()
+    this._prefetch()
   }, 250)
 
-  listenScroll = () => {
-    window.addEventListener('scroll', this.onScroll)
+  _listenScroll = () => {
+    window.addEventListener('scroll', this._onScroll)
   }
 
-  unlistenScroll = () => {
-    window.removeEventListener('scroll', this.onScroll)
+  _unlistenScroll = () => {
+    window.removeEventListener('scroll', this._onScroll)
   }
 
   componentDidMount = async () => {
-    this.initialize()
-    this.listenScroll()
+    this._initialize()
+    this._listenScroll()
   }
 
   componentDidUpdate = async (prevProps, prevState) => {
@@ -51,13 +51,13 @@ class VideoListContainer extends Component {
       prevProps.category !== this.props.category
     ) {
       await ListActions.initialize()
-      this.prefetch()
+      this._prefetch()
       document.documentElement.scrollTop = 0
     }
   }
 
   componentWillUnmount() {
-    this.unlistenScroll()
+    this._unlistenScroll()
   }
 
   render() {

@@ -5,10 +5,10 @@ import './VideoHeader.scss'
 
 import { FiArrowLeft } from 'react-icons/fi'
 
-const VideoHeader = ({ goBack }) => {
+const VideoHeader = ({ _goBack }) => {
   return (
     <div className={cx('video-header')}>
-      <span onClick={goBack}>
+      <span onClick={_goBack}>
         <FiArrowLeft fontSize='3rem' />
       </span>
     </div>
@@ -16,7 +16,7 @@ const VideoHeader = ({ goBack }) => {
 }
 
 VideoHeader.propTypes = {
-  goBack: PropTypes.func
+  _goBack: PropTypes.func
 }
 
 export default VideoHeader

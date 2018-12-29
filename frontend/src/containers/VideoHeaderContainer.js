@@ -4,12 +4,12 @@ import { withRouter } from 'react-router-dom'
 import VideoHeader from 'components/VideoHeader'
 
 class VideoHeaderContainer extends Component {
-  goBack = () => {
+  _goBack = () => {
     this.props.history.goBack()
   }
 
   render() {
-    return <VideoHeader goBack={this.goBack} />
+    return <VideoHeader _goBack={this._goBack} />
   }
 }
 

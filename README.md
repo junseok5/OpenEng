@@ -11,6 +11,7 @@
 - Sass
 - Redux
 - Redux-pender
+- Immer
 - SSR
 
 ### Backend

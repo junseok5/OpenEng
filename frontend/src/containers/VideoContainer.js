@@ -9,7 +9,7 @@ import VideoSubtitle from 'components/VideoSubtitle'
 import VideoControls from 'components/VideoControls'
 
 class VideoContainer extends Component {
-  prefetch = async () => {
+  _prefetch = async () => {
     const { id } = this.props
 
     try {
@@ -56,7 +56,7 @@ class VideoContainer extends Component {
           return
         }
 
-        this.autoChangeCursor(currentTime)
+        this._autoChangeCursor(currentTime)
       }, 100)
 
       VideoActions.setYoutube({ timer })
@@ -68,7 +68,7 @@ class VideoContainer extends Component {
     }
   }
 
-  autoChangeCursor = currentTime => {
+  _autoChangeCursor = currentTime => {
     const { cursor, subtitle } = this.props
 
     if (!this.props.subtitle || cursor >= subtitle.length - 1) return
@@ -120,7 +120,7 @@ class VideoContainer extends Component {
     const { cursor, subtitle, player } = this.props
 
     if (cursor === 0) {
-      this.autoChangeCursor(currentTime)
+      this._autoChangeCursor(currentTime)
       return
     }
 
@@ -140,13 +140,13 @@ class VideoContainer extends Component {
     }
   }
 
-  initialize = () => {
+  _initialize = () => {
     VideoActions.initialize()
-    this.prefetch()
+    this._prefetch()
   }
 
   componentDidMount() {
-    this.initialize()
+    this._initialize()
   }
 
   componentWillUnmount() {
