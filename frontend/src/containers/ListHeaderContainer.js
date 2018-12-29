@@ -6,6 +6,7 @@ import ListHeader from 'components/ListHeader'
 
 class ListHeaderContainer extends Component {
   render () {
+    if (this.props.loading) return null
     return (
       <ListHeader
         keyword={this.props.keyword}
@@ -17,9 +18,11 @@ class ListHeaderContainer extends Component {
 
 ListHeaderContainer.propTypes = {
   keyword: PropTypes.string,
-  videosLength: PropTypes.number
+  videosLength: PropTypes.number,
+  loading: PropTypes.bool
 }
 
 export default connect(state => ({
-  videosLength: state.list.recent.videos.length
+  videosLength: state.list.recent.videos.length,
+  loading: state.pender.pending['list/GET_RECENT_VIDEOS']
 }))(ListHeaderContainer)
