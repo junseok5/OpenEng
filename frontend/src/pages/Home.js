@@ -1,6 +1,6 @@
 import React from 'react'
 import PageTemplate from 'components/PageTemplate'
-import ListHeader from 'components/ListHeader'
+import ListHeaderContainer from 'containers/ListHeaderContainer'
 import SideMenu from 'components/SideMenu'
 import MainTemplate from 'components/MainTemplate'
 import Introduction from 'components/Introduction'
@@ -14,7 +14,7 @@ const Home = ({ match }) => {
       <SideMenu category={category} />
       <MainTemplate>
         {!category && !keyword && <Introduction />}
-        {keyword && <ListHeader keyword={keyword} />}
+        {keyword && <ListHeaderContainer keyword={keyword} />}
         <VideoListContainer category={category} keyword={keyword} />
       </MainTemplate>
     </PageTemplate>
