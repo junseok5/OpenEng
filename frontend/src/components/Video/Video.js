@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './Video.scss'
 
 import Youtube from 'react-youtube'
 
-const Video = ({ video, ready, _onReady, _onStateChange }) => {
+const Video = ({ youtubeId, _onReady, _onStateChange }) => {
   const opts = {
     playerVars: {
       cc_load_policy: 0,
@@ -21,7 +22,7 @@ const Video = ({ video, ready, _onReady, _onStateChange }) => {
     <div className={cx('video')}>
       <div className={cx('video-wrap')}>
         <Youtube
-          videoId={video.youtubeId}
+          videoId={youtubeId}
           opts={opts}
           onReady={_onReady}
           onStateChange={_onStateChange}
@@ -29,6 +30,16 @@ const Video = ({ video, ready, _onReady, _onStateChange }) => {
       </div>
     </div>
   )
+}
+
+Video.defaultProps = {
+  youtubeId: ''
+}
+
+Video.propTypes = {
+  video: PropTypes.object,
+  _onReady: PropTypes.func,
+  _onStateChange: PropTypes.func
 }
 
 export default Video

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './VideoList.scss'
 
@@ -20,6 +21,16 @@ const VideoList = ({ videos, loading }) => {
       )}
     </div>
   )
+}
+
+VideoList.defaultProps = {
+  videos: [],
+  loading: false
+}
+
+VideoList.propTypes = {
+  videos: PropTypes.array,
+  loading: PropTypes.bool
 }
 
 const VideoCard = ({ video }) => {
@@ -52,6 +63,23 @@ const VideoCard = ({ video }) => {
       </div>
     </div>
   )
+}
+
+VideoCard.defaultProps = {
+  video: {
+    _id: '',
+    youtubeId: '',
+    overayTime: '0:00',
+    title: '비디오를 찾을 수 없습니다.',
+    mainSentance: {
+      en: '',
+      ko: ''
+    }
+  }
+}
+
+VideoCard.propTypes = {
+  video: PropTypes.object
 }
 
 export default VideoList

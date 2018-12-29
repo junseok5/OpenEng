@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { SearchActions, ListActions } from 'store/actionCreators'
+import { ListActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import SearchContents from 'components/SearchContents'
-import storage from 'lib/storage'
 import { getKeywordList, removeKeyword, clearKeywords } from 'lib/common'
 
 class SearchContentsContainer extends Component {
@@ -29,6 +29,10 @@ class SearchContentsContainer extends Component {
       />
     )
   }
+}
+
+SearchContentsContainer.propTypes = {
+  recentKeywords: PropTypes.array,
 }
 
 export default connect(state => ({

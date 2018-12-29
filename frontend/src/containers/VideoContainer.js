@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { VideoActions } from 'store/actionCreators'
 
@@ -51,7 +52,7 @@ class VideoContainer extends Component {
 
         // 구간 반복
         if (sectionRepeat) {
-          this.sectionRepeat(currentTime)
+          this._sectionRepeat(currentTime)
           return
         }
 
@@ -80,7 +81,7 @@ class VideoContainer extends Component {
     }
   }
 
-  skipPrev = () => {
+  _skipPrev = () => {
     const { cursor, player, subtitle } = this.props
 
     if (cursor === 0) return
@@ -95,7 +96,7 @@ class VideoContainer extends Component {
     player.seekTo(prevStart)
   }
 
-  skipNext = () => {
+  _skipNext = () => {
     const { cursor, player, subtitle } = this.props
 
     if (cursor >= subtitle.length - 1) return
@@ -110,12 +111,12 @@ class VideoContainer extends Component {
     player.seekTo(nextStart)
   }
 
-  changeSectionRepeat = () => {
+  _changeSectionRepeat = () => {
     const { sectionRepeat } = this.props
     VideoActions.setYoutube({ sectionRepeat: !sectionRepeat })
   }
 
-  sectionRepeat = currentTime => {
+  _sectionRepeat = currentTime => {
     const { cursor, subtitle, player } = this.props
 
     if (cursor === 0) {
@@ -129,7 +130,7 @@ class VideoContainer extends Component {
     }
   }
 
-  changeLanguage = () => {
+  _changeLanguage = () => {
     const { language } = this.props
 
     if (language === 'ko-en') {
@@ -153,12 +154,12 @@ class VideoContainer extends Component {
   }
 
   render() {
-    if (!this.props.video || this.props.loading) return null
-    // console.log(this.props.video)
+    if (!this.props.video.youtubeId || this.props.loading) return null
+
     return (
       <Fragment>
         <Video
-          video={this.props.video}
+          youtubeId={this.props.video.youtubeId}
           _onReady={this._onReady}
           _onStateChange={this._onStateChange}
         />
@@ -171,18 +172,34 @@ class VideoContainer extends Component {
           language={this.props.language}
         />
         <VideoControls
-          _onStateControl={this._onStateControl}
           playing={this.props.playing}
           language={this.props.language}
           sectionRepeat={this.props.sectionRepeat}
-          changeLanguage={this.changeLanguage}
-          skipPrev={this.skipPrev}
-          skipNext={this.skipNext}
-          changeSectionRepeat={this.changeSectionRepeat}
+          _onStateControl={this._onStateControl}
+          _changeLanguage={this._changeLanguage}
+          _skipPrev={this._skipPrev}
+          _skipNext={this._skipNext}
+          _changeSectionRepeat={this._changeSectionRepeat}
         />
       </Fragment>
     )
   }
+}
+
+VideoContainer.propTypes = {
+  id: PropTypes.string,
+  video: PropTypes.object,
+  player: PropTypes.object,
+  timer: PropTypes.number,
+  playing: PropTypes.bool,
+  cursor: PropTypes.number,
+  currentTime: PropTypes.number,
+  duration: PropTypes.number,
+  subtitleContents: PropTypes.object,
+  language: PropTypes.string,
+  sectionRepeat: PropTypes.bool,
+  subtitle: PropTypes.array,
+  loading: PropTypes.bool,
 }
 
 export default connect(state => ({

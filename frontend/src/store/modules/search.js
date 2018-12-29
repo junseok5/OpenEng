@@ -6,14 +6,12 @@ import { pender } from 'redux-pender'
 // action types
 const INITIALIZE = 'search/INITIALIZE'
 const CHANGE_FORM = 'search/CHANGE_FORM'
-// const SEARCH = 'search/SEARCH'
 const WRITE_RECENT_KEYWORDS = 'search/WRITE_RECENT_KEYWORDS'
 const CHANGE_VIEW = 'search/CHANGE_VIEW'
 
 // actions creators
 export const initialize = createAction(INITIALIZE)
 export const changeForm = createAction(CHANGE_FORM)
-// export const search = createAction(SEARCH, VideoAPI.getRecentVideos)
 export const writeRecentKeywords = createAction(WRITE_RECENT_KEYWORDS)
 export const changeView = createAction(CHANGE_VIEW)
 
@@ -37,15 +35,6 @@ export default handleActions(
         draft.form = action.payload
       })
     },
-    // ...pender({
-    //   type: SEARCH,
-    //   onSuccess: (state, action) => {
-    //     const { data } = action.payload
-    //     return produce(state, draft => {
-    //       draft.result = data
-    //     })
-    //   }
-    // }),
     [WRITE_RECENT_KEYWORDS]: (state, action) => {
       const keywords = action.payload
       return produce(state, draft => {

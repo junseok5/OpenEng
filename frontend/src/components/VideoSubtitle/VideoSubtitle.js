@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './VideoSubtitle.scss'
 
@@ -15,6 +16,19 @@ const VideoSubtitle = ({ contents, language }) => {
       </div>
     </div>
   )
+}
+
+VideoSubtitle.defaultProps = {
+  contents: {
+    // en: '',
+    // ko: ''
+  },
+  language: 'ko-en'
+}
+
+VideoSubtitle.propTypes = {
+  contents: PropTypes.object,
+  language: PropTypes.string
 }
 
 export default VideoSubtitle

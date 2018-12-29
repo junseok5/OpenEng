@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './SideMenu.scss'
 
@@ -35,6 +36,14 @@ const SideMenu = ({ category }) => {
       </div>
     </div>
   )
+}
+
+SideMenu.defaultProps = {
+  category: ''
+}
+
+SideMenu.propTypes = {
+  category: PropTypes.string
 }
 
 export default SideMenu

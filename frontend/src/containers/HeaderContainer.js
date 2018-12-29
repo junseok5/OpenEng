@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { SearchActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import Header from 'components/Header'
-import storage from 'lib/storage'
 import {
   writeKeyword,
   getKeywordList,
@@ -79,6 +79,12 @@ class HeaderContainer extends Component {
       />
     )
   }
+}
+
+HeaderContainer.propTypes = {
+  form: PropTypes.string,
+  recentKeywords: PropTypes.array,
+  view: PropTypes.object,
 }
 
 export default connect(state => ({

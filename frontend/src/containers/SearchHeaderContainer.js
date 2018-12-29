@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { SearchActions, ListActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import SearchHeader from 'components/SearchHeader'
-import storage from 'lib/storage'
 import { writeKeyword } from 'lib/common'
 
 class SearchHeaderContainer extends Component {
@@ -26,7 +26,7 @@ class SearchHeaderContainer extends Component {
     }
   }
 
-  goBack = () => {
+  _goBack = () => {
     this.props.history.goBack()
   }
 
@@ -40,10 +40,14 @@ class SearchHeaderContainer extends Component {
         form={this.props.form}
         _onChange={this._onChange}
         _onKeyPress={this._onKeyPress}
-        goBack={this.goBack}
+        _goBack={this._goBack}
       />
     )
   }
+}
+
+SearchHeaderContainer.propTypes = {
+  form: PropTypes.string,
 }
 
 export default connect(state => ({

@@ -32,7 +32,10 @@ const initialState = {
     cursor: 0,
     currentTime: 0,
     duration: 0,
-    subtitleContents: '',
+    subtitleContents: {
+      en: '',
+      ko: ''
+    },
     language: 'ko-en',
     sectionRepeat: false
   }

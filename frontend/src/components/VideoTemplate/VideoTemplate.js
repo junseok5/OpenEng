@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './VideoTemplate.scss'
 
@@ -11,6 +12,10 @@ const VideoTemplate = ({ children }) => {
       <main>{children}</main>
     </div>
   )
+}
+
+VideoTemplate.propTypes = {
+  children: PropTypes.node
 }
 
 export default VideoTemplate

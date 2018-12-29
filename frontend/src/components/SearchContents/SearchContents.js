@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './SearchContents.scss'
 
@@ -35,6 +36,17 @@ const SearchContents = ({ recentKeywords, _onRemove, _onClear, _onSearch }) => {
       </div>
     </div>
   )
+}
+
+SearchContents.defaultPrpos = {
+  recentKeywords: []
+}
+
+SearchContents.propTypes = {
+  recentKeywords: PropTypes.array,
+  _onRemove: PropTypes.func,
+  _onClear: PropTypes.func,
+  _onSearch: PropTypes.func
 }
 
 export default SearchContents

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './SearchTemplate.scss'
 
@@ -11,6 +12,10 @@ const SearchTemplate = ({ children }) => {
       <main>{children}</main>
     </div>
   )
+}
+
+SearchTemplate.propTypes = {
+  children: PropTypes.node
 }
 
 export default SearchTemplate

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './PageTemplate.scss'
 
@@ -11,6 +12,8 @@ const PageTemplate = ({ children }) => (
   </div>
 )
 
-PageTemplate.propTypes = {}
+PageTemplate.propTypes = {
+  children: PropTypes.node
+}
 
 export default PageTemplate
