@@ -5,23 +5,13 @@ import { withRouter } from 'react-router-dom'
 
 import SearchHeader from 'components/SearchHeader'
 import storage from 'lib/storage'
+import { writeKeyword } from 'lib/common'
 
 class SearchHeaderContainer extends Component {
-  writeStorage = keyword => {
-    let patchData = [keyword]
-    const originData = storage.get('keywords')
-
-    if (originData) {
-      patchData = patchData.concat(originData)
-    }
-
-    storage.set('keywords', patchData)
-  }
-
   _onSearch = () => {
     const { form: keyword, history } = this.props
 
-    this.writeStorage(keyword)
+    writeKeyword(keyword)
     ListActions.initialize()
     history.push(`/keyword/${keyword}`)
   }

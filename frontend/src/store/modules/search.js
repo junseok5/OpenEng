@@ -8,18 +8,24 @@ const INITIALIZE = 'search/INITIALIZE'
 const CHANGE_FORM = 'search/CHANGE_FORM'
 const SEARCH = 'search/SEARCH'
 const WRITE_RECENT_KEYWORDS = 'search/WRITE_RECENT_KEYWORDS'
+const CHANGE_VIEW = 'search/CHANGE_VIEW'
 
 // actions creators
 export const initialize = createAction(INITIALIZE)
 export const changeForm = createAction(CHANGE_FORM)
 export const search = createAction(SEARCH, VideoAPI.getRecentVideos)
 export const writeRecentKeywords = createAction(WRITE_RECENT_KEYWORDS)
+export const changeView = createAction(CHANGE_VIEW)
 
 // initial state
 const initialState = {
   form: '',
   result: null,
-  recentKeywords: []
+  recentKeywords: [],
+  view: {
+    focus: false,
+    mouseOver: false
+  }
 }
 
 // reducer
@@ -45,6 +51,12 @@ export default handleActions(
       return produce(state, draft => {
         draft.recentKeywords = keywords
       })
+    },
+    [CHANGE_VIEW]: (state, action) => {
+      return {
+        ...state,
+        view: { ...state.view, ...action.payload }
+      }
     }
   },
   initialState

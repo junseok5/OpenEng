@@ -8,7 +8,6 @@ import VideoListContainer from 'containers/VideoListContainer'
 
 const Home = ({ match }) => {
   const { category, keyword } = match.params
-  console.log(category, keyword)
 
   return (
     <PageTemplate>

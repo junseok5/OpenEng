@@ -24,7 +24,7 @@ const SearchContents = ({ recentKeywords, _onRemove, _onClear, _onSearch }) => {
   })
   return (
     <div className={cx('search-contents')}>
-      <div className={cx('recent-keyword')}>
+      <div className={cx('recent-keywords')}>
         <div className={cx('contents-header')}>
           <div className={cx('contents-title')}>최근 검색어</div>
           <div className={cx('contents-clear')} onClick={_onClear}>

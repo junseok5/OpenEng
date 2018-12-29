@@ -1,8 +1,10 @@
+@import 'utils/keywordlist';
+
 .search-contents {
-  .recent-keyword {
+  .recent-keywords {
     .contents-header {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
 
       display: flex;
       align-items: center;
@@ -19,38 +21,8 @@
 
         color: $oc-gray-6;
         font-size: 0.9rem;
-      }
-    }
 
-    ul {
-      li {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-
-        .keyword-wrap {
-          display: flex;
-          flex: 1;
-
-          .keyword-icon {
-            width: 28px;
-            height: 28px;
-            margin-right: 0.5rem;
-
-            background: #ff2f6e;
-            border-radius: 50%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-
-          .delete-icon {
-            display: flex;
-            align-items: center;
-          }
-        }
+        user-select: none;
       }
     }
   }
