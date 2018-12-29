@@ -77,7 +77,10 @@ header {
         top: 3.3rem;
         width: 400px;
         min-height: 2rem;
+        max-height: 15rem;
         padding: 0.5rem;
+
+        overflow: auto;
 
         background: white;
         border: 1px solid $oc-gray-3;

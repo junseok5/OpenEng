@@ -19,6 +19,7 @@ class HeaderContainer extends Component {
     const { history } = this.props
     if (keyword) {
       history.push(`/keyword/${keyword}`)
+      SearchActions.changeForm(keyword)
       return
     }
 

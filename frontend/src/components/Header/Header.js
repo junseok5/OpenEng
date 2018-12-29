@@ -36,7 +36,6 @@ const Header = ({
       </li>
     )
   })
-
   const searchView = view.focus || view.mouseOver
 
   return (
