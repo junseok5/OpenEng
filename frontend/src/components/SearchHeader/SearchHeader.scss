@@ -1,0 +1,29 @@
+.search-header {
+  height: 3rem;
+
+  @include material-shadow(1, 0.5);
+
+  .search-wrap {
+    height: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    display: flex;
+    align-items: center;
+
+    .search-icon {
+      margin-right: 1rem;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .search-form {
+      width: 100%;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { SearchActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
-import Header from 'components/Header'
+import SearchHeader from 'components/SearchHeader'
 
-class HeaderContainer extends Component {
+class SearchHeaderContainer extends Component {
   _onSearch = () => {
     const { form: keyword, history } = this.props
     history.push(`/keyword/${keyword}`)
@@ -23,7 +23,7 @@ class HeaderContainer extends Component {
 
   render() {
     return (
-      <Header
+      <SearchHeader
         form={this.props.form}
         _onChange={this._onChange}
         _onKeyPress={this._onKeyPress}
@@ -34,4 +34,4 @@ class HeaderContainer extends Component {
 
 export default connect(state => ({
   form: state.search.form,
-}))(withRouter(HeaderContainer))
+}))(withRouter(SearchHeaderContainer))

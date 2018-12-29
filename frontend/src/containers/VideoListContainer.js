@@ -14,7 +14,6 @@ class VideoListContainer extends Component {
 
     try {
       await ListActions.getRecentVideos({ page, category, keyword })
-      console.log(this.props.videos)
     } catch (e) {
       console.log(e)
     }
@@ -40,7 +39,8 @@ class VideoListContainer extends Component {
     window.removeEventListener('scroll', this.onScroll)
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
+    await ListActions.initialize()
     this.initialize()
     this.listenScroll()
   }

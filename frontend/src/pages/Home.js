@@ -7,12 +7,13 @@ import VideoListContainer from 'containers/VideoListContainer'
 
 const Home = ({ match }) => {
   const { category, keyword } = match.params
+  console.log(category, keyword)
 
   return (
     <PageTemplate>
       <SideMenu category={category} />
       <MainTemplate>
-        <Introduction />
+        {!category && !keyword && <Introduction />}
         <VideoListContainer category={category} keyword={keyword} />
       </MainTemplate>
     </PageTemplate>

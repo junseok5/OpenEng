@@ -5,7 +5,7 @@ import './Header.scss'
 import { FiSearch } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
-const Header = ({ searchForm, _onChange, _onKeyPress }) => (
+const Header = ({ form, _onChange, _onKeyPress }) => (
   <header>
     <div className={cx('header-main')}>
       <div className={cx('hm-logo _p-pm')}>
@@ -18,7 +18,7 @@ const Header = ({ searchForm, _onChange, _onKeyPress }) => (
             <input
               type='search'
               placeholder='검색'
-              value={searchForm}
+              value={form}
               onChange={_onChange}
               onKeyPress={_onKeyPress}
             />
@@ -26,7 +26,11 @@ const Header = ({ searchForm, _onChange, _onKeyPress }) => (
         </label>
       </div>
       <div className={cx('hm-search-mobile')}>
-        <FiSearch fontSize='1.4rem' />
+        <Link to='/search'>
+          <span>
+            <FiSearch fontSize='1.4rem' />
+          </span>
+        </Link>
       </div>
     </div>
   </header>

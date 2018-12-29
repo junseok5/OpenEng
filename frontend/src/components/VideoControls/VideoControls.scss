@@ -9,11 +9,12 @@
   justify-content: center;
 
   .controls-view {
-    padding-bottom: 1.2rem;
+    padding-bottom: 1.5rem;
     font-size: 2rem;
     display: flex;
 
     @include media('<medium') {
+      padding-bottom: 1.2rem;
       font-size: 1.5rem;
     }
 

@@ -5,17 +5,17 @@ import * as VideoAPI from 'lib/api/video'
 
 // action types
 const INITIALIZE = 'search/INITIALIZE'
-const CHANGE_SEARCH_FORM = 'search/CHANGE_SEARCH_FORM'
+const CHANGE_FORM = 'search/CHANGE_FORM'
 const SEARCH = 'search/SEARCH'
 
 // actions creators
 export const initialize = createAction(INITIALIZE)
-export const changeSearchForm = createAction(CHANGE_SEARCH_FORM)
+export const changeForm = createAction(CHANGE_FORM)
 export const search = createAction(SEARCH, VideoAPI.getRecentVideos)
 
 // initial state
 const initialState = {
-  searchForm: '',
+  form: '',
   result: null
 }
 
@@ -23,9 +23,9 @@ const initialState = {
 export default handleActions(
   {
     [INITIALIZE]: (state, action) => initialState,
-    [CHANGE_SEARCH_FORM]: (state, action) => {
+    [CHANGE_FORM]: (state, action) => {
       return produce(state, draft => {
-        draft.searchForm = action.payload
+        draft.form = action.payload
       })
     },
     ...pender({
