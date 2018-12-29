@@ -7,16 +7,19 @@ import * as VideoAPI from 'lib/api/video'
 const INITIALIZE = 'search/INITIALIZE'
 const CHANGE_FORM = 'search/CHANGE_FORM'
 const SEARCH = 'search/SEARCH'
+const WRITE_RECENT_KEYWORDS = 'search/WRITE_RECENT_KEYWORDS'
 
 // actions creators
 export const initialize = createAction(INITIALIZE)
 export const changeForm = createAction(CHANGE_FORM)
 export const search = createAction(SEARCH, VideoAPI.getRecentVideos)
+export const writeRecentKeywords = createAction(WRITE_RECENT_KEYWORDS)
 
 // initial state
 const initialState = {
   form: '',
-  result: null
+  result: null,
+  recentKeywords: []
 }
 
 // reducer
@@ -36,7 +39,13 @@ export default handleActions(
           draft.result = data
         })
       }
-    })
+    }),
+    [WRITE_RECENT_KEYWORDS]: (state, action) => {
+      const keywords = action.payload
+      return produce(state, draft => {
+        draft.recentKeywords = keywords
+      })
+    }
   },
   initialState
 )

@@ -1,11 +1,11 @@
 import React from 'react'
 import SearchTemplate from 'components/SearchTemplate'
-import SearchContents from 'components/SearchContents'
+import SearchContentsContainer from 'containers/SearchContentsContainer'
 
 const Search = () => {
   return (
     <SearchTemplate>
-      <SearchContents />
+      <SearchContentsContainer />
     </SearchTemplate>
   )
 }

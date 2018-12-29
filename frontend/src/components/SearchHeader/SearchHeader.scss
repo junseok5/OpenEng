@@ -11,15 +11,18 @@
     display: flex;
     align-items: center;
 
-    .search-icon {
-      margin-right: 1rem;
-
+    .icon {
       display: flex;
       align-items: center;
     }
 
+    .back-icon {
+      margin-right: 1rem;
+    }
+
     .search-form {
       width: 100%;
+      padding-right: 1rem;
 
       input {
         width: 100%;

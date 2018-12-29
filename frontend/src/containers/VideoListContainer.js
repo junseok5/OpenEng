@@ -40,7 +40,6 @@ class VideoListContainer extends Component {
   }
 
   componentDidMount = async () => {
-    await ListActions.initialize()
     this.initialize()
     this.listenScroll()
   }
