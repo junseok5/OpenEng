@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { Home, Videos, Search } from 'pages'
+import { Home, Videos, Search, NotFound } from 'pages'
 
 const App = () => {
   return (
@@ -10,6 +10,7 @@ const App = () => {
       <Route path='/keyword/:keyword' component={Home} />
       <Route path='/videos/:id' component={Videos} />
       <Route path='/search' component={Search} />
+      <Route component={NotFound} />
     </Switch>
   )
 }

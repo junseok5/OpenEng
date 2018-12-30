@@ -1,0 +1,14 @@
+.error-info {
+  height: calc(100vh - 9rem);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  color: $oc-gray-6;
+
+  .error-icon {
+    font-size: 3rem;
+  }
+}
