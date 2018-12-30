@@ -24,6 +24,7 @@ class VideoContainer extends Component {
     console.log(e.target)
 
     VideoActions.setYoutube({
+      playerReady: true,
       duration: e.target.getDuration(),
       player: e.target,
     })
@@ -45,6 +46,10 @@ class VideoContainer extends Component {
     const playerState = player.getPlayerState()
 
     if (playerState === 1) {
+      if (!this.props.initPlay) {
+        VideoActions.setYoutube({ initPlay: true })
+      }
+
       const timer = setInterval(() => {
         const { sectionRepeat } = this.props
         const currentTime = player.getCurrentTime()
@@ -189,10 +194,14 @@ class VideoContainer extends Component {
           duration={this.props.duration}
         />
         <VideoSubtitle
+          playerReady={this.props.playerReady}
+          initPlay={this.props.initPlay}
           contents={this.props.subtitleContents}
           language={this.props.language}
+          words={this.props.subtitle[this.props.cursor].words}
         />
         <VideoControls
+          playerReady={this.props.playerReady}
           playing={this.props.playing}
           language={this.props.language}
           sectionRepeat={this.props.sectionRepeat}
@@ -211,6 +220,7 @@ VideoContainer.propTypes = {
   id: PropTypes.string,
   video: PropTypes.object,
   player: PropTypes.object,
+  playerReady: PropTypes.bool,
   timer: PropTypes.number,
   playing: PropTypes.bool,
   cursor: PropTypes.number,
@@ -219,6 +229,7 @@ VideoContainer.propTypes = {
   subtitleContents: PropTypes.object,
   language: PropTypes.string,
   sectionRepeat: PropTypes.bool,
+  initPlay: PropTypes.bool,
   subtitle: PropTypes.array,
   loading: PropTypes.bool,
 }
@@ -226,6 +237,7 @@ VideoContainer.propTypes = {
 export default connect(state => ({
   video: state.video.video,
   player: state.video.youtube.player,
+  playerReady: state.video.youtube.playerReady,
   timer: state.video.youtube.timer,
   playing: state.video.youtube.playing,
   cursor: state.video.youtube.cursor,
@@ -234,6 +246,7 @@ export default connect(state => ({
   subtitleContents: state.video.youtube.subtitleContents,
   language: state.video.youtube.language,
   sectionRepeat: state.video.youtube.sectionRepeat,
+  initPlay: state.video.youtube.initPlay,
   subtitle: state.video.video.subtitles,
   loading: state.pender.pending['video/GET_VIDEO'],
 }))(VideoContainer)

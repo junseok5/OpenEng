@@ -23,8 +23,26 @@
       padding: 0.5rem 1rem;
     }
 
+    .before-start {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      color: $main-color;
+      text-align: center;
+
+      @include media("<medium") {
+        font-size: 1.2rem;
+      }
+
+      .bs-icon {
+        margin-bottom: 1rem;
+
+        display: flex;
+        justify-content: center;
+      }
+    }
+
     .front-subtitle {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
 
       font-size: 1.8rem;
 
@@ -47,6 +65,20 @@
 
       @include media('<medium') {
         font-size: 1rem;
+      }
+    }
+
+    .words {
+      margin-top: 2rem;
+      color: $oc-gray-4;
+      font-size: 0.9rem;
+
+      .word {
+        display: flex;
+
+        .word-en {
+          margin-right: 0.5rem;
+        }
       }
     }
   }

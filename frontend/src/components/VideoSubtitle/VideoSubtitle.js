@@ -3,32 +3,72 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './VideoSubtitle.scss'
 
-const VideoSubtitle = ({ contents, language }) => {
+import Loading from 'react-loading'
+import { FiSlack } from 'react-icons/fi'
+
+const VideoSubtitle = ({
+  playerReady,
+  initPlay,
+  contents,
+  language,
+  words
+}) => {
+  const wordList =
+    words.length > 0 &&
+    words.map((word, i) => {
+      return (
+        <div className={cx('word')} key={i}>
+          <div className={cx('word-en')}>※{word.word}</div>
+          <div className={cx('word-ko')}>{word.meaning}</div>
+        </div>
+      )
+    })
+  const viewIntro = playerReady && !initPlay
+
   return (
     <div className={cx('video-subtitle')}>
       <div className={cx('subtitle-contents')}>
+        {!playerReady && (
+          <Loading type='bubbles' color='#ff2f6e' width={80} height={40} />
+        )}
+        {viewIntro && (
+          <div className={cx('before-start')}>
+            <div className={cx('bs-icon')}>
+              <FiSlack fontSize='2.5rem' />
+            </div>
+            <div className={cx('bs-text')}>
+              영화 하이라이트 장면으로 영어 공부에 흥미를 가져보세요!
+            </div>
+          </div>
+        )}
+
         <div className={cx('front-subtitle')}>
           {language === 'ko-en' ? contents.ko : contents.en}
         </div>
         <div className={cx('back-subtitle')}>
           {language === 'ko-en' ? contents.en : contents.ko}
         </div>
+        <div className={cx('words')}>{wordList}</div>
       </div>
     </div>
   )
 }
 
 VideoSubtitle.defaultProps = {
+  initPlay: false,
   contents: {
-    // en: '',
-    // ko: ''
+    en: '',
+    ko: ''
   },
-  language: 'ko-en'
+  language: 'ko-en',
+  words: []
 }
 
 VideoSubtitle.propTypes = {
+  initPlay: PropTypes.bool,
   contents: PropTypes.object,
-  language: PropTypes.string
+  language: PropTypes.string,
+  words: PropTypes.array
 }
 
 export default VideoSubtitle

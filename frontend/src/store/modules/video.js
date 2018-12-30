@@ -27,6 +27,7 @@ const initialState = {
   },
   youtube: {
     player: null,
+    playerReady: false,
     timer: null,
     playing: false,
     cursor: 0,
@@ -37,7 +38,8 @@ const initialState = {
       ko: ''
     },
     language: 'ko-en',
-    sectionRepeat: false
+    sectionRepeat: false,
+    initPlay: false
   }
 }
 

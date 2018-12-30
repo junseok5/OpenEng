@@ -31,6 +31,7 @@
 
 <body>
   <div id="root"></div>
+  <div id="test"></div>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -41,6 +42,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+  <script>
+    const agent = navigator.userAgent.toLowerCase()
+    const name = navigator.appName
+
+    if (name === 'Microsoft Internet Explorer' || agent.indexOf('trident') > -1) {
+      const root = document.getElementById('test')
+      const node = document.createElement('h1')
+      const textNode = document.createTextNode('지원하지 않는 브라우저입니다.')
+
+      node.appendChild(textNode)
+      root.appendChild(node)
+    }
+  </script>
 </body>
 
 </html>

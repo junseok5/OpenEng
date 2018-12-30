@@ -7,6 +7,7 @@ import { FaStepBackward, FaPlay, FaPause, FaStepForward } from 'react-icons/fa'
 import { FiRepeat } from 'react-icons/fi'
 
 const VideoControls = ({
+  playerReady,
   playing,
   language,
   sectionRepeat,
@@ -16,6 +17,7 @@ const VideoControls = ({
   _skipNext,
   _changeSectionRepeat
 }) => {
+  if (!playerReady) return null
   return (
     <div className={cx('video-controls')}>
       <div className={cx('controls-view')}>
@@ -56,12 +58,14 @@ const VideoControls = ({
 }
 
 VideoControls.defaultProps = {
+  playerReady: false,
   playing: false,
   language: 'ko-en',
   sectionRepeat: false
 }
 
 VideoControls.propTypes = {
+  playerReady: PropTypes.bool,
   playing: PropTypes.bool,
   language: PropTypes.string,
   sectionRepeat: PropTypes.bool,
