@@ -29,7 +29,9 @@ const VideoSubtitle = ({
     <div className={cx('video-subtitle')}>
       <div className={cx('subtitle-contents')}>
         {!playerReady && (
-          <Loading type='bubbles' color='#ff2f6e' width={80} height={40} />
+          <div className={cx('before-start')}>
+            <Loading type='spin' color='#ff2f6e' />
+          </div>
         )}
         {viewIntro && (
           <div className={cx('before-start')}>
