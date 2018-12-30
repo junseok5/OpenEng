@@ -26,7 +26,7 @@
     .before-start {
       padding: 1rem 2rem;
       font-size: 1.5rem;
-      color: $main-color;
+      color: $oc-gray-2;
       text-align: center;
 
       @include media("<medium") {
@@ -35,6 +35,8 @@
 
       .bs-icon {
         margin-bottom: 1rem;
+
+        color: $main-color;
 
         display: flex;
         justify-content: center;
