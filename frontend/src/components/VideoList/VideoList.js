@@ -16,7 +16,7 @@ const VideoList = ({ videos, loading }) => {
       {videoList}
       {loading && (
         <div className={cx('list-loading')}>
-          <Loading type='bubbles' color='#ff2f6e' />
+          <Loading type='spin' color='#ff2f6e' />
         </div>
       )}
     </div>
