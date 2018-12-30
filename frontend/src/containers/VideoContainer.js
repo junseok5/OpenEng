@@ -23,6 +23,7 @@ class VideoContainer extends Component {
   _onReady = e => {
     console.log(e.target)
 
+    this._listenKeyEvent()
     VideoActions.setYoutube({
       playerReady: true,
       duration: e.target.getDuration(),
@@ -142,7 +143,38 @@ class VideoContainer extends Component {
     if (language === 'ko-en') {
       VideoActions.setYoutube({ language: 'en-ko' })
     } else if (language === 'en-ko') {
+      VideoActions.setYoutube({ language: 'ko' })
+    } else if (language === 'ko') {
+      VideoActions.setYoutube({ language: 'en' })
+    } else if (language === 'en') {
+      VideoActions.setYoutube({ language: 'hide' })
+    } else if (language === 'hide') {
       VideoActions.setYoutube({ language: 'ko-en' })
+    }
+  }
+
+  _listenKeyEvent = () => {
+    document.onkeydown = e => {
+      e = e || window.event
+      const key = {
+        a: 65,
+        s: 83,
+        d: 68,
+        f: 70,
+        q: 81,
+      }
+
+      if (e.keyCode === key['a']) {
+        this._skipPrev()
+      } else if (e.keyCode === key['s']) {
+        this._onStateControl()
+      } else if (e.keyCode === key['d']) {
+        this._skipNext()
+      } else if (e.keyCode === key['f']) {
+        this._changeSectionRepeat()
+      } else if (e.keyCode === key['q']) {
+        this._changeLanguage()
+      }
     }
   }
 

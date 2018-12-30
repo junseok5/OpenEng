@@ -23,31 +23,41 @@ const VideoControls = ({
       <div className={cx('controls-view')}>
         <div
           className={cx('controls-icon controls-language')}
-          title='자막 설정'
+          title='단축기 Q'
           onClick={_changeLanguage}
         >
-          <span>{language === 'ko-en' ? '한/영' : '영/한'}</span>
+          <span>
+            {language === 'ko-en' && '한/영'}
+            {language === 'en-ko' && '영/한'}
+            {language === 'ko' && '한글'}
+            {language === 'en' && '영어'}
+            {language === 'hide' && '숨기기'}
+          </span>
         </div>
         <div
           className={cx('controls-icon')}
-          title='이전 자막'
+          title='단축기 A'
           onClick={_skipPrev}
         >
           <FaStepBackward />
         </div>
-        <div className={cx('controls-icon')} onClick={_onStateControl}>
+        <div
+          className={cx('controls-icon')}
+          onClick={_onStateControl}
+          title='단축기 S'
+        >
           {!playing ? <FaPlay /> : <FaPause />}
         </div>
         <div
           className={cx('controls-icon')}
-          title='다음 자막'
+          title='단축기 D'
           onClick={_skipNext}
         >
           <FaStepForward />
         </div>
         <div
           className={cx('controls-icon', sectionRepeat && 'active')}
-          title='구간반복'
+          title='단축기 F'
           onClick={_changeSectionRepeat}
         >
           <FiRepeat />

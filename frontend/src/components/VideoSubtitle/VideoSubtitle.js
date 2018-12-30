@@ -45,12 +45,19 @@ const VideoSubtitle = ({
         )}
 
         <div className={cx('front-subtitle')}>
-          {language === 'ko-en' ? contents.ko : contents.en}
+          {language === 'ko-en' && contents.ko}
+          {language === 'en-ko' && contents.en}
+          {language === 'ko' && contents.ko}
+          {language === 'en' && contents.en}
         </div>
         <div className={cx('back-subtitle')}>
-          {language === 'ko-en' ? contents.en : contents.ko}
+          {language === 'ko-en' && contents.en}
+          {language === 'en-ko' && contents.ko}
         </div>
-        <div className={cx('words')}>{wordList}</div>
+        <div className={cx('words')}>
+          {language === 'ko-en' && wordList}
+          {language === 'en-ko' && wordList}
+        </div>
       </div>
     </div>
   )
