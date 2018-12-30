@@ -7,6 +7,7 @@ import Video from 'components/Video'
 import VideoProgressbar from 'components/VideoProgressbar'
 import VideoSubtitle from 'components/VideoSubtitle'
 import VideoControls from 'components/VideoControls'
+import { Helmet } from 'react-helmet'
 
 class VideoContainer extends Component {
   _prefetch = async () => {
@@ -158,6 +159,26 @@ class VideoContainer extends Component {
 
     return (
       <Fragment>
+        <Helmet>
+          <title>{this.props.video.title}</title>
+          <meta property="og:title" content={this.props.video.title} />
+          <meta property="og:type" content="video.movie" />
+          {/* <meta property="og:url" content="" /> */}
+          <meta
+            property="og:image"
+            content={`https://img.youtube.com/vi/${
+              this.props.video.youtubeId
+            }/mqdefault.jpg`}
+          />
+          <meta
+            property="og:description"
+            content={
+              this.props.video.mainSentance.en +
+              ' ' +
+              this.props.video.mainSentance.ko
+            }
+          />
+        </Helmet>
         <Video
           youtubeId={this.props.video.youtubeId}
           _onReady={this._onReady}
