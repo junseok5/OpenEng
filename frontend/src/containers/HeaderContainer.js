@@ -11,6 +11,8 @@ class HeaderContainer extends Component {
   _onSearch = tag => {
     SearchActions.changeView({ mouseOver: false })
 
+    writeTag(tag)
+
     const { history } = this.props
     if (tag) {
       history.push(`/tag/${tag}`)

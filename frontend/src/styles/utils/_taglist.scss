@@ -8,6 +8,10 @@ ul {
 
     user-select: none;
 
+    &:hover {
+      background: $oc-gray-1;
+    }
+
     .tag-wrap {
       display: flex;
       flex: 1;
