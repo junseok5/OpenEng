@@ -13,7 +13,7 @@ class SearchHeaderContainer extends Component {
 
     writeKeyword(keyword)
     ListActions.initialize()
-    history.push(`/keyword/${keyword}`)
+    history.push(`/tag/${keyword}`)
   }
 
   _onChange = e => {

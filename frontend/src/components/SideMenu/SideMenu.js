@@ -22,7 +22,7 @@ const SideMenu = ({ tag }) => {
               <div className={cx('menu-text')}>하루 한 문장</div>
             </li>
           </Link>
-          <div className={cx('list-title')}>카테고리</div>
+          <div className={cx('list-title')}>태그</div>
           <Link to='/tag/일상생활'>
             <li className={cx(tag === '일상생활' && 'active')}>
               <div className={cx('menu-icon')}>

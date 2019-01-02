@@ -7,7 +7,6 @@ const Video = new Schema({
   overayTime: String,
   tags: {
     type: [String],
-    text: true,
   },
   sentance: {
     type: {

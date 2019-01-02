@@ -24,12 +24,14 @@ export const getScrollBottom = () => {
 /* recent keyword logic */
 export const writeKeyword = keyword => {
   let patchData = [keyword]
-  const originData = storage.get('keywords')
+  let originData = storage.get('keywords')
 
   if (originData) {
-    const checkExistKeyword = originData.indexOf(keyword)
+    const index = originData.indexOf(keyword)
 
-    if (checkExistKeyword >= 0) return
+    if (index >= 0) {
+      originData.splice(index, 1)
+    }
     patchData = patchData.concat(originData)
   }
 

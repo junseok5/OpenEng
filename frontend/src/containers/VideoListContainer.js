@@ -48,7 +48,7 @@ class VideoListContainer extends Component {
   componentDidUpdate = async (prevProps, prevState) => {
     if (
       prevProps.keyword !== this.props.keyword ||
-      prevProps.category !== this.props.category
+      prevProps.tag !== this.props.tag
     ) {
       await ListActions.initialize()
       this._prefetch()

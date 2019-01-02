@@ -12,7 +12,7 @@ class SearchContentsContainer extends Component {
     const { history } = this.props
 
     ListActions.initialize()
-    history.push(`/keyword/${keyword}`)
+    history.push(`/tag/${keyword}`)
   }
 
   componentDidMount() {

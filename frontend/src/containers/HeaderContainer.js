@@ -18,7 +18,7 @@ class HeaderContainer extends Component {
 
     const { history } = this.props
     if (keyword) {
-      history.push(`/keyword/${keyword}`)
+      history.push(`/tag/${keyword}`)
       SearchActions.changeForm(keyword)
       return
     }
@@ -26,7 +26,7 @@ class HeaderContainer extends Component {
     const { form } = this.props
 
     writeKeyword(form)
-    history.push(`/keyword/${form}`)
+    history.push(`/tag/${form}`)
   }
 
   _onFocus = () => {

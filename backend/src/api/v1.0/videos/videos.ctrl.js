@@ -6,11 +6,11 @@ exports.list = async ctx => {
   const { tag, keyword } = ctx.query
 
   let query = {}
-  query = tag && { tag }
+  query = tag && { tags: tag }
   query = keyword
     ? {
       ...query,
-      $text: { $search: keyword },
+      sentance: { $text: { $search: keyword } },
     }
     : { ...query }
 

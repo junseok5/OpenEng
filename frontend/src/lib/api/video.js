@@ -5,7 +5,7 @@ import queryString from 'query-string'
 export const getVideo = id => axios.get(`/api/v1.0/videos/${id}`)
 
 // GET list
-export const getRecentVideos = ({ page, category, keyword }) =>
+export const getRecentVideos = ({ page, tag, keyword }) =>
   axios.get(
-    `/api/v1.0/videos/?${queryString.stringify({ page, category, keyword })}`
+    `/api/v1.0/videos/?${queryString.stringify({ page, tag, keyword })}`
   )
