@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './Header.scss'
 
-import { FiSearch, FiX } from 'react-icons/fi'
+import { FiHash, FiSearch, FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
 const Header = ({
@@ -25,7 +25,7 @@ const Header = ({
       <li key={i}>
         <div className={cx('keyword-wrap')} onClick={() => _onSearch(keyword)}>
           <div className={cx('keyword-icon')}>
-            <FiSearch color='white' />
+            <FiHash color='white' />
           </div>
 
           <div className={cx('keyword')}>{keyword}</div>
@@ -46,7 +46,7 @@ const Header = ({
         </div>
         <div className={cx('hm-search')}>
           <label className={cx('search-label')}>
-            <FiSearch fontSize='1.3rem' color='#747474' />
+            <FiHash fontSize='1.3rem' color='#747474' />
             <div className={cx('search-form')}>
               <input
                 type='search'

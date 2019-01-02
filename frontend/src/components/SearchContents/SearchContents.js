@@ -4,7 +4,7 @@ import cx from 'classnames'
 import './SearchContents.scss'
 
 import { Link } from 'react-router-dom'
-import { FiSearch, FiX } from 'react-icons/fi'
+import { FiHash, FiX } from 'react-icons/fi'
 
 const SearchContents = ({ recentKeywords, _onRemove, _onClear, _onSearch }) => {
   const recentKeywordList = recentKeywords.map((keyword, i) => {
@@ -12,7 +12,7 @@ const SearchContents = ({ recentKeywords, _onRemove, _onClear, _onSearch }) => {
       <li key={i}>
         <div className={cx('keyword-wrap')} onClick={() => _onSearch(keyword)}>
           <div className={cx('keyword-icon')}>
-            <FiSearch color='white' />
+            <FiHash color='white' />
           </div>
 
           <div className={cx('keyword')}>{keyword}</div>
