@@ -6,7 +6,7 @@
 
   .video-card {
     margin-right: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
     @include media('<medium') {
       width: 100%;
@@ -60,18 +60,15 @@
     }
 
     .video-card-contents {
+      padding-top: 0.4rem;
+
       @include media('<medium') {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
       }
 
       .video-card-expression {
-        .video-card-sentance {
-          color: $oc-blue-6;
-        }
-
         .video-card-sentance-ko {
-          font-size: 1.1rem;
           font-weight: bold;
         }
 

@@ -7,7 +7,7 @@ import Introduction from 'components/Introduction'
 import VideoListContainer from 'containers/VideoListContainer'
 
 const Home = ({ match }) => {
-  const { tag, keyword } = match.params
+  const { tag } = match.params
 
   return (
     <PageTemplate>

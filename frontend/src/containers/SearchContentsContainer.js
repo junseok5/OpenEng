@@ -5,10 +5,12 @@ import { ListActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import SearchContents from 'components/SearchContents'
-import { getTagList, removeTag, clearTags } from 'lib/common'
+import { writeTag, getTagList, removeTag, clearTags } from 'lib/common'
 
 class SearchContentsContainer extends Component {
   _onSearch = tag => {
+    writeTag(tag)
+
     const { history } = this.props
 
     ListActions.initialize()

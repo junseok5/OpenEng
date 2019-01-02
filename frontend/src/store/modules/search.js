@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions'
 import produce from 'immer'
-import { pender } from 'redux-pender'
+// import { pender } from 'redux-pender'
 // import * as VideoAPI from 'lib/api/video'
 
 // action types
