@@ -5,15 +5,15 @@ import { SearchActions, ListActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import SearchHeader from 'components/SearchHeader'
-import { writeKeyword } from 'lib/common'
+import { writeTag } from 'lib/common'
 
 class SearchHeaderContainer extends Component {
   _onSearch = () => {
-    const { form: keyword, history } = this.props
+    const { form: tag, history } = this.props
 
-    writeKeyword(keyword)
+    writeTag(tag)
     ListActions.initialize()
-    history.push(`/tag/${keyword}`)
+    history.push(`/tag/${tag}`)
   }
 
   _onChange = e => {
@@ -49,6 +49,7 @@ class SearchHeaderContainer extends Component {
 
 SearchHeaderContainer.propTypes = {
   form: PropTypes.string,
+  tag: PropTypes.string,
 }
 
 export default connect(state => ({

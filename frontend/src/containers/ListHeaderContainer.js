@@ -8,16 +8,13 @@ class ListHeaderContainer extends Component {
   render () {
     if (this.props.loading) return null
     return (
-      <ListHeader
-        keyword={this.props.keyword}
-        videosLength={this.props.videosLength}
-      />
+      <ListHeader tag={this.props.tag} videosLength={this.props.videosLength} />
     )
   }
 }
 
 ListHeaderContainer.propTypes = {
-  keyword: PropTypes.string,
+  tag: PropTypes.string,
   videosLength: PropTypes.number,
   loading: PropTypes.bool
 }

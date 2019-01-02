@@ -86,11 +86,11 @@ const SideMenu = ({ tag }) => {
 }
 
 SideMenu.defaultProps = {
-  category: ''
+  tag: ''
 }
 
 SideMenu.propTypes = {
-  category: PropTypes.string
+  tag: PropTypes.string
 }
 
 export default SideMenu

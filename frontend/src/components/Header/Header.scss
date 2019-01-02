@@ -1,4 +1,4 @@
-@import 'utils/keywordlist';
+@import 'utils/taglist';
 
 header {
   position: fixed;
@@ -16,7 +16,6 @@ header {
   @include material-shadow(1, 0.4);
   @include media('<medium') {
     height: 3rem;
-    // box-shadow: none;
   }
 
   .header-main {
@@ -86,7 +85,7 @@ header {
         border: 1px solid $oc-gray-3;
         border-radius: 4px;
 
-        .recent-keywords {
+        .recent-tags {
           .contents-header {
             padding-bottom: 0.5rem;
 
@@ -112,7 +111,7 @@ header {
             }
           }
 
-          .keyword-wrap {
+          .tag-wrap {
             cursor: pointer;
           }
 

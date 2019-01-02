@@ -3,22 +3,22 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './ListHeader.scss'
 
-const ListHeader = ({ keyword, videosLength }) => {
+const ListHeader = ({ tag, videosLength }) => {
   return (
     <div className={cx('list-header')}>
-      <span>{keyword}</span>에 대한 검색 결과
-      {videosLength === 0 && '가 없습니다.'}
+      <span>#{tag}</span>
+      {videosLength === 0 && '에 대한 태그가 없습니다.'}
     </div>
   )
 }
 
 ListHeader.defaultProps = {
-  keyword: '',
+  tag: '',
   videosLength: 0
 }
 
 ListHeader.propTypes = {
-  keyword: PropTypes.string,
+  tag: PropTypes.string,
   videosLength: PropTypes.number
 }
 

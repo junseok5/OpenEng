@@ -6,20 +6,20 @@ import { pender } from 'redux-pender'
 // action types
 const INITIALIZE = 'search/INITIALIZE'
 const CHANGE_FORM = 'search/CHANGE_FORM'
-const WRITE_RECENT_KEYWORDS = 'search/WRITE_RECENT_KEYWORDS'
+const WRITE_RECENT_TAGS = 'search/WRITE_RECENT_TAGS'
 const CHANGE_VIEW = 'search/CHANGE_VIEW'
 
 // actions creators
 export const initialize = createAction(INITIALIZE)
 export const changeForm = createAction(CHANGE_FORM)
-export const writeRecentKeywords = createAction(WRITE_RECENT_KEYWORDS)
+export const writeRecentTags = createAction(WRITE_RECENT_TAGS)
 export const changeView = createAction(CHANGE_VIEW)
 
 // initial state
 const initialState = {
   form: '',
   result: null,
-  recentKeywords: [],
+  recentTags: [],
   view: {
     focus: false,
     mouseOver: false
@@ -35,10 +35,10 @@ export default handleActions(
         draft.form = action.payload
       })
     },
-    [WRITE_RECENT_KEYWORDS]: (state, action) => {
-      const keywords = action.payload
+    [WRITE_RECENT_TAGS]: (state, action) => {
+      const tags = action.payload
       return produce(state, draft => {
-        draft.recentKeywords = keywords
+        draft.recentTags = tags
       })
     },
     [CHANGE_VIEW]: (state, action) => {

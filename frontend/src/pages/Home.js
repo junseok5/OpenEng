@@ -13,9 +13,9 @@ const Home = ({ match }) => {
     <PageTemplate>
       <SideMenu tag={tag} />
       <MainTemplate>
-        {!tag && !keyword && <Introduction />}
-        {keyword && <ListHeaderContainer keyword={keyword} />}
-        <VideoListContainer tag={tag} keyword={keyword} />
+        {!tag && <Introduction />}
+        {tag && <ListHeaderContainer tag={tag} />}
+        <VideoListContainer tag={tag} />
       </MainTemplate>
     </PageTemplate>
   )

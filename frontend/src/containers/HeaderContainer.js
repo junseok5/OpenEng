@@ -5,36 +5,31 @@ import { SearchActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import Header from 'components/Header'
-import {
-  writeKeyword,
-  getKeywordList,
-  removeKeyword,
-  clearKeywords,
-} from 'lib/common'
+import { writeTag, getTagList, removeTag, clearTags } from 'lib/common'
 
 class HeaderContainer extends Component {
-  _onSearch = keyword => {
+  _onSearch = tag => {
     SearchActions.changeView({ mouseOver: false })
 
     const { history } = this.props
-    if (keyword) {
-      history.push(`/tag/${keyword}`)
-      SearchActions.changeForm(keyword)
+    if (tag) {
+      history.push(`/tag/${tag}`)
+      SearchActions.changeForm(tag)
       return
     }
 
     const { form } = this.props
 
-    writeKeyword(form)
+    writeTag(form)
     history.push(`/tag/${form}`)
   }
 
   _onFocus = () => {
     SearchActions.changeView({ focus: true })
 
-    const { recentKeywords } = this.props
-    if (recentKeywords.length === 0) {
-      getKeywordList()
+    const { recentTags } = this.props
+    if (recentTags.length === 0) {
+      getTagList()
     }
   }
 
@@ -65,7 +60,7 @@ class HeaderContainer extends Component {
     return (
       <Header
         form={this.props.form}
-        recentKeywords={this.props.recentKeywords}
+        recentTags={this.props.recentTags}
         view={this.props.view}
         _onChange={this._onChange}
         _onKeyPress={this._onKeyPress}
@@ -74,8 +69,8 @@ class HeaderContainer extends Component {
         _onBlur={this._onBlur}
         _onMouseOver={this._onMouseOver}
         _onMouseOut={this._onMouseOut}
-        _onRemove={removeKeyword}
-        _onClear={clearKeywords}
+        _onRemove={removeTag}
+        _onClear={clearTags}
       />
     )
   }
@@ -83,12 +78,12 @@ class HeaderContainer extends Component {
 
 HeaderContainer.propTypes = {
   form: PropTypes.string,
-  recentKeywords: PropTypes.array,
+  recentTags: PropTypes.array,
   view: PropTypes.object,
 }
 
 export default connect(state => ({
   form: state.search.form,
-  recentKeywords: state.search.recentKeywords,
+  recentTags: state.search.recentTags,
   view: state.search.view,
 }))(withRouter(HeaderContainer))

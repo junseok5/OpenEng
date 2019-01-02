@@ -67,16 +67,17 @@ VideoCard.defaultProps = {
     _id: '',
     youtubeId: '',
     overayTime: '0:00',
-    title: '비디오를 찾을 수 없습니다.',
-    mainSentance: {
+    sentance: {
       en: '',
       ko: ''
     }
-  }
+  },
+  loading: false
 }
 
 VideoCard.propTypes = {
-  video: PropTypes.object
+  video: PropTypes.object,
+  loading: PropTypes.bool
 }
 
 export default VideoList

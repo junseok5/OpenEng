@@ -5,26 +5,26 @@ import { ListActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import SearchContents from 'components/SearchContents'
-import { getKeywordList, removeKeyword, clearKeywords } from 'lib/common'
+import { getTagList, removeTag, clearTags } from 'lib/common'
 
 class SearchContentsContainer extends Component {
-  _onSearch = keyword => {
+  _onSearch = tag => {
     const { history } = this.props
 
     ListActions.initialize()
-    history.push(`/tag/${keyword}`)
+    history.push(`/tag/${tag}`)
   }
 
   componentDidMount() {
-    getKeywordList()
+    getTagList()
   }
 
   render() {
     return (
       <SearchContents
-        recentKeywords={this.props.recentKeywords}
-        _onRemove={removeKeyword}
-        _onClear={clearKeywords}
+        recentTags={this.props.recentTags}
+        _onRemove={removeTag}
+        _onClear={clearTags}
         _onSearch={this._onSearch}
       />
     )
@@ -32,9 +32,9 @@ class SearchContentsContainer extends Component {
 }
 
 SearchContentsContainer.propTypes = {
-  recentKeywords: PropTypes.array,
+  recentTags: PropTypes.array,
 }
 
 export default connect(state => ({
-  recentKeywords: state.search.recentKeywords,
+  recentTags: state.search.recentTags,
 }))(withRouter(SearchContentsContainer))

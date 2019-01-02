@@ -21,13 +21,13 @@ export const getScrollBottom = () => {
   return scrollHeight - innerHeight - scrollTop
 }
 
-/* recent keyword logic */
-export const writeKeyword = keyword => {
-  let patchData = [keyword]
-  let originData = storage.get('keywords')
+/* recent tag logic */
+export const writeTag = tag => {
+  let patchData = [tag]
+  let originData = storage.get('tags')
 
   if (originData) {
-    const index = originData.indexOf(keyword)
+    const index = originData.indexOf(tag)
 
     if (index >= 0) {
       originData.splice(index, 1)
@@ -35,28 +35,28 @@ export const writeKeyword = keyword => {
     patchData = patchData.concat(originData)
   }
 
-  storage.set('keywords', patchData)
-  SearchActions.writeRecentKeywords(patchData)
+  storage.set('tags', patchData)
+  SearchActions.writeRecentTags(patchData)
 }
 
-export const getKeywordList = async () => {
-  const keywords = await storage.get('keywords')
-  if (keywords) {
-    SearchActions.writeRecentKeywords(keywords)
+export const getTagList = async () => {
+  const tags = await storage.get('tags')
+  if (tags) {
+    SearchActions.writeRecentTags(tags)
   }
 }
 
-export const removeKeyword = index => {
-  let originData = storage.get('keywords')
+export const removeTag = index => {
+  let originData = storage.get('tags')
   originData.splice(index, 1)
 
   const removedData = originData
 
-  storage.set('keywords', removedData)
-  SearchActions.writeRecentKeywords(removedData)
+  storage.set('tags', removedData)
+  SearchActions.writeRecentTags(removedData)
 }
 
-export const clearKeywords = () => {
-  storage.set('keywords', [])
-  SearchActions.writeRecentKeywords([])
+export const clearTags = () => {
+  storage.set('tags', [])
+  SearchActions.writeRecentTags([])
 }

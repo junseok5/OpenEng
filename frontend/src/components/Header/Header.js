@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 const Header = ({
   form,
-  recentKeywords,
+  recentTags,
   view,
   _onChange,
   _onKeyPress,
@@ -20,15 +20,15 @@ const Header = ({
   _onRemove,
   _onClear
 }) => {
-  const recentKeywordList = recentKeywords.map((keyword, i) => {
+  const recentTagList = recentTags.map((tag, i) => {
     return (
       <li key={i}>
-        <div className={cx('keyword-wrap')} onClick={() => _onSearch(keyword)}>
-          <div className={cx('keyword-icon')}>
+        <div className={cx('tag-wrap')} onClick={() => _onSearch(tag)}>
+          <div className={cx('tag-icon')}>
             <FiHash color='white' />
           </div>
 
-          <div className={cx('keyword')}>{keyword}</div>
+          <div className={cx('tag')}>{tag}</div>
         </div>
         <div className={cx('delete-icon')} onClick={() => _onRemove(i)}>
           <FiX />
@@ -65,14 +65,14 @@ const Header = ({
               onMouseOver={_onMouseOver}
               onMouseOut={_onMouseOut}
             >
-              <div className={cx('recent-keywords')}>
+              <div className={cx('recent-tags')}>
                 <div className={cx('contents-header')}>
                   <div className={cx('contents-title')}>최근 검색어</div>
                   <div className={cx('contents-clear')} onClick={_onClear}>
                     <span>전체삭제</span>
                   </div>
                 </div>
-                <ul>{recentKeywordList}</ul>
+                <ul>{recentTagList}</ul>
               </div>
             </div>
           )}
@@ -91,13 +91,13 @@ const Header = ({
 
 Header.defaultProps = {
   form: '',
-  recentKeywords: [],
+  recentTags: [],
   view: {}
 }
 
 Header.propTypes = {
   form: PropTypes.string,
-  recentKeywords: PropTypes.array,
+  recentTags: PropTypes.array,
   view: PropTypes.object,
   _onChange: PropTypes.func,
   _onKeyPress: PropTypes.func,
