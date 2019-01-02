@@ -18,6 +18,16 @@
     list-style: none;
     font-size: 1.1rem;
 
+    .list-title {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+
+      border-top: 1px solid $oc-gray-4;
+
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
     li {
       padding-top: 0.7rem;
       padding-bottom: 0.7rem;
@@ -38,21 +48,24 @@
       .menu-icon {
         width: 30px;
         margin-right: 0.4rem;
+
+        font-size: 1.5rem;
+
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
-      .menu-img {
-        position: relative;
-        width: 30px;
-        height: 30px;
-        margin-right: 0.4rem;
+      // .menu-img {
+      //   position: relative;
+      //   width: 30px;
+      //   height: 30px;
+      //   margin-right: 0.4rem;
 
-        border-radius: 50%;
+      //   border-radius: 50%;
 
-        overflow: hidden;
-      }
+      //   overflow: hidden;
+      // }
     }
   }
 }

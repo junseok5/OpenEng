@@ -18,8 +18,8 @@ const VideoSubtitle = ({
     words.map((word, i) => {
       return (
         <div className={cx('word')} key={i}>
-          <div className={cx('word-en')}>※{word.word}</div>
-          <div className={cx('word-ko')}>{word.meaning}</div>
+          <div className={cx('word-en')}>※{word.en}</div>
+          <div className={cx('word-ko')}>{word.ko}</div>
         </div>
       )
     })

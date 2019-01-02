@@ -5,7 +5,7 @@ import './SearchHeader.scss'
 
 import { FiArrowLeft, FiSearch } from 'react-icons/fi'
 
-const SearchHeader = ({ form, _onChange, _onKeyPress, _goBack }) => {
+const SearchHeader = ({ form, _onChange, _onKeyPress, _onSearch, _goBack }) => {
   return (
     <div className={cx('search-header')}>
       <div className={cx('search-wrap')}>
@@ -22,7 +22,7 @@ const SearchHeader = ({ form, _onChange, _onKeyPress, _goBack }) => {
             autoFocus
           />
         </div>
-        <div className={cx('search-icon icon')}>
+        <div className={cx('search-icon icon')} onClick={_onSearch}>
           <FiSearch fontSize='1.3rem' color='#747474' />
         </div>
       </div>

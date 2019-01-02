@@ -40,6 +40,7 @@ class SearchHeaderContainer extends Component {
         form={this.props.form}
         _onChange={this._onChange}
         _onKeyPress={this._onKeyPress}
+        _onSearch={this._onSearch}
         _goBack={this._goBack}
       />
     )

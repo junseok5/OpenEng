@@ -7,15 +7,15 @@ import Introduction from 'components/Introduction'
 import VideoListContainer from 'containers/VideoListContainer'
 
 const Home = ({ match }) => {
-  const { category, keyword } = match.params
+  const { tag, keyword } = match.params
 
   return (
     <PageTemplate>
-      <SideMenu category={category} />
+      <SideMenu tag={tag} />
       <MainTemplate>
-        {!category && !keyword && <Introduction />}
+        {!tag && !keyword && <Introduction />}
         {keyword && <ListHeaderContainer keyword={keyword} />}
-        <VideoListContainer category={category} keyword={keyword} />
+        <VideoListContainer tag={tag} keyword={keyword} />
       </MainTemplate>
     </PageTemplate>
   )

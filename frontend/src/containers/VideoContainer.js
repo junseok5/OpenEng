@@ -140,16 +140,16 @@ class VideoContainer extends Component {
   _changeLanguage = () => {
     const { language } = this.props
 
-    if (language === 'ko-en') {
-      VideoActions.setYoutube({ language: 'en-ko' })
-    } else if (language === 'en-ko') {
-      VideoActions.setYoutube({ language: 'ko' })
-    } else if (language === 'ko') {
+    if (language === 'en-ko') {
+      VideoActions.setYoutube({ language: 'ko-en' })
+    } else if (language === 'ko-en') {
       VideoActions.setYoutube({ language: 'en' })
     } else if (language === 'en') {
+      VideoActions.setYoutube({ language: 'ko' })
+    } else if (language === 'ko') {
       VideoActions.setYoutube({ language: 'hide' })
     } else if (language === 'hide') {
-      VideoActions.setYoutube({ language: 'ko-en' })
+      VideoActions.setYoutube({ language: 'en-ko' })
     }
   }
 
@@ -210,9 +210,7 @@ class VideoContainer extends Component {
           <meta
             property="og:description"
             content={
-              this.props.video.mainSentance.en +
-              ' ' +
-              this.props.video.mainSentance.ko
+              this.props.video.sentance.en + ' ' + this.props.video.sentance.ko
             }
           />
         </Helmet>
@@ -279,6 +277,6 @@ export default connect(state => ({
   language: state.video.youtube.language,
   sectionRepeat: state.video.youtube.sectionRepeat,
   initPlay: state.video.youtube.initPlay,
-  subtitle: state.video.video.subtitles,
+  subtitle: state.video.video.subtitle,
   loading: state.pender.pending['video/GET_VIDEO'],
 }))(VideoContainer)

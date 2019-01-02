@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { Home, Videos, Search, NotFound } from 'pages'
+import { Home, Videos, Search, NotFound } from 'pages/index.async'
 
 const App = () => {
   return (

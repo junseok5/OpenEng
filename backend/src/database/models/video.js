@@ -4,16 +4,17 @@ const { Schema } = mongoose
 
 const Video = new Schema({
   youtubeId: String,
-  title: {
-    type: String,
+  overayTime: String,
+  tags: {
+    type: [String],
     text: true,
   },
-  overayTime: String,
-  category: String,
-  genre: String,
-  mainSentance: {
-    en: String,
-    ko: String,
+  sentance: {
+    type: {
+      en: String,
+      ko: String,
+    },
+    text: true,
   },
   views: {
     type: Number,
@@ -23,7 +24,7 @@ const Video = new Schema({
     type: Date,
     default: Date.now(),
   },
-  subtitles: Array,
+  subtitle: Array,
 })
 
 // 한 페이지에 보일 비디오 갯수
