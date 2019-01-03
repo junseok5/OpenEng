@@ -71,14 +71,16 @@ VideoSubtitle.defaultProps = {
     ko: ''
   },
   language: 'ko-en',
-  words: []
+  words: [],
+  isMainSentance: false
 }
 
 VideoSubtitle.propTypes = {
   initPlay: PropTypes.bool,
   contents: PropTypes.object,
   language: PropTypes.string,
-  words: PropTypes.array
+  words: PropTypes.array,
+  isMainSentance: PropTypes.bool
 }
 
 export default VideoSubtitle
