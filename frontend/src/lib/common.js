@@ -31,7 +31,10 @@ export const writeTag = tag => {
 
     if (index >= 0) {
       originData.splice(index, 1)
+    } else if (originData.length >= 3) {
+      originData.pop()
     }
+
     patchData = patchData.concat(originData)
   }
 

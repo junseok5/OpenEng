@@ -8,8 +8,10 @@ import SearchContents from 'components/SearchContents'
 import { writeTag, getTagList, removeTag, clearTags } from 'lib/common'
 
 class SearchContentsContainer extends Component {
-  _onSearch = tag => {
-    writeTag(tag)
+  _onSearch = (tag, recommanded = false) => {
+    if (!recommanded) {
+      writeTag(tag)
+    }
 
     const { history } = this.props
 

@@ -12,7 +12,7 @@
 - Redux
 - Redux-pender
 - Immer
-- SSR
+- Code Splitting
 
 ### Backend
 
@@ -20,3 +20,4 @@
 - Koa
 - MongoDB
 - Mongoose
+- AWS Lightsail

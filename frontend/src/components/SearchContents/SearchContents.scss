@@ -1,29 +1,31 @@
 @import 'utils/taglist';
 
 .search-contents {
-  .recent-tags {
-    .contents-header {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+  .contents-header {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
 
+    display: flex;
+    align-items: center;
+
+    .contents-clear {
+      flex: 1;
       display: flex;
-      align-items: center;
+      justify-content: flex-end;
 
-      .contents-title {
-        flex: 1;
-        color: $oc-gray-7;
-      }
+      color: $oc-gray-6;
+      font-size: 0.9rem;
 
-      .contents-clear {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-
-        color: $oc-gray-6;
-        font-size: 0.9rem;
-
-        user-select: none;
-      }
+      user-select: none;
     }
+  }
+
+  .contents-title {
+    flex: 1;
+    color: $oc-gray-7;
+  }
+
+  .recommand-tags {
+    // padding-bottom: 0.5rem;
   }
 }
