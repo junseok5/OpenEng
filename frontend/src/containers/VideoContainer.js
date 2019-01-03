@@ -46,13 +46,22 @@ class VideoContainer extends Component {
     const { player } = this.props
     const playerState = player.getPlayerState()
 
+    /*
+      playerState
+        -1: 시작되지 않음
+        0: 종료됨
+        1: 재생중
+        2: 일시중지됨
+        3: 버퍼링 중
+        5: 동영상 신호
+    */
     if (playerState === 1) {
       if (!this.props.initPlay) {
         VideoActions.setYoutube({ initPlay: true })
       }
 
       const timer = setInterval(() => {
-        const { sectionRepeat } = this.props
+        const { sectionRepeat, subtitle, cursor } = this.props
         const currentTime = player.getCurrentTime()
 
         VideoActions.setYoutube({ currentTime, playing: true })
@@ -63,15 +72,41 @@ class VideoContainer extends Component {
           return
         }
 
+        // 주요 문장 3회 반복
+        if (subtitle[cursor].mainSentance) {
+          this._repeatMainSentance(player, currentTime, subtitle, cursor)
+          return
+        }
+
         this._autoChangeCursor(currentTime)
       }, 100)
 
       VideoActions.setYoutube({ timer })
     } else if (playerState === 3) {
       clearInterval(this.props.timer)
+    } else if (playerState === 0) {
+      VideoActions.setYoutube({
+        playing: false,
+        cursor: 0,
+        subtitleContents: { en: '', ko: '' },
+        repeatCount: 0,
+      })
+      clearInterval(this.props.timer)
     } else {
       VideoActions.setYoutube({ playing: false })
       clearInterval(this.props.timer)
+    }
+  }
+
+  _repeatMainSentance = (player, currentTime, subtitle, cursor) => {
+    const { repeatCount } = this.props
+
+    if (repeatCount < 3 && currentTime >= subtitle[cursor].end) {
+      const start = subtitle[cursor].start
+      player.seekTo(start)
+      VideoActions.setYoutube({ repeatCount: repeatCount + 1 })
+    } else if (repeatCount >= 3) {
+      this._autoChangeCursor(currentTime)
     }
   }
 
@@ -95,6 +130,10 @@ class VideoContainer extends Component {
     const prevCursor = cursor - 1
     const prevStart = subtitle[prevCursor].start
     const prevSubtitle = subtitle[prevCursor].contents
+
+    if (subtitle[prevCursor].mainSentance) {
+      VideoActions.setYoutube({ repeatCount: 0 })
+    }
 
     VideoActions.setYoutube({
       cursor: prevCursor,
@@ -229,6 +268,11 @@ class VideoContainer extends Component {
           contents={this.props.subtitleContents}
           language={this.props.language}
           words={this.props.subtitle[this.props.cursor].words}
+          isMainSentance={
+            this.props.subtitle[this.props.cursor].mainSentance
+              ? this.props.subtitle[this.props.cursor].mainSentance
+              : false
+          }
         />
         <VideoControls
           playerReady={this.props.playerReady}
@@ -260,6 +304,7 @@ VideoContainer.propTypes = {
   language: PropTypes.string,
   sectionRepeat: PropTypes.bool,
   initPlay: PropTypes.bool,
+  repeatCount: PropTypes.number,
   subtitle: PropTypes.array,
   loading: PropTypes.bool,
 }
@@ -277,6 +322,7 @@ export default connect(state => ({
   language: state.video.youtube.language,
   sectionRepeat: state.video.youtube.sectionRepeat,
   initPlay: state.video.youtube.initPlay,
+  repeatCount: state.video.youtube.repeatCount,
   subtitle: state.video.video.subtitle,
   loading: state.pender.pending['video/GET_VIDEO'],
 }))(VideoContainer)

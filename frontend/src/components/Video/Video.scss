@@ -25,6 +25,10 @@
     // }
   }
 
+  @include media("<wide") {
+    height: 500px;
+  }
+
   @include media('<large') {
     height: 360px;
   }

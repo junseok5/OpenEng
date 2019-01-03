@@ -11,7 +11,8 @@ const VideoSubtitle = ({
   initPlay,
   contents,
   language,
-  words
+  words,
+  isMainSentance
 }) => {
   const wordList =
     words.length > 0 &&
@@ -38,20 +39,20 @@ const VideoSubtitle = ({
             <div className={cx('bs-icon')}>
               <FiSlack fontSize='2.5rem' />
             </div>
-            <div className={cx('bs-text')}>
-              영화 하이라이트 장면으로 영어 공부에 흥미를 가져보세요!
-            </div>
+            <div className={cx('bs-text')}>핵심 문장은 3회 반복됩니다.</div>
           </div>
         )}
 
-        <div className={cx('front-subtitle')}>
+        <div
+          className={cx('front-subtitle', isMainSentance && 'view-subtitle')}
+        >
           {language === 'ko-en' && contents.ko}
-          {language === 'en-ko' && contents.en}
+          {language === 'en-ko' && <span>{contents.en}</span>}
           {language === 'ko' && contents.ko}
-          {language === 'en' && contents.en}
+          {language === 'en' && <span>{contents.en}</span>}
         </div>
-        <div className={cx('back-subtitle')}>
-          {language === 'ko-en' && contents.en}
+        <div className={cx('back-subtitle', isMainSentance && 'view-subtitle')}>
+          {language === 'ko-en' && <span>{contents.en}</span>}
           {language === 'en-ko' && contents.ko}
         </div>
         <div className={cx('words')}>

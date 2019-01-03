@@ -38,7 +38,8 @@ const initialState = {
     },
     language: 'en-ko',
     sectionRepeat: false,
-    initPlay: false
+    initPlay: false,
+    repeatCount: 0
   }
 }
 

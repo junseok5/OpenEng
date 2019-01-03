@@ -8,6 +8,7 @@ import Youtube from 'react-youtube'
 const Video = ({ youtubeId, _onReady, _onStateChange }) => {
   const opts = {
     playerVars: {
+      autoplay: 0,
       cc_load_policy: 0,
       disablekb: 1,
       controls: 0,

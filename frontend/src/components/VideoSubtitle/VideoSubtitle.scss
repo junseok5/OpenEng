@@ -8,6 +8,10 @@
   display: flex;
   justify-content: center;
 
+  @include media('<wide') {
+    top: 500px;
+  }
+
   @include media('<large') {
     top: 360px;
   }
@@ -67,6 +71,12 @@
 
       @include media('<medium') {
         font-size: 1rem;
+      }
+    }
+
+    .view-subtitle {
+      span {
+        color: $main-color;
       }
     }
 

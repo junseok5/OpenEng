@@ -15,6 +15,10 @@
     background: #ff2f6e;
   }
 
+  @include media('<wide') {
+    top: 500px;
+  }
+
   @include media('<large') {
     top: 360px;
   }
