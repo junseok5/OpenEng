@@ -13,7 +13,7 @@ const staticPath = path.join(__dirname, '../../frontend/build')
 
 db.connect()
 
-const { Port: port } = process.env
+const { PORT: port } = process.env
 const app = new Koa()
 const router = new Router()
 
@@ -33,5 +33,5 @@ app.use(async ctx => {
 })
 
 app.listen(port, () => {
-  console.log('Listenint to port 4000')
+  console.log(`Listenint to port ${port}`)
 })
