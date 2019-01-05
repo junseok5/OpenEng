@@ -15,6 +15,7 @@ class HeaderContainer extends Component {
     if (tag) {
       history.push(`/tag/${tag}`)
       SearchActions.changeForm(tag)
+      writeTag(tag)
       return
     }
 

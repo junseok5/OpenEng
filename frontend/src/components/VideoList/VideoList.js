@@ -50,10 +50,10 @@ const VideoCard = ({ video }) => {
         <Link to={`/videos/${video._id}`}>
           <div className={cx('video-card-expression')}>
             <div className={cx('video-card-sentance-ko')}>
-              {video.sentance.ko}
+              <span>{video.sentance.ko}</span>
             </div>
             <div className={cx('video-card-sentance-en')}>
-              {video.sentance.en}
+              <span>{video.sentance.en}</span>
             </div>
           </div>
         </Link>

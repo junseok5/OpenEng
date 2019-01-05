@@ -101,11 +101,11 @@ class VideoContainer extends Component {
   _repeatMainSentance = (player, currentTime, subtitle, cursor) => {
     const { repeatCount } = this.props
 
-    if (repeatCount < 3 && currentTime >= subtitle[cursor].end) {
+    if (repeatCount < 2 && currentTime >= subtitle[cursor].end) {
       const start = subtitle[cursor].start
       player.seekTo(start)
       VideoActions.setYoutube({ repeatCount: repeatCount + 1 })
-    } else if (repeatCount >= 3) {
+    } else if (repeatCount >= 2) {
       this._autoChangeCursor(currentTime)
     }
   }
@@ -131,9 +131,9 @@ class VideoContainer extends Component {
     const prevStart = subtitle[prevCursor].start
     const prevSubtitle = subtitle[prevCursor].contents
 
-    if (subtitle[prevCursor].mainSentance) {
-      VideoActions.setYoutube({ repeatCount: 0 })
-    }
+    // if (subtitle[prevCursor].mainSentance) {
+    VideoActions.setYoutube({ repeatCount: 0 })
+    // }
 
     VideoActions.setYoutube({
       cursor: prevCursor,
@@ -268,11 +268,7 @@ class VideoContainer extends Component {
           contents={this.props.subtitleContents}
           language={this.props.language}
           words={this.props.subtitle[this.props.cursor].words}
-          isMainSentance={
-            this.props.subtitle[this.props.cursor].mainSentance
-              ? this.props.subtitle[this.props.cursor].mainSentance
-              : false
-          }
+          isMainSentance={!!this.props.subtitle[this.props.cursor].mainSentance}
         />
         <VideoControls
           playerReady={this.props.playerReady}

@@ -39,6 +39,9 @@ exports.read = async ctx => {
       return
     }
     ctx.body = video
+
+    // 조회 수 증가
+    video.updateOne({ views: video.views + 1 })
   } catch (e) {
     ctx.throw(e, 500)
   }
