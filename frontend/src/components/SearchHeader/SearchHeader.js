@@ -19,7 +19,6 @@ const SearchHeader = ({ form, _onChange, _onKeyPress, _onSearch, _goBack }) => {
             value={form}
             onChange={_onChange}
             onKeyPress={_onKeyPress}
-            autoFocus
           />
         </div>
         <div className={cx('search-icon icon')} onClick={_onSearch}>
