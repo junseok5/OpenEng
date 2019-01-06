@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './SideMenu.scss'
 
-import { FiHome, FiBookOpen, FiShoppingBag, FiPhone } from 'react-icons/fi'
+import { FiHome, FiBookOpen, FiShoppingBag, FiDollarSign, FiPhone } from 'react-icons/fi'
 import { TiPlaneOutline } from 'react-icons/ti'
 import { IoIosBed } from 'react-icons/io'
 import { MdStoreMallDirectory, MdDirectionsCar } from 'react-icons/md'
@@ -61,6 +61,14 @@ const SideMenu = ({ tag }) => {
                 <FiShoppingBag />
               </div>
               <div className={cx('menu-text')}>쇼핑</div>
+            </li>
+          </Link>
+          <Link to='/tag/계산'>
+            <li className={cx(tag === '계산' && 'active')}>
+              <div className={cx('menu-icon')}>
+                <FiDollarSign />
+              </div>
+              <div className={cx('menu-text')}>계산</div>
             </li>
           </Link>
           <Link to='/tag/전화'>
