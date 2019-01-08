@@ -2,10 +2,11 @@ require('dotenv').config()
 
 const Koa = require('koa')
 const Router = require('koa-router')
-// const bodyParser = require('koa-bodyparser')
+const koaBody = require('koa-body')
 const path = require('path')
 const views = require('koa-views')
 const serve = require('koa-static')
+const authToken = require('lib/middlewares/authToken')
 const db = require('./database')
 const api = require('./api')
 
@@ -19,14 +20,16 @@ const router = new Router()
 
 // 라우터 설정
 router.use('/api', api.routes())
-
-// app.use(bodyParser())
 app.use(router.routes()).use(router.allowedMethods())
+
+app.use(serve('public'))
 app.use(serve(staticPath))
+app.use(authToken)
+app.use(koaBody({ multipart: true }))
 app.use(
   views(staticPath, {
-    extension: 'html',
-  }),
+    extension: 'html'
+  })
 )
 app.use(async ctx => {
   await ctx.render('index.html')
