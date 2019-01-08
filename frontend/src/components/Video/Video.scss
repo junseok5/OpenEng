@@ -2,8 +2,8 @@
   position: absolute;
   top: 0;
   left: 50%;
-  width: calc(100% - 12rem);
-  height: 600px;
+  width: 800px;
+  height: 400px;
   transform: translateX(-50%);
 
   .video-wrap {
@@ -30,7 +30,8 @@
   }
 
   @include media('<large') {
-    height: 360px;
+    width: 600px;
+    height: 300px;
   }
 
   @include media('<medium') {

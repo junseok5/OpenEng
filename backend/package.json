@@ -8,7 +8,10 @@
   "dependencies": {
     "cross-env": "^5.2.0",
     "dotenv": "^6.2.0",
+    "fb": "^2.0.0",
+    "googleapis": "^36.0.0",
     "joi": "^14.3.0",
+    "jsonwebtoken": "^8.4.0",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",

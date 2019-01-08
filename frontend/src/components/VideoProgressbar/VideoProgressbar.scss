@@ -1,8 +1,8 @@
 .video-progressbar {
   position: absolute;
-  top: 600px;
+  top: 400px;
   left: 50%;
-  width: calc(100% - 12rem);
+  width: 800px;
   height: 4px;
   transform: translateX(-50%);
 
@@ -20,7 +20,8 @@
   }
 
   @include media('<large') {
-    top: 360px;
+    top: 300px;
+    width: 600px;
   }
 
   @include media('<medium') {

@@ -32,7 +32,7 @@ header {
       color: #ff2f6e;
 
       @include media('<medium') {
-        flex: 1;
+        flex: 3;
       }
 
       a {

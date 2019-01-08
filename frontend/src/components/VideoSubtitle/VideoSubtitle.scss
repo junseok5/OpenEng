@@ -1,6 +1,6 @@
 .video-subtitle {
   position: absolute;
-  top: 600px;
+  top: 400px;
   width: 100%;
 
   user-select: none;
@@ -13,7 +13,7 @@
   }
 
   @include media('<large') {
-    top: 360px;
+    top: 300px;
   }
 
   @include media('<medium') {

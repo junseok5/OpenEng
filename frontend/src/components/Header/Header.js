@@ -42,7 +42,7 @@ const Header = ({
     <header>
       <div className={cx('header-main')}>
         <div className={cx('hm-logo _p-pm')}>
-          <Link to='/'>심슨영어</Link>
+          <Link to='/'>OpenEng</Link>
         </div>
         <div className={cx('hm-search')}>
           <label className={cx('search-label')}>
