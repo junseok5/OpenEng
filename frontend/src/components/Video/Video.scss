@@ -2,8 +2,8 @@
   position: absolute;
   top: 0;
   left: 50%;
-  width: 800px;
-  height: 400px;
+  width: calc(100% - 12rem);
+  height: 600px;
   transform: translateX(-50%);
 
   .video-wrap {

@@ -1,6 +1,6 @@
-import { generate, decode } from 'lib/token'
+const { generateToken, decodeToken } = require('lib/token')
 
-export default async (ctx, next) => {
+module.exports = async (ctx, next) => {
   const token = ctx.cookies.get('access_token')
 
   if (!token) {
@@ -9,12 +9,12 @@ export default async (ctx, next) => {
   }
 
   try {
-    const decoded = await decode(token)
+    const decoded = await decodeToken(token)
     const { user } = decoded
 
     // re-issue token when its age is over 4days
     if (Date.now() / 1000 - decoded.iat > 60 * 60 * 24 * 4) {
-      const freshToken = await generate({ user }, 'user')
+      const freshToken = await generateToken({ user }, 'user')
 
       ctx.cookies.set('access_token', freshToken, {
         maxAge: 1000 * 60 * 60 * 24 * 7
