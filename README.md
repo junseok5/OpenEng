@@ -1,6 +1,6 @@
-# Simpsons English
+# OpenEng
 
-- Development mode
+- Pause project.
 
 ## Stack
 
