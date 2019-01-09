@@ -10,7 +10,6 @@
 - React Router
 - Sass
 - Redux
-- Redux-pender
 - Immer
 - Code Splitting
 
@@ -20,4 +19,3 @@
 - Koa
 - MongoDB
 - Mongoose
-- AWS Lightsail
