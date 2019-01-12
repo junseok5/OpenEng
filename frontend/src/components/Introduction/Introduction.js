@@ -10,10 +10,10 @@ const Introduction = () => {
     <div className={cx('introduction')}>
       <div className={cx('introduction-main')}>
         <h2>
-          함께 만들어가는 <span>영어</span> 공부 서비스
+          <span>무료</span> 영어 회화공부
         </h2>
-        <h3>유튜브를 통해 영어공부를!</h3>
-        <p>OpenEng는 누구나 무료로 영어 공부를 할 수 있는 환경을 조성합니다.</p>
+        <h3>유튜브로 영어 공부하자!</h3>
+        <p>OpenEng에서 쉐도잉 영어 공부를 해보세요.</p>
         {/* <p>
 
         </p> */}

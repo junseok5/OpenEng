@@ -45,6 +45,19 @@
         display: flex;
         justify-content: center;
       }
+
+      .bs-text {
+        p {
+          margin: 0.5rem;
+        }
+        .bs-text-desc {
+          font-size: 1.1rem;
+
+          @include media("<medium") {
+            font-size: 0.9rem;
+          }
+        }
+      }
     }
 
     .front-subtitle {

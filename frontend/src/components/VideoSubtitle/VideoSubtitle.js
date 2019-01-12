@@ -39,7 +39,10 @@ const VideoSubtitle = ({
               <FiSlack fontSize='2.5rem' />
             </div>
             <div className={cx('bs-text')}>
-              한글 자막을 보지 않을 수록 영어 실력은 향상됩니다.
+              <p>쉐도잉 영어 공부를 해보세요.</p>
+              <p className={cx('bs-text-desc')}>
+                ※쉐도잉이란? 원어민이 하는 말을 한박자 늦게 따라 말하는 것
+              </p>
             </div>
           </div>
         )}
