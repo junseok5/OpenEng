@@ -15,6 +15,7 @@ const Home = ({ match }) => {
       <MainTemplate>
         {!tag && !channel && !keyword && <Introduction />}
         {keyword && <ListHeaderContainer keyword={keyword} />}
+        {channel && <ListHeaderContainer channel={channel} />}
         <VideoListContainer tag={tag} channel={channel} keyword={keyword} />
       </MainTemplate>
     </PageTemplate>

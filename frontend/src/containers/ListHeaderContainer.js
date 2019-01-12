@@ -9,6 +9,7 @@ class ListHeaderContainer extends Component {
     if (this.props.loading) return null
     return (
       <ListHeader
+        channel={this.props.channel}
         keyword={this.props.keyword}
         videosLength={this.props.videosLength}
       />
@@ -17,6 +18,7 @@ class ListHeaderContainer extends Component {
 }
 
 ListHeaderContainer.propTypes = {
+  channel: PropTypes.string,
   keyword: PropTypes.string,
   videosLength: PropTypes.number,
   loading: PropTypes.bool
