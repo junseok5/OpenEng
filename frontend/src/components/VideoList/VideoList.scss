@@ -67,18 +67,14 @@
         padding-right: 0.5rem;
       }
 
-      .video-card-expression {
-        .video-card-sentance-ko {
-          font-weight: bold;
-        }
+      .video-card-title {
+        // font-size: 1.1rem;
+        font-weight: bold;
+      }
 
-        .video-card-sentance-en {
-          color: $oc-gray-6;
-        }
-
-        span {
-          cursor: pointer;
-        }
+      .video-card-channel {
+        color: $oc-gray-7;
+        font-size: 0.9rem;
       }
     }
   }

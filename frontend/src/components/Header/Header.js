@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './Header.scss'
 
-import { FiHash, FiSearch, FiX } from 'react-icons/fi'
+import { FiSearch, FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
 const Header = ({
   form,
-  recentTags,
+  recentKeywords,
   view,
   _onChange,
   _onKeyPress,
@@ -20,15 +20,15 @@ const Header = ({
   _onRemove,
   _onClear
 }) => {
-  const recentTagList = recentTags.map((tag, i) => {
+  const recentKeywordList = recentKeywords.map((keyword, i) => {
     return (
       <li key={i}>
-        <div className={cx('tag-wrap')} onClick={() => _onSearch(tag)}>
-          <div className={cx('tag-icon')}>
-            <FiHash color='white' />
+        <div className={cx('keyword-wrap')} onClick={() => _onSearch(keyword)}>
+          <div className={cx('keyword-icon')}>
+            <FiSearch color='white' />
           </div>
 
-          <div className={cx('tag')}>{tag}</div>
+          <div className={cx('keyword')}>{keyword}</div>
         </div>
         <div className={cx('delete-icon')} onClick={() => _onRemove(i)}>
           <FiX />
@@ -46,7 +46,7 @@ const Header = ({
         </div>
         <div className={cx('hm-search')}>
           <label className={cx('search-label')}>
-            <FiHash fontSize='1.3rem' color='#747474' />
+            <FiSearch fontSize='1.3rem' color='#747474' />
             <div className={cx('search-form')}>
               <input
                 type='search'
@@ -65,14 +65,14 @@ const Header = ({
               onMouseOver={_onMouseOver}
               onMouseOut={_onMouseOut}
             >
-              <div className={cx('recent-tags')}>
+              <div className={cx('recent-keywords')}>
                 <div className={cx('contents-header')}>
                   <div className={cx('contents-title')}>최근 검색어</div>
                   <div className={cx('contents-clear')} onClick={_onClear}>
                     <span>전체삭제</span>
                   </div>
                 </div>
-                <ul>{recentTagList}</ul>
+                <ul>{recentKeywordList}</ul>
               </div>
             </div>
           )}
@@ -91,13 +91,13 @@ const Header = ({
 
 Header.defaultProps = {
   form: '',
-  recentTags: [],
+  recentKeywords: [],
   view: {}
 }
 
 Header.propTypes = {
   form: PropTypes.string,
-  recentTags: PropTypes.array,
+  recentKeywords: PropTypes.array,
   view: PropTypes.object,
   _onChange: PropTypes.func,
   _onKeyPress: PropTypes.func,

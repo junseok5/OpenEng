@@ -15,7 +15,7 @@ const SearchHeader = ({ form, _onChange, _onKeyPress, _onSearch, _goBack }) => {
         <div className={cx('search-form')}>
           <input
             type='search'
-            placeholder='해시태그 검색'
+            placeholder='검색'
             value={form}
             onChange={_onChange}
             onKeyPress={_onKeyPress}

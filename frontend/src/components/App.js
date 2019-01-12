@@ -7,6 +7,7 @@ const App = () => {
     <Switch>
       <Route exact path='/' component={Home} />
       <Route path='/tag/:tag' component={Home} />
+      <Route path='/channel/:channel' component={Home} />
       <Route path='/keyword/:keyword' component={Home} />
       <Route path='/videos/:id' component={Videos} />
       <Route path='/search' component={Search} />

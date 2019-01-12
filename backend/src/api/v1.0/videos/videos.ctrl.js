@@ -3,14 +3,15 @@ const Video = require('database/models/video')
 
 exports.list = async ctx => {
   const page = parseInt(ctx.query.page || 1, 10)
-  const { tag, keyword } = ctx.query
+  const { tag, channel, keyword } = ctx.query
 
   let query = {}
   query = tag && { tags: tag }
+  query = channel && { ...query, channel }
   query = keyword
     ? {
       ...query,
-      sentance: { $text: { $search: keyword } },
+      $text: { $search: keyword }
     }
     : { ...query }
 

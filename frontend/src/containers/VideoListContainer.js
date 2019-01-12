@@ -9,12 +9,12 @@ import throttle from 'lodash/throttle'
 
 class VideoListContainer extends Component {
   _prefetch = async () => {
-    const { tag, page, hasEnded, loading } = this.props
+    const { tag, channel, keyword, page, hasEnded, loading } = this.props
 
     if (hasEnded || loading) return
 
     try {
-      await ListActions.getRecentVideos({ page, tag })
+      await ListActions.getRecentVideos({ tag, channel, keyword, page })
     } catch (e) {
       console.log(e)
     }
@@ -46,7 +46,11 @@ class VideoListContainer extends Component {
   }
 
   componentDidUpdate = async (prevProps, prevState) => {
-    if (prevProps.tag !== this.props.tag) {
+    if (
+      prevProps.channel !== this.props.channel ||
+      prevProps.keyword !== this.props.keyword ||
+      prevProps.tag !== this.props.tag
+    ) {
       await ListActions.initialize()
       this._prefetch()
       document.documentElement.scrollTop = 0
@@ -64,6 +68,8 @@ class VideoListContainer extends Component {
 
 VideoListContainer.propTypes = {
   tag: PropTypes.string,
+  channel: PropTypes.string,
+  keyword: PropTypes.string,
   videos: PropTypes.array,
   page: PropTypes.number,
   hasEnded: PropTypes.bool,

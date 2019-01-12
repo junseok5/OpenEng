@@ -48,15 +48,9 @@ const VideoCard = ({ video }) => {
       </Link>
       <div className={cx('video-card-contents')}>
         <Link to={`/videos/${video._id}`}>
-          <div className={cx('video-card-expression')}>
-            <div className={cx('video-card-sentance-ko')}>
-              <span>{video.sentance.ko}</span>
-            </div>
-            <div className={cx('video-card-sentance-en')}>
-              <span>{video.sentance.en}</span>
-            </div>
-          </div>
+          <div className={cx('video-card-title')}>{video.title}</div>
         </Link>
+        <div className={cx('video-card-channel')}>{video.channel}</div>
       </div>
     </div>
   )

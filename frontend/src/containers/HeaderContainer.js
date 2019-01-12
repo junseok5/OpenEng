@@ -5,32 +5,37 @@ import { SearchActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import Header from 'components/Header'
-import { writeTag, getTagList, removeTag, clearTags } from 'lib/common'
+import {
+  writeKeyword,
+  getKeywordList,
+  removeKeyword,
+  clearKeywords,
+} from 'lib/common'
 
 class HeaderContainer extends Component {
-  _onSearch = tag => {
+  _onSearch = keyword => {
     SearchActions.changeView({ mouseOver: false })
 
     const { history } = this.props
-    if (tag) {
-      history.push(`/tag/${tag}`)
-      SearchActions.changeForm(tag)
-      writeTag(tag)
+    if (keyword) {
+      history.push(`/keyword/${keyword}`)
+      SearchActions.changeForm(keyword)
+      writeKeyword(keyword)
       return
     }
 
     const { form } = this.props
 
-    writeTag(form)
-    history.push(`/tag/${form}`)
+    writeKeyword(form)
+    history.push(`/keyword/${form}`)
   }
 
   _onFocus = () => {
     SearchActions.changeView({ focus: true })
 
-    const { recentTags } = this.props
-    if (recentTags.length === 0) {
-      getTagList()
+    const { recentKeywords } = this.props
+    if (recentKeywords.length === 0) {
+      getKeywordList()
     }
   }
 
@@ -61,7 +66,7 @@ class HeaderContainer extends Component {
     return (
       <Header
         form={this.props.form}
-        recentTags={this.props.recentTags}
+        recentKeywords={this.props.recentKeywords}
         view={this.props.view}
         _onChange={this._onChange}
         _onKeyPress={this._onKeyPress}
@@ -70,8 +75,8 @@ class HeaderContainer extends Component {
         _onBlur={this._onBlur}
         _onMouseOver={this._onMouseOver}
         _onMouseOut={this._onMouseOut}
-        _onRemove={removeTag}
-        _onClear={clearTags}
+        _onRemove={removeKeyword}
+        _onClear={clearKeywords}
       />
     )
   }
@@ -79,12 +84,12 @@ class HeaderContainer extends Component {
 
 HeaderContainer.propTypes = {
   form: PropTypes.string,
-  recentTags: PropTypes.array,
+  recentKeywords: PropTypes.array,
   view: PropTypes.object,
 }
 
 export default connect(state => ({
   form: state.search.form,
-  recentTags: state.search.recentTags,
+  recentKeywords: state.search.recentKeywords,
   view: state.search.view,
 }))(withRouter(HeaderContainer))

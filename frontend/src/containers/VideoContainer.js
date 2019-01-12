@@ -73,10 +73,10 @@ class VideoContainer extends Component {
         }
 
         // 주요 문장 3회 반복
-        if (subtitle[cursor].mainSentance) {
-          this._repeatMainSentance(player, currentTime, subtitle, cursor)
-          return
-        }
+        // if (subtitle[cursor].mainSentance) {
+        //   this._repeatMainSentance(player, currentTime, subtitle, cursor)
+        //   return
+        // }
 
         this._autoChangeCursor(currentTime)
       }, 100)
@@ -89,7 +89,7 @@ class VideoContainer extends Component {
         playing: false,
         cursor: 0,
         subtitleContents: { en: '', ko: '' },
-        repeatCount: 0,
+        // repeatCount: 0,
       })
       clearInterval(this.props.timer)
     } else {
@@ -98,17 +98,17 @@ class VideoContainer extends Component {
     }
   }
 
-  _repeatMainSentance = (player, currentTime, subtitle, cursor) => {
-    const { repeatCount } = this.props
+  // _repeatMainSentance = (player, currentTime, subtitle, cursor) => {
+  //   const { repeatCount } = this.props
 
-    if (repeatCount < 2 && currentTime >= subtitle[cursor].end) {
-      const start = subtitle[cursor].start
-      player.seekTo(start)
-      VideoActions.setYoutube({ repeatCount: repeatCount + 1 })
-    } else if (repeatCount >= 2) {
-      this._autoChangeCursor(currentTime)
-    }
-  }
+  //   if (repeatCount < 2 && currentTime >= subtitle[cursor].end) {
+  //     const start = subtitle[cursor].start
+  //     player.seekTo(start)
+  //     VideoActions.setYoutube({ repeatCount: repeatCount + 1 })
+  //   } else if (repeatCount >= 2) {
+  //     this._autoChangeCursor(currentTime)
+  //   }
+  // }
 
   _autoChangeCursor = currentTime => {
     const { cursor, subtitle } = this.props
@@ -131,9 +131,7 @@ class VideoContainer extends Component {
     const prevStart = subtitle[prevCursor].start
     const prevSubtitle = subtitle[prevCursor].contents
 
-    // if (subtitle[prevCursor].mainSentance) {
-    VideoActions.setYoutube({ repeatCount: 0 })
-    // }
+    // VideoActions.setYoutube({ repeatCount: 0 })
 
     VideoActions.setYoutube({
       cursor: prevCursor,
@@ -246,12 +244,7 @@ class VideoContainer extends Component {
               this.props.video.youtubeId
             }/mqdefault.jpg`}
           />
-          <meta
-            property="og:description"
-            content={
-              this.props.video.sentance.en + ' ' + this.props.video.sentance.ko
-            }
-          />
+          <meta property="og:description" content={this.props.video.title} />
         </Helmet>
         <Video
           youtubeId={this.props.video.youtubeId}
@@ -268,7 +261,6 @@ class VideoContainer extends Component {
           contents={this.props.subtitleContents}
           language={this.props.language}
           words={this.props.subtitle[this.props.cursor].words}
-          isMainSentance={!!this.props.subtitle[this.props.cursor].mainSentance}
         />
         <VideoControls
           playerReady={this.props.playerReady}
@@ -300,7 +292,7 @@ VideoContainer.propTypes = {
   language: PropTypes.string,
   sectionRepeat: PropTypes.bool,
   initPlay: PropTypes.bool,
-  repeatCount: PropTypes.number,
+  // repeatCount: PropTypes.number,
   subtitle: PropTypes.array,
   loading: PropTypes.bool,
 }
@@ -318,7 +310,7 @@ export default connect(state => ({
   language: state.video.youtube.language,
   sectionRepeat: state.video.youtube.sectionRepeat,
   initPlay: state.video.youtube.initPlay,
-  repeatCount: state.video.youtube.repeatCount,
+  // repeatCount: state.video.youtube.repeatCount,
   subtitle: state.video.video.subtitle,
   loading: state.pender.pending['video/GET_VIDEO'],
 }))(VideoContainer)

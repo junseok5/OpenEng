@@ -18,9 +18,10 @@ const initialState = {
   video: {
     _id: '',
     youtubeId: '',
+    title: '',
     overayTime: '',
+    channel: '',
     tags: [],
-    sentance: '',
     views: 0,
     subtitle: []
   },
@@ -38,8 +39,7 @@ const initialState = {
     },
     language: 'en-ko',
     sectionRepeat: false,
-    initPlay: false,
-    repeatCount: 0
+    initPlay: false
   }
 }
 

@@ -4,33 +4,36 @@ const { Schema } = mongoose
 
 const Video = new Schema({
   youtubeId: String,
+  title: {
+    type: String,
+    text: true
+  },
   overayTime: String,
-  tags: {
-    type: [String],
+  channel: {
+    type: String,
+    text: true
   },
-  sentance: {
-    type: {
-      en: String,
-      ko: String,
-    },
-    text: true,
-  },
+  tags: [String],
   views: {
     type: Number,
-    default: 0,
+    default: 0
   },
   publishedDate: {
     type: Date,
-    default: Date.now(),
+    default: Date.now()
   },
-  subtitle: Array,
+  subtitle: Array
 })
 
 // 한 페이지에 보일 비디오 갯수
 const videosPerPage = 20
 
 Video.statics.findList = function (query, page) {
-  return this.find(query)
+  return this.find(query, {
+    publishedDate: false,
+    subtitle: false,
+    tags: false
+  })
     .sort({ _id: -1 })
     .limit(videosPerPage)
     .skip((page - 1) * videosPerPage)
