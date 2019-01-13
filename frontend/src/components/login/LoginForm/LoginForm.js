@@ -12,6 +12,7 @@ const LoginForm = () => {
       </div>
 
       <div className={cx('login-form-contents')}>
+        <h3>로그인</h3>
         <div className={cx('form-wrap')}>
           <div className={cx('form-title')}>이메일</div>
           <div className={cx('form-input')}>

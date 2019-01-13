@@ -1,0 +1,31 @@
+.tabs {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3rem;
+
+  background: white;
+
+  display: none;
+
+  @include media("<medium") {
+    display: flex;
+  }
+
+  .tab {
+    height: 100%;
+
+    font-size: 1.5rem;
+    color: $oc-gray-6;
+
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.active {
+      color: black;
+    }
+  }
+}

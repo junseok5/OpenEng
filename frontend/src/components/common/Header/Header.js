@@ -77,13 +77,13 @@ const Header = ({
             </div>
           )}
         </div>
-        <div className={cx('hm-search-mobile')}>
+        {/* <div className={cx('hm-search-mobile')}>
           <Link to='/search'>
             <span>
               <FiSearch fontSize='1.4rem' />
             </span>
           </Link>
-        </div>
+        </div> */}
       </div>
     </header>
   )

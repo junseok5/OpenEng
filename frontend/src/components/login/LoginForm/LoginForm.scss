@@ -1,19 +1,5 @@
 .login-form {
   .login-form-header {
-    display: flex;
-    align-items: center;
-
-    .header-img {
-      width: 60px;
-
-      display: flex;
-      align-items: center;
-
-      img {
-        width: 100%;
-      }
-    }
-
     .header-name {
       font-size: 1.8rem;
       font-weight: bold;
@@ -24,6 +10,11 @@
   .login-form-contents {
     padding-top: 1rem;
     padding-bottom: 1rem;
+
+    h3 {
+      margin-top: 0.4rem;
+      margin-bottom: 0;
+    }
 
     .form-wrap {
       margin-bottom: 0.4rem;
@@ -38,19 +29,24 @@
 
       .form-input {
         input {
+          width: 360px;
           padding: 0.4rem 0.6rem;
 
           font-size: 1.2rem;
           border: 1px solid $oc-gray-3;
           border-radius: 4px;
+
+          @include media("<medium") {
+            width: auto;
+          }
         }
       }
     }
 
     .login-button {
       margin-top: 1rem;
-      padding-top: 0.4rem;
-      padding-bottom: 0.4rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
 
       background: $main-color;
       color: white;
@@ -63,6 +59,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      @include media("<medium") {
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+      }
     }
 
     .bottom-button {
@@ -116,8 +117,8 @@
       }
 
       .social-button {
-        padding-top: 0.6rem;
-        padding-bottom: 0.6rem;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
 
@@ -130,6 +131,11 @@
 
         display: flex;
         align-items: center;
+
+        @include media("<medium") {
+          padding-top: 0.6rem;
+          padding-bottom: 0.6rem;
+        }
 
         .social-icon {
           padding-left: 1rem;
