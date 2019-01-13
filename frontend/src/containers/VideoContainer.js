@@ -127,6 +127,7 @@ class VideoContainer extends Component {
     const { cursor, player, subtitle } = this.props
 
     if (cursor === 0) return
+    // const prevCursor = cursor % 2 === 0 ? cursor - 2 : cursor - 3
     const prevCursor = cursor - 1
     const prevStart = subtitle[prevCursor].start
     const prevSubtitle = subtitle[prevCursor].contents
@@ -144,6 +145,8 @@ class VideoContainer extends Component {
     const { cursor, player, subtitle } = this.props
 
     if (cursor >= subtitle.length - 1) return
+
+    // const nextCursor = cursor % 2 === 0 ? cursor + 1 : cursor + 2
     const nextCursor = cursor + 1
     const nextStart = subtitle[nextCursor].start
     const nextSubtitle = subtitle[nextCursor].contents
@@ -160,17 +163,30 @@ class VideoContainer extends Component {
     VideoActions.setYoutube({ sectionRepeat: !sectionRepeat })
   }
 
-  _sectionRepeat = currentTime => {
-    const { cursor, subtitle, player } = this.props
+  _sectionRepeat = async currentTime => {
+    const { cursor } = this.props
 
-    if (cursor === 0) {
+    if (cursor === 0 || cursor === 1) {
       this._autoChangeCursor(currentTime)
       return
     }
 
-    if (currentTime > subtitle[cursor].end) {
-      const start = subtitle[cursor].start
-      player.seekTo(start)
+    const { subtitle, repeatCursor } = this.props
+
+    if (currentTime >= subtitle[cursor].end) {
+      if (cursor % 2 === 0) {
+        this._skipPrev()
+        return
+      }
+    }
+
+    if (cursor >= subtitle.length - 1) return
+
+    if (currentTime >= subtitle[cursor + 1].start) {
+      VideoActions.setYoutube({
+        cursor: cursor + 1,
+        subtitleContents: subtitle[cursor + 1].contents,
+      })
     }
   }
 
@@ -292,7 +308,7 @@ VideoContainer.propTypes = {
   language: PropTypes.string,
   sectionRepeat: PropTypes.bool,
   initPlay: PropTypes.bool,
-  // repeatCount: PropTypes.number,
+  repeatCursor: PropTypes.object,
   subtitle: PropTypes.array,
   loading: PropTypes.bool,
 }
@@ -309,8 +325,9 @@ export default connect(state => ({
   subtitleContents: state.video.youtube.subtitleContents,
   language: state.video.youtube.language,
   sectionRepeat: state.video.youtube.sectionRepeat,
+  repearCount: state.video.youtube.repearCount,
   initPlay: state.video.youtube.initPlay,
-  // repeatCount: state.video.youtube.repeatCount,
+  repeatCursor: state.video.youtube.repeatCursor,
   subtitle: state.video.video.subtitle,
   loading: state.pender.pending['video/GET_VIDEO'],
 }))(VideoContainer)

@@ -39,6 +39,10 @@ const initialState = {
     },
     language: 'en-ko',
     sectionRepeat: false,
+    repeatCursor: {
+      front: -1,
+      back: -1
+    },
     initPlay: false
   }
 }

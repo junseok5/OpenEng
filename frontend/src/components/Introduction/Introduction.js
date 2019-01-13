@@ -14,9 +14,6 @@ const Introduction = () => {
         </h2>
         <h3>유튜브로 영어 공부하자!</h3>
         <p>OpenEng에서 쉐도잉 영어 공부를 해보세요.</p>
-        {/* <p>
-
-        </p> */}
         <div className={cx('intro-func')}>
           <div className={cx('intro-icon')}>
             <FiRepeat color='' />
