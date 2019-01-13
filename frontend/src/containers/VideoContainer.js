@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { VideoActions } from 'store/actionCreators'
 
-import Video from 'components/Video'
-import VideoProgressbar from 'components/VideoProgressbar'
-import VideoSubtitle from 'components/VideoSubtitle'
-import VideoControls from 'components/VideoControls'
+import Video from 'components/video/Video'
+import VideoProgressbar from 'components/video/VideoProgressbar'
+import VideoSubtitle from 'components/video/VideoSubtitle'
+import VideoControls from 'components/video/VideoControls'
 import { Helmet } from 'react-helmet'
 
 class VideoContainer extends Component {

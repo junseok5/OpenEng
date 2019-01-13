@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import ListHeader from 'components/ListHeader'
+import ListHeader from 'components/list/ListHeader'
 
 class ListHeaderContainer extends Component {
   render () {

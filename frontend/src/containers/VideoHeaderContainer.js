@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import VideoHeader from 'components/VideoHeader'
+import VideoHeader from 'components/video/VideoHeader'
 
 class VideoHeaderContainer extends Component {
   _goBack = () => {

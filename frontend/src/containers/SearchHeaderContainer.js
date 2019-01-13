@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { SearchActions, ListActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
-import SearchHeader from 'components/SearchHeader'
+import SearchHeader from 'components/search/SearchHeader'
 import { writeKeyword } from 'lib/common'
 
 class SearchHeaderContainer extends Component {

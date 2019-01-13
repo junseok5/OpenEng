@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { ListActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
-import SearchContents from 'components/SearchContents'
+import SearchContents from 'components/search/SearchContents'
 import {
   writeKeyword,
   getKeywordList,

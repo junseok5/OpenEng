@@ -1,6 +1,6 @@
 import React from 'react'
-import PageTemplate from 'components/PageTemplate'
-import ErrorInfo from 'components/ErrorInfo'
+import PageTemplate from 'components/common/PageTemplate'
+import ErrorInfo from 'components/common/ErrorInfo'
 
 const NotFound = () => {
   return (

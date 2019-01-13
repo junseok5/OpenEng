@@ -1,9 +1,9 @@
 import React from 'react'
-import PageTemplate from 'components/PageTemplate'
+import PageTemplate from 'components/common/PageTemplate'
 import ListHeaderContainer from 'containers/ListHeaderContainer'
-import SideMenu from 'components/SideMenu'
-import MainTemplate from 'components/MainTemplate'
-import Introduction from 'components/Introduction'
+import SideMenu from 'components/common/SideMenu'
+import MainTemplate from 'components/common/MainTemplate'
+import Introduction from 'components/intro/Introduction'
 import VideoListContainer from 'containers/VideoListContainer'
 
 const Home = ({ match }) => {

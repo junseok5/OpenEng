@@ -1,5 +1,5 @@
 import React from 'react'
-import VideoTemplate from 'components/VideoTemplate'
+import VideoTemplate from 'components/video/VideoTemplate'
 import VideoContainer from 'containers/VideoContainer'
 
 const Videos = ({ match }) => {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { SearchActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
-import Header from 'components/Header'
+import Header from 'components/common/Header'
 import {
   writeKeyword,
   getKeywordList,

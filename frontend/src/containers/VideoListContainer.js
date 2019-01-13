@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ListActions } from 'store/actionCreators'
 
-import VideoList from 'components/VideoList'
+import VideoList from 'components/list/VideoList'
 import { getScrollBottom } from 'lib/common'
 import throttle from 'lodash/throttle'
 
