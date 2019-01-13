@@ -77,6 +77,11 @@ const Header = ({
             </div>
           )}
         </div>
+        <div className={cx('header-login')}>
+          <div className={cx('login-button')}>
+            <Link to='/auth'>로그인</Link>
+          </div>
+        </div>
         {/* <div className={cx('hm-search-mobile')}>
           <Link to='/search'>
             <span>

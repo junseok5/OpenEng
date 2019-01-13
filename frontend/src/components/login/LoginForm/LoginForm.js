@@ -14,14 +14,14 @@ const LoginForm = () => {
       <div className={cx('login-form-contents')}>
         <h3>로그인</h3>
         <div className={cx('form-wrap')}>
-          <div className={cx('form-title')}>이메일</div>
+          {/* <div className={cx('form-title')}>이메일</div> */}
           <div className={cx('form-input')}>
             <input type='email' placeholder='이메일 입력' />
           </div>
         </div>
 
         <div className={cx('form-wrap')}>
-          <div className={cx('form-title')}>비밀번호</div>
+          {/* <div className={cx('form-title')}>비밀번호</div> */}
           <div className={cx('form-input')}>
             <input type='password' placeholder='패스워드 입력' />
           </div>

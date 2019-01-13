@@ -122,6 +122,19 @@ header {
       }
     }
 
+    .header-login {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+
+      .login-button {
+        color: $main-color;
+        font-weight: bold;
+
+        cursor: pointer;
+      }
+    }
+
     .hm-search-mobile {
       display: none;
 
