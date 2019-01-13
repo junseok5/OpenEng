@@ -171,7 +171,7 @@ class VideoContainer extends Component {
       return
     }
 
-    const { subtitle, repeatCursor } = this.props
+    const { subtitle } = this.props
 
     if (currentTime >= subtitle[cursor].end) {
       if (cursor % 2 === 0) {
@@ -327,7 +327,6 @@ export default connect(state => ({
   sectionRepeat: state.video.youtube.sectionRepeat,
   repearCount: state.video.youtube.repearCount,
   initPlay: state.video.youtube.initPlay,
-  repeatCursor: state.video.youtube.repeatCursor,
   subtitle: state.video.video.subtitle,
   loading: state.pender.pending['video/GET_VIDEO'],
 }))(VideoContainer)

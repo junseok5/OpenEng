@@ -1,18 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { matchPath } from 'react-router-dom'
 import Root from './Root'
 import * as serviceWorker from './serviceWorker'
 import 'styles/base.scss'
-
-// const renderAfterPreload = async () => {
-//   if (process.env.NODE_ENV === 'production') {
-//     const promises = []
-//     routeConfig.forEach(route => {
-//       const match = matchPath(window.location.pathname, route)
-//     })
-//   }
-// }
 
 ReactDOM.render(<Root />, document.getElementById('root'))
 
