@@ -1,0 +1,140 @@
+._header-name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: $main-color;
+}
+
+._auth-form-contents {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  ._form-wrap {
+    margin-bottom: 0.4rem;
+
+    ._form-input {
+      input {
+        width: 360px;
+        padding: 0.4rem 0.6rem;
+
+        font-size: 1.2rem;
+        border: 1px solid $oc-gray-3;
+        border-radius: 4px;
+
+        @include media("<medium") {
+          width: auto;
+        }
+      }
+    }
+  }
+
+  ._auth-button {
+    margin-top: 1rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+
+    background: $main-color;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    border-radius: 4px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include media("<medium") {
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+    }
+  }
+
+  ._bottom-button {
+    margin-top: 0.4rem;
+
+    display: flex;
+    justify-content: flex-end;
+
+    ._bottom-text {
+      margin-right: 0.4rem;
+      color: $oc-gray-6;
+    }
+
+    ._bottom-auth-button {
+      color: $oc-gray-7;
+      text-decoration: underline;
+
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+
+  ._border-line {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+
+    ._line {
+      flex: 2;
+      height: 0.1rem;
+      background: $oc-gray-3;
+    }
+
+    ._text {
+      flex: 1;
+      text-align: center;
+      color: $oc-gray-6;
+    }
+  }
+
+  ._social-login {
+    margin-top: 1rem;
+
+    ._facebook {
+      background: #1971c2;
+    }
+
+    ._google {
+      background: #c92a2a;
+    }
+
+    ._social-button {
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      border-radius: 4px;
+
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+
+      @include media("<medium") {
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+      }
+
+      ._social-icon {
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        display: flex;
+        align-items: center;
+      }
+
+      ._social-text {
+        margin-right: 50px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}

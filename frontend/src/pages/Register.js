@@ -1,13 +1,13 @@
 import React from 'react'
 import AuthTemplate from 'components/auth/AuthTemplate'
-import LoginForm from 'components/auth/LoginForm'
+import RegisterForm from 'components/auth/RegisterForm'
 
-const Login = () => {
+const SignUp = () => {
   return (
     <AuthTemplate>
-      <LoginForm />
+      <RegisterForm />
     </AuthTemplate>
   )
 }
 
-export default Login
+export default SignUp

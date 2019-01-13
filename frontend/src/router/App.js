@@ -23,6 +23,11 @@ const Login = Loadable({
   loading: Loading,
 })
 
+const Register = Loadable({
+  loader: () => import('pages/Register'),
+  loading: Loading,
+})
+
 const NotFound = Loadable({
   loader: () => import('pages/NotFound'),
   loading: Loading,
@@ -37,7 +42,8 @@ const App = () => {
       <Route path="/keyword/:keyword" component={Home} />
       <Route path="/videos/:id" component={Videos} />
       <Route path="/search" component={Search} />
-      <Route path="/auth" component={Login} />
+      <Route path="/sign_in" component={Login} />
+      <Route path="/sign_up" component={Register} />
       <Route component={NotFound} />
     </Switch>
   )

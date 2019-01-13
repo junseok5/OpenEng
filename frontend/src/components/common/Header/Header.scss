@@ -127,6 +127,10 @@ header {
       display: flex;
       justify-content: center;
 
+      @include media("<medium") {
+        display: none;
+      }
+
       .login-button {
         color: $main-color;
         font-weight: bold;

@@ -10,10 +10,10 @@ const LoginBar = () => {
       <div className={cx('logo')}>OpenEng</div>
       <div className={cx('buttons')}>
         <div className={cx('login-button')}>
-          <Link to='/auth'>로그인</Link>
+          <Link to='/sign_in'>로그인</Link>
         </div>
         <div className={cx('register-button')}>
-          <Link to='/auth/register'>회원가입</Link>
+          <Link to='/sign_up'>회원가입</Link>
         </div>
       </div>
     </div>
