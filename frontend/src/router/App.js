@@ -18,6 +18,11 @@ const Search = Loadable({
   loading: Loading,
 })
 
+const Login = Loadable({
+  loader: () => import('pages/Login'),
+  loading: Loading,
+})
+
 const NotFound = Loadable({
   loader: () => import('pages/NotFound'),
   loading: Loading,
@@ -32,6 +37,7 @@ const App = () => {
       <Route path="/keyword/:keyword" component={Home} />
       <Route path="/videos/:id" component={Videos} />
       <Route path="/search" component={Search} />
+      <Route path="/auth" component={Login} />
       <Route component={NotFound} />
     </Switch>
   )

@@ -11,6 +11,7 @@
 - Sass
 - Redux
 - Immer
+- React Loadable
 - Code Splitting
 
 ### Backend
