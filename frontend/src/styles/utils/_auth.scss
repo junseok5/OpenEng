@@ -27,6 +27,13 @@
     }
   }
 
+  ._form-message {
+    text-align: right;
+    color: $main-color;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
   ._auth-button {
     margin-top: 1rem;
     padding-top: 0.6rem;

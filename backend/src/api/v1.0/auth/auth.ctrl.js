@@ -1,9 +1,9 @@
 const Joi = require('joi')
 const User = require('database/models/User')
-const { getProfile } = require('lib/social')
+const { getProfile } = require('lib/getSocialProfile')
 
 // Regex definition
-const displayNameRegex = /^[a-zA-Z0-9ㄱ-힣]{3,12}$/
+const displayNameRegex = /^[0-9a-zA-Z0-9ㄱ-힣]{3,12}$/
 
 exports.localRegister = async ctx => {
   const { body } = ctx.request
@@ -26,11 +26,11 @@ exports.localRegister = async ctx => {
 
   try {
     // check email
-    const exists = await User.findByEmail({ email })
+    const exists = await User.findByEmail(email)
 
     if (exists) {
       ctx.status = 401
-      ctx.body = 'EMAIL_NOT_FOUND'
+      ctx.body = 'EXISTS_EMAIL'
       return
     }
 

@@ -6,7 +6,7 @@ import './RegisterForm.scss'
 import { Link } from 'react-router-dom'
 import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
 
-const RegisterForm = ({ registerForm, _onChangeForm }) => {
+const RegisterForm = ({ registerForm, message, _onChangeForm, _onSubmit }) => {
   return (
     <div className={cx('register-form')}>
       <div className={cx('register-form-header')}>
@@ -45,7 +45,7 @@ const RegisterForm = ({ registerForm, _onChangeForm }) => {
         <div className={cx('_form-wrap')}>
           <div className={cx('_form-input')}>
             <input
-              type='password'
+              type='text'
               placeholder='이름 입력'
               name='displayName'
               value={registerForm.displayName}
@@ -54,7 +54,9 @@ const RegisterForm = ({ registerForm, _onChangeForm }) => {
           </div>
         </div>
 
-        <div className={cx('_auth-button')}>
+        <div className={cx('_form-message')}>{message}</div>
+
+        <div className={cx('_auth-button')} onClick={_onSubmit}>
           <span>가입하기</span>
         </div>
 

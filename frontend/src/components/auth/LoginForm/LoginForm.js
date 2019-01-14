@@ -6,7 +6,7 @@ import './LoginForm.scss'
 import { Link } from 'react-router-dom'
 import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
 
-const LoginForm = ({ loginForm, _onChangeForm, _onSubmit }) => {
+const LoginForm = ({ loginForm, message, _onChangeForm, _onSubmit }) => {
   return (
     <div className={cx('login-form')}>
       <div className={cx('login-form-header')}>
@@ -40,6 +40,8 @@ const LoginForm = ({ loginForm, _onChangeForm, _onSubmit }) => {
             />
           </div>
         </div>
+
+        <div className={cx('_form-message')}>{message}</div>
 
         <div className={cx('_auth-button')} onClick={_onSubmit}>
           <span>로그인</span>

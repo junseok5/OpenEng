@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 const { JWT_SECRET: secret } = process.env
 
-exports.generate = (payload, subject) => new Promise((resolve, reject) => {
+exports.generateToken = (payload, subject) => new Promise((resolve, reject) => {
     jwt.sign(
       payload,
       secret,
@@ -18,7 +18,7 @@ exports.generate = (payload, subject) => new Promise((resolve, reject) => {
     )
   })
 
-exports.decode = token => new Promise((resolve, reject) => {
+exports.decodeToken = token => new Promise((resolve, reject) => {
     jwt.verify(token, secret, (error, decoded) => {
       if (error) reject(error)
       resolve(decoded)

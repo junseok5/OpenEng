@@ -7,13 +7,17 @@ import * as AuthAPI from 'lib/api/auth'
 const INITIALIZE = 'auth/INITIALIZE'
 const CHANGE_LOGIN_FORM = 'auth/CHANGE_LOGIN_FORM'
 const CHANGE_REGISTER_FORM = 'auth/CHANGE_REGISTER_FORM'
+const SET_MESSAGE = 'auth/SET_MESSAGE'
 const LOCAL_LOGIN = 'auth/LOCAL_LOGIN'
+const LOCAL_REGISTER = 'auth/LOCAL_REGISTER'
 
 // action creators
 export const initialize = createAction(INITIALIZE)
 export const changeLoginForm = createAction(CHANGE_LOGIN_FORM)
 export const changeRegisterForm = createAction(CHANGE_REGISTER_FORM)
+export const setMessage = createAction(SET_MESSAGE)
 export const localLogin = createAction(LOCAL_LOGIN, AuthAPI.localLogin)
+export const localRegister = createAction(LOCAL_REGISTER, AuthAPI.localRegister)
 
 // initial state
 const initialState = {
@@ -26,6 +30,7 @@ const initialState = {
     password: '',
     displayName: ''
   },
+  message: '',
   result: null,
   error: null
 }
@@ -46,10 +51,29 @@ export default handleActions(
         draft.registerForm[name] = value
       })
     },
+    [SET_MESSAGE]: (state, action) => {
+      return produce(state, draft => {
+        draft.message = action.payload
+      })
+    },
     ...pender({
       type: LOCAL_LOGIN,
       onSuccess: (state, action) => {
-        console.log(action.payload)
+        const { data } = action.payload
+        return produce(state, draft => {
+          draft.result = data
+        })
+      },
+      onFailure: (state, action) => {
+        const { data } = action.payload.response
+        return produce(state, draft => {
+          draft.error = data
+        })
+      }
+    }),
+    ...pender({
+      type: LOCAL_REGISTER,
+      onSuccess: (state, action) => {
         const { data } = action.payload
         return produce(state, draft => {
           draft.result = data
