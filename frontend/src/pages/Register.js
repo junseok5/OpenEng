@@ -1,11 +1,11 @@
 import React from 'react'
 import AuthTemplate from 'components/auth/AuthTemplate'
-import RegisterForm from 'components/auth/RegisterForm'
+import RegisterFormContainer from 'containers/RegisterFormContainer'
 
 const SignUp = () => {
   return (
     <AuthTemplate>
-      <RegisterForm />
+      <RegisterFormContainer />
     </AuthTemplate>
   )
 }

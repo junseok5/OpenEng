@@ -1,32 +1,47 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './LoginForm.scss'
 
 import { Link } from 'react-router-dom'
 import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
 
-const LoginForm = () => {
+const LoginForm = ({ loginForm, _onChangeForm, _onSubmit }) => {
   return (
     <div className={cx('login-form')}>
       <div className={cx('login-form-header')}>
-        <div className={cx('_header-name')}>OpenEng</div>
+        <div className={cx('_header-name')}>
+          <Link to='/'>OpenEng</Link>
+        </div>
       </div>
 
       <div className={cx('_auth-form-contents')}>
         <h3>로그인</h3>
         <div className={cx('_form-wrap')}>
           <div className={cx('_form-input')}>
-            <input type='email' placeholder='이메일 입력' />
+            <input
+              type='email'
+              placeholder='이메일 입력'
+              name='email'
+              value={loginForm.email}
+              onChange={_onChangeForm}
+            />
           </div>
         </div>
 
         <div className={cx('_form-wrap')}>
           <div className={cx('_form-input')}>
-            <input type='password' placeholder='패스워드 입력' />
+            <input
+              type='password'
+              placeholder='패스워드 입력'
+              name='password'
+              value={loginForm.password}
+              onChange={_onChangeForm}
+            />
           </div>
         </div>
 
-        <div className={cx('_auth-button')}>
+        <div className={cx('_auth-button')} onClick={_onSubmit}>
           <span>로그인</span>
         </div>
 
@@ -62,6 +77,17 @@ const LoginForm = () => {
       </div>
     </div>
   )
+}
+
+LoginForm.defaultProps = {
+  loginForm: {
+    email: '',
+    password: ''
+  }
+}
+
+LoginForm.propTypes = {
+  loginForm: PropTypes.object
 }
 
 export default LoginForm

@@ -1,15 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './RegisterForm.scss'
 
 import { Link } from 'react-router-dom'
 import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
 
-const RegisterForm = () => {
+const RegisterForm = ({ registerForm, _onChangeForm }) => {
   return (
     <div className={cx('register-form')}>
       <div className={cx('register-form-header')}>
-        <div className={cx('_header-name')}>OpenEng</div>
+        <div className={cx('_header-name')}>
+          <Link to='/'>OpenEng</Link>
+        </div>
       </div>
 
       <div className={cx('_auth-form-contents')}>
@@ -17,19 +20,37 @@ const RegisterForm = () => {
 
         <div className={cx('_form-wrap')}>
           <div className={cx('_form-input')}>
-            <input type='email' placeholder='이메일 입력' />
+            <input
+              type='email'
+              placeholder='이메일 입력'
+              name='email'
+              value={registerForm.email}
+              onChange={_onChangeForm}
+            />
           </div>
         </div>
 
         <div className={cx('_form-wrap')}>
           <div className={cx('_form-input')}>
-            <input type='password' placeholder='패스워드 입력' />
+            <input
+              type='password'
+              placeholder='패스워드 입력'
+              name='password'
+              value={registerForm.password}
+              onChange={_onChangeForm}
+            />
           </div>
         </div>
 
         <div className={cx('_form-wrap')}>
           <div className={cx('_form-input')}>
-            <input type='password' placeholder='이름 입력' />
+            <input
+              type='password'
+              placeholder='이름 입력'
+              name='displayName'
+              value={registerForm.displayName}
+              onChange={_onChangeForm}
+            />
           </div>
         </div>
 
@@ -69,6 +90,18 @@ const RegisterForm = () => {
       </div>
     </div>
   )
+}
+
+RegisterForm.defaultPropt = {
+  registerForm: {
+    email: '',
+    password: '',
+    displayName: ''
+  }
+}
+
+RegisterForm.propTypes = {
+  registerForm: PropTypes.object
 }
 
 export default RegisterForm
