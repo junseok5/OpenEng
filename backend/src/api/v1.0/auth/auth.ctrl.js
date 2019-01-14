@@ -271,7 +271,7 @@ exports.socialLogin = async ctx => {
 }
 
 exports.check = async ctx => {
-  const { user } = ctx.request
+  const { user } = ctx
 
   if (!user) {
     ctx.status = 401
@@ -294,9 +294,7 @@ exports.check = async ctx => {
     ctx.throw(500, e)
   }
 
-  ctx.body = {
-    user
-  }
+  ctx.body = user
 }
 
 exports.logout = ctx => {

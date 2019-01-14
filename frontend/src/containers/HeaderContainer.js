@@ -68,6 +68,7 @@ class HeaderContainer extends Component {
         form={this.props.form}
         recentKeywords={this.props.recentKeywords}
         view={this.props.view}
+        user={this.props.user}
         _onChange={this._onChange}
         _onKeyPress={this._onKeyPress}
         _onSearch={this._onSearch}
@@ -86,10 +87,12 @@ HeaderContainer.propTypes = {
   form: PropTypes.string,
   recentKeywords: PropTypes.array,
   view: PropTypes.object,
+  user: PropTypes.any,
 }
 
 export default connect(state => ({
   form: state.search.form,
   recentKeywords: state.search.recentKeywords,
   view: state.search.view,
+  user: state.user.user,
 }))(withRouter(HeaderContainer))

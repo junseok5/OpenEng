@@ -10,6 +10,7 @@ const Header = ({
   form,
   recentKeywords,
   view,
+  user,
   _onChange,
   _onKeyPress,
   _onSearch,
@@ -78,17 +79,16 @@ const Header = ({
           )}
         </div>
         <div className={cx('header-login')}>
-          <div className={cx('login-button')}>
-            <Link to='/sign_in'>로그인</Link>
-          </div>
+          {!user ? (
+            <div className={cx('login-button')}>
+              <Link to='/sign_in'>로그인</Link>
+            </div>
+          ) : (
+            <div className={cx('header-user')}>
+              <div className={cx('user-name')}>{user.displayName}</div>
+            </div>
+          )}
         </div>
-        {/* <div className={cx('hm-search-mobile')}>
-          <Link to='/search'>
-            <span>
-              <FiSearch fontSize='1.4rem' />
-            </span>
-          </Link>
-        </div> */}
       </div>
     </header>
   )
@@ -97,13 +97,15 @@ const Header = ({
 Header.defaultProps = {
   form: '',
   recentKeywords: [],
-  view: {}
+  view: {},
+  user: null
 }
 
 Header.propTypes = {
   form: PropTypes.string,
   recentKeywords: PropTypes.array,
   view: PropTypes.object,
+  user: PropTypes.any,
   _onChange: PropTypes.func,
   _onKeyPress: PropTypes.func,
   _onSearch: PropTypes.func,

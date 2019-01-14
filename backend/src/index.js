@@ -18,16 +18,16 @@ const { PORT: port } = process.env
 const app = new Koa()
 
 app.use(KoaBody({ multipart: true }))
-
-const router = new Router()
-
-// 라우터 설정
-router.use('/api', api.routes())
-app.use(router.routes()).use(router.allowedMethods())
-
 app.use(serve('public'))
 app.use(serve(staticPath))
 app.use(authToken)
+
+// 라우터 설정
+const router = new Router()
+
+router.use('/api', api.routes())
+app.use(router.routes()).use(router.allowedMethods())
+
 app.use(
   views(staticPath, {
     extension: 'html'

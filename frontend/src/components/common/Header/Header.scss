@@ -137,6 +137,13 @@ header {
 
         cursor: pointer;
       }
+
+      .header-user {
+        .user-name {
+          color: $main-color;
+          cursor: pointer;
+        }
+      }
     }
 
     .hm-search-mobile {

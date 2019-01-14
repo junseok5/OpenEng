@@ -94,11 +94,16 @@ LoginForm.defaultProps = {
   loginForm: {
     email: '',
     password: ''
-  }
+  },
+  message: ''
 }
 
 LoginForm.propTypes = {
-  loginForm: PropTypes.object
+  loginForm: PropTypes.object,
+  message: PropTypes.string,
+  _onChangeForm: PropTypes.func,
+  _onSubmit: PropTypes.func,
+  _onKeyPress: PropTypes.func
 }
 
 export default LoginForm

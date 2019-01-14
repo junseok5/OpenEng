@@ -108,11 +108,16 @@ RegisterForm.defaultPropt = {
     email: '',
     password: '',
     displayName: ''
-  }
+  },
+  message: ''
 }
 
 RegisterForm.propTypes = {
-  registerForm: PropTypes.object
+  registerForm: PropTypes.object,
+  message: PropTypes.string,
+  _onChangeForm: PropTypes.func,
+  _onSubmit: PropTypes.func,
+  _onKeyPress: PropTypes.func
 }
 
 export default RegisterForm
