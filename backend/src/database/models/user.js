@@ -76,12 +76,13 @@ User.methods.validatePassword = function (password) {
 }
 
 User.methods.generateToken = function () {
-  const { _id, displayName } = this
+  const { _id, displayName, thumbnail } = this
   return token.generateToken(
     {
       user: {
         _id,
-        displayName
+        displayName,
+        thumbnail
       }
     },
     'user'

@@ -92,6 +92,7 @@ export default handleActions(
       type: CHECK_LOGIN,
       onSuccess: (state, action) => {
         const { data } = action.payload
+        console.log(data)
         return produce(state, draft => {
           draft.result = data
         })

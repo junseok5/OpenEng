@@ -123,9 +123,11 @@ header {
     }
 
     .header-login {
+      margin-right: 2rem;
+
       flex: 1;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
 
       @include media("<medium") {
         display: none;
@@ -139,6 +141,18 @@ header {
       }
 
       .header-user {
+        .user-thumbnail {
+          position: relative;
+          width: 40px;
+          height: 40px;
+
+          border: 1px solid $oc-gray-3;
+          border-radius: 50%;
+          overflow: hidden;
+
+          cursor: pointer;
+        }
+
         .user-name {
           color: $main-color;
           cursor: pointer;
