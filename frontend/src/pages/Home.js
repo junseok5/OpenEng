@@ -5,7 +5,7 @@ import SideMenu from 'components/common/SideMenu'
 import MainTemplate from 'components/common/MainTemplate'
 import Introduction from 'components/intro/Introduction'
 import VideoListContainer from 'containers/VideoListContainer'
-import LoginBar from 'components/common/LoginBar'
+import LoginBarContainer from 'containers/LoginBarContainer'
 import Base from 'containers/Base'
 
 const Home = ({ match }) => {
@@ -20,7 +20,7 @@ const Home = ({ match }) => {
         {keyword && <ListHeaderContainer keyword={keyword} />}
         {channel && <ListHeaderContainer channel={channel} />}
         <VideoListContainer tag={tag} channel={channel} keyword={keyword} />
-        <LoginBar />
+        <LoginBarContainer />
       </MainTemplate>
     </PageTemplate>
   )

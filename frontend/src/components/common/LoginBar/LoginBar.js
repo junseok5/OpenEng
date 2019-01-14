@@ -4,7 +4,8 @@ import './LoginBar.scss'
 
 import { Link } from 'react-router-dom'
 
-const LoginBar = () => {
+const LoginBar = ({ user }) => {
+  if (user) return null
   return (
     <div className={cx('login-bar')}>
       <div className={cx('logo')}>OpenEng</div>
