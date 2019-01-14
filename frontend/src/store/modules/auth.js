@@ -10,6 +10,7 @@ const CHANGE_REGISTER_FORM = 'auth/CHANGE_REGISTER_FORM'
 const SET_MESSAGE = 'auth/SET_MESSAGE'
 const LOCAL_LOGIN = 'auth/LOCAL_LOGIN'
 const LOCAL_REGISTER = 'auth/LOCAL_REGISTER'
+const CHECK_LOGIN = 'auth/CHECK_LOGIN'
 
 // action creators
 export const initialize = createAction(INITIALIZE)
@@ -18,6 +19,7 @@ export const changeRegisterForm = createAction(CHANGE_REGISTER_FORM)
 export const setMessage = createAction(SET_MESSAGE)
 export const localLogin = createAction(LOCAL_LOGIN, AuthAPI.localLogin)
 export const localRegister = createAction(LOCAL_REGISTER, AuthAPI.localRegister)
+export const checkLogin = createAction(CHECK_LOGIN, AuthAPI.checkLogin)
 
 // initial state
 const initialState = {
@@ -83,6 +85,15 @@ export default handleActions(
         const { data } = action.payload.response
         return produce(state, draft => {
           draft.error = data
+        })
+      }
+    }),
+    ...pender({
+      type: CHECK_LOGIN,
+      onSuccess: (state, action) => {
+        const { data } = action.payload
+        return produce(state, draft => {
+          draft.result = data
         })
       }
     })

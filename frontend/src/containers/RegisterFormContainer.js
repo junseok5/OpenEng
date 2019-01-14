@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { AuthActions } from 'store/actionCreators'
+import { AuthActions, UserActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import RegisterForm from 'components/auth/RegisterForm'
 import { emailCheck, passwordCheck, displayNameCheck } from 'lib/validation'
+import storage from 'lib/storage'
 
 class RegisterFormContainer extends Component {
   _onChangeForm = e => {
@@ -17,7 +18,9 @@ class RegisterFormContainer extends Component {
     const { registerForm } = this.props
     const { email, password, displayName } = registerForm
 
-    if (!emailCheck(email)) {
+    if (!email && !password && !displayName) {
+      return
+    } else if (!emailCheck(email)) {
       AuthActions.setMessage('이메일 양식이 잘못되었습니다.')
       return
     } else if (!passwordCheck(password)) {
@@ -34,8 +37,8 @@ class RegisterFormContainer extends Component {
       await AuthActions.localRegister({ email, password, displayName })
 
       const { result } = this.props
-
-      console.log(result)
+      UserActions.setUser(result)
+      storage.set('login', true)
     } catch (e) {
       const { error } = this.props
 
@@ -44,6 +47,12 @@ class RegisterFormContainer extends Component {
       } else {
         AuthActions.setMessage('알 수 없는 오류로 회원가입에 실패하였습니다.')
       }
+    }
+  }
+
+  _onKeyPress = e => {
+    if (e.key === 'Enter') {
+      this._onSubmit()
     }
   }
 
@@ -58,6 +67,7 @@ class RegisterFormContainer extends Component {
         message={this.props.message}
         _onChangeForm={this._onChangeForm}
         _onSubmit={this._onSubmit}
+        _onKeyPress={this._onKeyPress}
       />
     )
   }

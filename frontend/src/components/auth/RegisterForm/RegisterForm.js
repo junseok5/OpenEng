@@ -6,12 +6,20 @@ import './RegisterForm.scss'
 import { Link } from 'react-router-dom'
 import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
 
-const RegisterForm = ({ registerForm, message, _onChangeForm, _onSubmit }) => {
+const RegisterForm = ({
+  registerForm,
+  message,
+  _onChangeForm,
+  _onSubmit,
+  _onKeyPress
+}) => {
   return (
     <div className={cx('register-form')}>
       <div className={cx('register-form-header')}>
         <div className={cx('_header-name')}>
-          <Link to='/'>OpenEng</Link>
+          <Link to='/'>
+            <span>OpenEng</span>
+          </Link>
         </div>
       </div>
 
@@ -50,6 +58,7 @@ const RegisterForm = ({ registerForm, message, _onChangeForm, _onSubmit }) => {
               name='displayName'
               value={registerForm.displayName}
               onChange={_onChangeForm}
+              onKeyPress={_onKeyPress}
             />
           </div>
         </div>

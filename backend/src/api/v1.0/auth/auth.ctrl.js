@@ -42,7 +42,8 @@ exports.localRegister = async ctx => {
 
     ctx.body = {
       _id: user._id,
-      displayName
+      displayName,
+      thumbnail: user.thumbnail
     }
 
     const accessToken = await user.generateToken()
@@ -99,11 +100,12 @@ exports.localLogin = async ctx => {
       maxAge: 1000 * 60 * 60 * 24 * 7
     })
 
-    const { displayName, _id } = user
+    const { _id, displayName, thumbnail } = user
 
     ctx.body = {
       _id,
-      displayName
+      displayName,
+      thumbnail
     }
   } catch (e) {
     ctx.throw(500, e)

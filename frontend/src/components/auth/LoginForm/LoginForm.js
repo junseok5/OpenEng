@@ -6,12 +6,20 @@ import './LoginForm.scss'
 import { Link } from 'react-router-dom'
 import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
 
-const LoginForm = ({ loginForm, message, _onChangeForm, _onSubmit }) => {
+const LoginForm = ({
+  loginForm,
+  message,
+  _onChangeForm,
+  _onSubmit,
+  _onKeyPress
+}) => {
   return (
     <div className={cx('login-form')}>
       <div className={cx('login-form-header')}>
         <div className={cx('_header-name')}>
-          <Link to='/'>OpenEng</Link>
+          <Link to='/'>
+            <span>OpenEng</span>
+          </Link>
         </div>
       </div>
 
@@ -37,6 +45,7 @@ const LoginForm = ({ loginForm, message, _onChangeForm, _onSubmit }) => {
               name='password'
               value={loginForm.password}
               onChange={_onChangeForm}
+              onKeyPress={_onKeyPress}
             />
           </div>
         </div>
