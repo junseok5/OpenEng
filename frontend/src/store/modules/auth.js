@@ -11,6 +11,7 @@ const SET_MESSAGE = 'auth/SET_MESSAGE'
 const LOCAL_LOGIN = 'auth/LOCAL_LOGIN'
 const LOCAL_REGISTER = 'auth/LOCAL_REGISTER'
 const CHECK_LOGIN = 'auth/CHECK_LOGIN'
+const LOGOUT = 'auth/LOGOUT'
 
 // action creators
 export const initialize = createAction(INITIALIZE)
@@ -20,6 +21,7 @@ export const setMessage = createAction(SET_MESSAGE)
 export const localLogin = createAction(LOCAL_LOGIN, AuthAPI.localLogin)
 export const localRegister = createAction(LOCAL_REGISTER, AuthAPI.localRegister)
 export const checkLogin = createAction(CHECK_LOGIN, AuthAPI.checkLogin)
+export const logout = createAction(LOGOUT, AuthAPI.logout)
 
 // initial state
 const initialState = {
@@ -92,7 +94,6 @@ export default handleActions(
       type: CHECK_LOGIN,
       onSuccess: (state, action) => {
         const { data } = action.payload
-        console.log(data)
         return produce(state, draft => {
           draft.result = data
         })

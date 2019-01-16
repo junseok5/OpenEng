@@ -4,7 +4,7 @@ import cx from 'classnames'
 import './VideoList.scss'
 
 import { Link } from 'react-router-dom'
-import Loading from 'react-loading'
+import ClipLoader from 'react-spinners/ClipLoader'
 
 const VideoList = ({ videos, loading }) => {
   const videoList = videos.map(video => {
@@ -16,7 +16,7 @@ const VideoList = ({ videos, loading }) => {
       {videoList}
       {loading && (
         <div className={cx('list-loading')}>
-          <Loading type='spin' color='#ff2f6e' />
+          <ClipLoader color={'#ff2f6e'} />
         </div>
       )}
     </div>
@@ -40,6 +40,7 @@ const VideoCard = ({ video }) => {
         <div className={cx('video-card-thumbnail')}>
           <img
             src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
+            alt={video.title}
             draggable='false'
           />
 

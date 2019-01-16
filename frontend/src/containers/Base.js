@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { AuthActions, UserActions } from 'store/actionCreators'
 
 import storage from 'lib/storage'
+import LoadingModalContainer from 'containers/LoadingModalContainer'
 
 class Base extends Component {
   _checkLogin = async () => {
@@ -27,7 +28,11 @@ class Base extends Component {
   }
 
   render() {
-    return <Fragment />
+    return (
+      <Fragment>
+        <LoadingModalContainer />
+      </Fragment>
+    )
   }
 }
 

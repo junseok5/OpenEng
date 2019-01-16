@@ -141,22 +141,26 @@ header {
       }
 
       .header-user {
-        .user-thumbnail {
-          position: relative;
-          width: 40px;
-          height: 40px;
-
-          border: 1px solid $oc-gray-3;
-          border-radius: 50%;
-          overflow: hidden;
-
+        .user-icon {
+          font-size: 1.8rem;
           cursor: pointer;
         }
+        // .user-thumbnail {
+        //   position: relative;
+        //   width: 40px;
+        //   height: 40px;
 
-        .user-name {
-          color: $main-color;
-          cursor: pointer;
-        }
+        //   border: 1px solid $oc-gray-3;
+        //   border-radius: 50%;
+        //   overflow: hidden;
+
+        //   cursor: pointer;
+        // }
+
+        // .user-name {
+        //   color: $main-color;
+        //   cursor: pointer;
+        // }
       }
     }
 

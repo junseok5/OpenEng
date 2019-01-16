@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './VideoSubtitle.scss'
 
-import Loading from 'react-loading'
+import ClipLoader from 'react-spinners/ClipLoader'
 import { FiSlack } from 'react-icons/fi'
 
 const VideoSubtitle = ({
@@ -30,7 +30,7 @@ const VideoSubtitle = ({
       <div className={cx('subtitle-contents')}>
         {!playerReady && (
           <div className={cx('before-start')}>
-            <Loading type='spin' color='#ff2f6e' />
+            <ClipLoader color={'#ff2f6e'} />
           </div>
         )}
         {viewIntro && (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { AuthActions, UserActions } from 'store/actionCreators'
+import { AuthActions, UserActions, BaseActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import RegisterForm from 'components/auth/RegisterForm'
@@ -34,11 +34,15 @@ class RegisterFormContainer extends Component {
     }
 
     try {
+      BaseActions.changeModal({ name: 'loading', value: true })
       await AuthActions.localRegister({ email, password, displayName })
 
-      const { result } = this.props
+      const { result, history } = this.props
       UserActions.setUser(result)
       storage.set('login', true)
+      BaseActions.changeModal({ name: 'loading', value: false })
+
+      history.push('/')
     } catch (e) {
       const { error } = this.props
 

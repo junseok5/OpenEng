@@ -18,5 +18,5 @@ export const socialLogin = ({ provider, accessToken }) =>
     accessToken
   })
 
+export const logout = () => axios.post('/api/v1.0/auth/logout')
 export const checkLogin = () => axios.get('/api/v1.0/auth/check')
-export const logout = () => axios.get('/api/v1.0/auth/logout')

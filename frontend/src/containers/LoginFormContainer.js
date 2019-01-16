@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { AuthActions, UserActions } from 'store/actionCreators'
+import { AuthActions, UserActions, BaseActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import LoginForm from 'components/auth/LoginForm'
@@ -29,11 +29,15 @@ class LoginFormContainer extends Component {
     }
 
     try {
+      BaseActions.changeModal({ name: 'loading', value: true })
       await AuthActions.localLogin({ email, password })
 
-      const { result } = this.props
+      const { result, history } = this.props
       UserActions.setUser(result)
       storage.set('login', true)
+      BaseActions.changeModal({ name: 'loading', value: false })
+
+      history.push('/')
     } catch (e) {
       const { error } = this.props
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './Header.scss'
 
-import { FiSearch, FiX } from 'react-icons/fi'
+import { FiSearch, FiX, FiUser } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
 const Header = ({
@@ -85,14 +85,19 @@ const Header = ({
             </div>
           ) : (
             <div className={cx('header-user')}>
-              <div className={cx('user-thumbnail')}>
+              <div className={cx('user-icon')}>
+                <Link to='/user/1'>
+                  <FiUser />
+                </Link>
+              </div>
+              {/* <div className={cx('user-thumbnail')}>
                 <img
                   src={user.thumbnail}
                   className={cx('_cover-photo')}
                   alt={user.displayName}
                   draggable='false'
                 />
-              </div>
+              </div> */}
               {/* <div className={cx('user-name')}>{user.displayName}</div> */}
             </div>
           )}
