@@ -44,8 +44,9 @@ class RegisterFormContainer extends Component {
 
       history.push('/')
     } catch (e) {
-      const { error } = this.props
+      BaseActions.changeModal({ name: 'loading', value: false })
 
+      const { error } = this.props
       if (error === 'EXISTS_EMAIL') {
         AuthActions.setMessage('이미 존재하는 계정입니다.')
       } else {

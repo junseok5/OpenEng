@@ -171,6 +171,7 @@ exports.socialLogin = async ctx => {
   let profile = null
   try {
     profile = await getProfile(provider, accessToken)
+    console.log(profile)
   } catch (e) {
     ctx.status = 401
     ctx.body = 'WRONG_CREDENTIALS'
@@ -202,11 +203,12 @@ exports.socialLogin = async ctx => {
       ctx.throw(500, e)
     }
 
-    const { _id, displayName } = user
+    const { _id, displayName, thumbnail } = user
 
     ctx.body = {
       _id,
-      displayName
+      displayName,
+      thumbnail
     }
     return
   }
@@ -242,11 +244,12 @@ exports.socialLogin = async ctx => {
         ctx.throw(500, e)
       }
 
-      const { _id, displayName } = duplicated
+      const { _id, displayName, thumbnail } = duplicated
 
       ctx.body = {
         _id,
-        displayName
+        displayName,
+        thumbnail
       }
     } else {
       // user was not registered

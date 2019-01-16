@@ -145,22 +145,22 @@ header {
           font-size: 1.8rem;
           cursor: pointer;
         }
-        // .user-thumbnail {
-        //   position: relative;
-        //   width: 40px;
-        //   height: 40px;
+        .user-thumbnail {
+          position: relative;
+          width: 40px;
+          height: 40px;
 
-        //   border: 1px solid $oc-gray-3;
-        //   border-radius: 50%;
-        //   overflow: hidden;
+          border: 1px solid $oc-gray-3;
+          border-radius: 50%;
+          overflow: hidden;
 
-        //   cursor: pointer;
-        // }
+          cursor: pointer;
+        }
 
-        // .user-name {
-        //   color: $main-color;
-        //   cursor: pointer;
-        // }
+        .user-name {
+          color: $main-color;
+          cursor: pointer;
+        }
       }
     }
 

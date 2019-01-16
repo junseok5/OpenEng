@@ -39,6 +39,8 @@ class LoginFormContainer extends Component {
 
       history.push('/')
     } catch (e) {
+      BaseActions.changeModal({ name: 'loading', value: false })
+
       const { error } = this.props
 
       if (error === 'USER_NOT_FOUND' || error === 'WRONG_PASSWORD') {
@@ -55,35 +57,6 @@ class LoginFormContainer extends Component {
     }
   }
 
-  _socialLogin = async provider => {
-    try {
-      const { history } = this.props
-
-      await AuthActions.providerLogin(provider)
-
-      BaseActions.changeModal({ name: 'loading', value: true })
-
-      const { socialInfo } = this.props
-
-      await AuthActions.socialLogin({
-        provider,
-        accessToken: socialInfo.accessToken,
-      })
-
-      const { result } = this.props
-
-      if (result) {
-        UserActions.setUser(result)
-        storage.set('login', true)
-        BaseActions.changeModal({ name: 'loading', value: false })
-
-        history.push('/')
-      }
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
   componentDidMount() {
     AuthActions.initialize()
   }
@@ -96,7 +69,6 @@ class LoginFormContainer extends Component {
         _onChangeForm={this._onChangeForm}
         _onSubmit={this._onSubmit}
         _onKeyPress={this._onKeyPress}
-        _socialLogin={this._socialLogin}
       />
     )
   }
@@ -107,7 +79,6 @@ LoginFormContainer.propTypes = {
   message: PropTypes.string,
   result: PropTypes.any,
   error: PropTypes.any,
-  socialInfo: PropTypes.any,
 }
 
 export default connect(state => ({
@@ -115,5 +86,4 @@ export default connect(state => ({
   message: state.auth.message,
   result: state.auth.result,
   error: state.auth.error,
-  socialInfo: state.auth.socialInfo,
 }))(withRouter(LoginFormContainer))

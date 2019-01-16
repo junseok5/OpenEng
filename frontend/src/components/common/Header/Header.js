@@ -85,19 +85,21 @@ const Header = ({
             </div>
           ) : (
             <div className={cx('header-user')}>
-              <div className={cx('user-icon')}>
+              {/* <div className={cx('user-icon')}>
                 <Link to={`/user/${user._id}`}>
                   <FiUser />
                 </Link>
-              </div>
-              {/* <div className={cx('user-thumbnail')}>
-                <img
-                  src={user.thumbnail}
-                  className={cx('_cover-photo')}
-                  alt={user.displayName}
-                  draggable='false'
-                />
               </div> */}
+              <div className={cx('user-thumbnail')}>
+                <Link to={`/user/${user._id}`}>
+                  <img
+                    src={user.thumbnail}
+                    className={cx('_cover-photo')}
+                    alt={user.displayName}
+                    draggable='false'
+                  />
+                </Link>
+              </div>
               {/* <div className={cx('user-name')}>{user.displayName}</div> */}
             </div>
           )}

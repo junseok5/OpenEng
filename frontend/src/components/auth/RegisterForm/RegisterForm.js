@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './RegisterForm.scss'
 
+import SocialLoginContainer from 'containers/SocialLoginContainer'
+
 import { Link } from 'react-router-dom'
-import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
 
 const RegisterForm = ({
   registerForm,
@@ -84,20 +85,7 @@ const RegisterForm = ({
           <div className={cx('_line')} />
         </div>
 
-        <div className={cx('_social-login')}>
-          <div className={cx('_facebook _social-button')}>
-            <div className={cx('_social-icon')}>
-              <FaFacebookSquare />
-            </div>
-            <div className={cx('_social-text')}>Facebook으로 로그인</div>
-          </div>
-          <div className={cx('_google _social-button')}>
-            <div className={cx('_social-icon')}>
-              <FaGoogle />
-            </div>
-            <div className={cx('_social-text')}>Google로 로그인</div>
-          </div>
-        </div>
+        <SocialLoginContainer />
       </div>
     </div>
   )

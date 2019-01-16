@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './LoginForm.scss'
 
+import SocialLoginContainer from 'containers/SocialLoginContainer'
+
 import { Link } from 'react-router-dom'
-import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
 
 const LoginForm = ({
   loginForm,
   message,
   _onChangeForm,
   _onSubmit,
-  _onKeyPress,
-  _socialLogin
+  _onKeyPress
 }) => {
   return (
     <div className={cx('login-form')}>
@@ -72,30 +72,7 @@ const LoginForm = ({
           <div className={cx('_line')} />
         </div>
 
-        <div className={cx('_social-login')}>
-          <div className={cx('_facebook _social-button')}>
-            <div className={cx('_social-icon')}>
-              <FaFacebookSquare />
-            </div>
-            <div
-              className={cx('_social-text')}
-              onClick={() => _socialLogin('facebook')}
-            >
-              Facebook으로 로그인
-            </div>
-          </div>
-          <div className={cx('_google _social-button')}>
-            <div className={cx('_social-icon')}>
-              <FaGoogle />
-            </div>
-            <div
-              className={cx('_social-text')}
-              onClick={() => _socialLogin('google')}
-            >
-              Google로 로그인
-            </div>
-          </div>
-        </div>
+        <SocialLoginContainer />
       </div>
     </div>
   )
@@ -114,8 +91,7 @@ LoginForm.propTypes = {
   message: PropTypes.string,
   _onChangeForm: PropTypes.func,
   _onSubmit: PropTypes.func,
-  _onKeyPress: PropTypes.func,
-  _socialLogin: PropTypes.func
+  _onKeyPress: PropTypes.func
 }
 
 export default LoginForm
