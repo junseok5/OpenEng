@@ -5,6 +5,7 @@ import { AuthActions, UserActions } from 'store/actionCreators'
 
 import storage from 'lib/storage'
 import LoadingModalContainer from 'containers/LoadingModalContainer'
+import TabsContainer from 'containers/TabsContainer'
 
 class Base extends Component {
   _checkLogin = async () => {
@@ -31,6 +32,7 @@ class Base extends Component {
     return (
       <Fragment>
         <LoadingModalContainer />
+        <TabsContainer />
       </Fragment>
     )
   }

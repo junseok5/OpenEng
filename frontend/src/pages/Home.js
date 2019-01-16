@@ -7,6 +7,7 @@ import Introduction from 'components/intro/Introduction'
 import VideoListContainer from 'containers/VideoListContainer'
 import LoginBarContainer from 'containers/LoginBarContainer'
 import Base from 'containers/Base'
+// import TabsContainer from 'containers/TabsContainer'
 
 const Home = ({ match }) => {
   const { tag, channel, keyword } = match.params
@@ -15,6 +16,7 @@ const Home = ({ match }) => {
     <PageTemplate>
       <Base />
       <SideMenu tag={tag} />
+      {/* <TabsContainer /> */}
       <MainTemplate>
         {!tag && !channel && !keyword && <Introduction />}
         {keyword && <ListHeaderContainer keyword={keyword} />}

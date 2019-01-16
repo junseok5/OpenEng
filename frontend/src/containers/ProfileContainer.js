@@ -21,6 +21,7 @@ class ProfileContainer extends Component {
       history.push('/')
     } catch (e) {
       console.log(e)
+      BaseActions.changeModal({ name: 'loading', value: false })
     }
   }
 

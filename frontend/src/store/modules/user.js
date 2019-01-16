@@ -33,7 +33,6 @@ export default handleActions(
     ...pender({
       type: GET_USER_INFO,
       onSuccess: (state, action) => {
-        console.log(action.payload)
         const { data } = action.payload
         return produce(state, draft => {
           draft.meta = data
