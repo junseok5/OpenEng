@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './LoadingModal.scss'
 
@@ -12,6 +13,14 @@ const LoadingModal = ({ loadingModal }) => {
       <ClipLoader color={'#fff'} />
     </div>
   )
+}
+
+LoadingModal.defaultProps = {
+  loadingModal: false
+}
+
+LoadingModal.propTypes = {
+  loadingModal: PropTypes.bool
 }
 
 export default LoadingModal

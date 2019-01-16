@@ -49,7 +49,7 @@ const App = () => {
       <Route path="/search" component={Search} />
       <Route path="/sign_in" component={Login} />
       <Route path="/sign_up" component={Register} />
-      <Route path="/user/:user" component={User} />
+      <Route path="/user/:id" component={User} />
       <Route component={NotFound} />
     </Switch>
   )

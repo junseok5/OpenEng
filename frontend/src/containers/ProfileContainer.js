@@ -24,9 +24,40 @@ class ProfileContainer extends Component {
     }
   }
 
+  _getUserInfo = async () => {
+    const { meta } = this.props
+
+    if (meta) return
+    try {
+      await UserActions.getUserInfo(this.props.id)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  componentDidMount() {
+    UserActions.setMessage('')
+    this._getUserInfo()
+  }
+
   render() {
-    return <Profile _logout={this._logout} />
+    return (
+      <Profile
+        meta={this.props.meta}
+        message={this.props.message}
+        _logout={this._logout}
+      />
+    )
   }
 }
 
-export default connect(state => ({}))(withRouter(ProfileContainer))
+ProfileContainer.propTypes = {
+  id: PropTypes.string,
+  meta: PropTypes.any,
+  message: PropTypes.string,
+}
+
+export default connect(state => ({
+  meta: state.user.meta,
+  message: state.user.message,
+}))(withRouter(ProfileContainer))

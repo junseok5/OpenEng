@@ -86,7 +86,7 @@ const Header = ({
           ) : (
             <div className={cx('header-user')}>
               <div className={cx('user-icon')}>
-                <Link to='/user/1'>
+                <Link to={`/user/${user._id}`}>
                   <FiUser />
                 </Link>
               </div>

@@ -36,11 +36,14 @@
     }
 
     .profile-contents {
-      padding-top: 1rem;
+      .content {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
 
-      .app-suggestion {
-        color: $oc-gray-7;
+        color: $oc-gray-6;
         font-size: 1.1rem;
+
+        border-bottom: 1px solid $oc-gray-3;
       }
     }
   }

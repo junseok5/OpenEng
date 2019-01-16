@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './LoginBar.scss'
 
@@ -19,6 +20,10 @@ const LoginBar = ({ user }) => {
       </div>
     </div>
   )
+}
+
+LoginBar.propTypes = {
+  user: PropTypes.any
 }
 
 export default LoginBar

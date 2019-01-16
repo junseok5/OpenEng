@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// [POST]
 export const localRegister = ({ email, password, displayName }) =>
   axios.post('/api/v1.0/auth/register/local', {
     email,
@@ -19,4 +20,6 @@ export const socialLogin = ({ provider, accessToken }) =>
   })
 
 export const logout = () => axios.post('/api/v1.0/auth/logout')
+
+// [GET]
 export const checkLogin = () => axios.get('/api/v1.0/auth/check')

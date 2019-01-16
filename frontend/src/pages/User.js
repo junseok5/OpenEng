@@ -3,11 +3,13 @@ import PageTemplate from 'components/common/PageTemplate'
 import Base from 'containers/Base'
 import ProfileContainer from 'containers/ProfileContainer'
 
-const User = () => {
+const User = ({ match }) => {
+  const { id } = match.params
+
   return (
     <PageTemplate>
       <Base />
-      <ProfileContainer />
+      <ProfileContainer id={id} />
     </PageTemplate>
   )
 }
