@@ -171,7 +171,6 @@ exports.socialLogin = async ctx => {
   let profile = null
   try {
     profile = await getProfile(provider, accessToken)
-    console.log(profile)
   } catch (e) {
     ctx.status = 401
     ctx.body = 'WRONG_CREDENTIALS'
@@ -255,6 +254,7 @@ exports.socialLogin = async ctx => {
         user = await User.socialRegister({
           email: profile.email,
           displayName: profile.name,
+          thumbnail: profile.thumbnail,
           provider,
           accessToken,
           socialId: profile.id
@@ -265,7 +265,8 @@ exports.socialLogin = async ctx => {
 
       ctx.body = {
         _id: user._id,
-        displayName: user.displayName
+        displayName: user.displayName,
+        thumbnail: user.thumbnail
       }
     }
   }

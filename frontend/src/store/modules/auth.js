@@ -116,7 +116,9 @@ export default handleActions(
       type: SOCIAL_LOGIN,
       onSuccess: (state, action) => {
         const { data } = action.payload
-        console.log(data)
+        return produce(state, draft => {
+          draft.result = data
+        })
       }
     }),
     ...pender({

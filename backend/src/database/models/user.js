@@ -52,6 +52,7 @@ User.statics.localRegister = function ({ email, displayName, password }) {
 User.statics.socialRegister = function ({
   email,
   displayName,
+  thumbnail,
   provider,
   accessToken,
   socialId
@@ -59,6 +60,7 @@ User.statics.socialRegister = function ({
   const user = new this({
     email,
     displayName,
+    thumbnail,
     social: {
       [provider]: {
         id: socialId,

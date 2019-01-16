@@ -57,7 +57,11 @@ class LoginFormContainer extends Component {
 
   _socialLogin = async provider => {
     try {
+      const { history } = this.props
+
       await AuthActions.providerLogin(provider)
+
+      BaseActions.changeModal({ name: 'loading', value: true })
 
       const { socialInfo } = this.props
 
@@ -65,6 +69,16 @@ class LoginFormContainer extends Component {
         provider,
         accessToken: socialInfo.accessToken,
       })
+
+      const { result } = this.props
+
+      if (result) {
+        UserActions.setUser(result)
+        storage.set('login', true)
+        BaseActions.changeModal({ name: 'loading', value: false })
+
+        history.push('/')
+      }
     } catch (e) {
       console.log(e)
     }
