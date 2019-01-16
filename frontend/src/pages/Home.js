@@ -17,7 +17,7 @@ const Home = ({ match }) => {
     <PageTemplate>
       <Base />
       <HeaderContainer />
-      <SideMenu tag={tag} />
+      <SideMenu tag={tag} channel={channel} />
       <TabsContainer />
       <MainTemplate>
         {!tag && !channel && !keyword && <Introduction />}

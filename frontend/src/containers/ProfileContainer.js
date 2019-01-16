@@ -5,6 +5,7 @@ import { AuthActions, UserActions, BaseActions } from 'store/actionCreators'
 import { withRouter } from 'react-router-dom'
 
 import Profile from 'components/user/Profile'
+import Loading from 'components/common/Loading'
 import storage from 'lib/storage'
 
 class ProfileContainer extends Component {
@@ -42,6 +43,7 @@ class ProfileContainer extends Component {
   }
 
   render() {
+    if (this.props.loading) return <Loading />
     return (
       <Profile
         meta={this.props.meta}
@@ -61,4 +63,5 @@ ProfileContainer.propTypes = {
 export default connect(state => ({
   meta: state.user.meta,
   message: state.user.message,
+  loading: state.pender.pending['user/GET_USER_INFO'],
 }))(withRouter(ProfileContainer))
