@@ -1,0 +1,41 @@
+.channel-list {
+  padding: 1rem;
+  h3 {
+    // padding-top: 1rem;
+    // padding-left: 1rem;
+    margin-top: 0;
+  }
+
+  .channel {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    display: flex;
+    align-items: center;
+
+    .channel-thumbnail {
+      position: relative;
+      width: 70px;
+      height: 70px;
+
+      border: 1px solid $oc-gray-3;
+      border-radius: 50%;
+
+      overflow: hidden;
+    }
+
+    .channel-info {
+      padding-left: 1rem;
+
+      .channel-name {
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+
+      .channel-desc {
+        font-size: 0.9rem;
+        color: $oc-gray-7;
+      }
+    }
+  }
+}

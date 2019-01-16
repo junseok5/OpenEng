@@ -30,6 +30,13 @@ class SearchHeaderContainer extends Component {
     this.props.history.goBack()
   }
 
+  _moveToSearchPage = () => {
+    if (this.props.match.path === '/explore') {
+      const { history } = this.props
+      history.push('/search')
+    }
+  }
+
   componentDidMount() {
     SearchActions.initialize()
   }
@@ -38,10 +45,12 @@ class SearchHeaderContainer extends Component {
     return (
       <SearchHeader
         form={this.props.form}
+        path={this.props.match.path}
         _onChange={this._onChange}
         _onKeyPress={this._onKeyPress}
         _onSearch={this._onSearch}
         _goBack={this._goBack}
+        _moveToSearchPage={this._moveToSearchPage}
       />
     )
   }

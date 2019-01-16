@@ -1,4 +1,8 @@
 .search-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 3rem;
 
   @include material-shadow(1, 0.5);
@@ -14,6 +18,9 @@
     .icon {
       display: flex;
       align-items: center;
+
+      font-size: 1.5rem;
+      color: #747474;
     }
 
     .back-icon {

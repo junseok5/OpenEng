@@ -14,8 +14,10 @@ const Tabs = ({ userId, activeTab }) => {
           <FiHome />
         </Link>
       </div>
-      <div className={cx('tab')}>
-        <FiGrid />
+      <div className={cx('tab', activeTab === 1 && 'active')}>
+        <Link to='/explore'>
+          <FiGrid />
+        </Link>
       </div>
       <div className={cx('tab', activeTab === 2 && 'active')}>
         {userId ? (

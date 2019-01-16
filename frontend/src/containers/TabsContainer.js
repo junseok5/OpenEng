@@ -14,8 +14,12 @@ class TabsContainer extends Component {
 
     if (path === '/') {
       BaseActions.changeTab(0)
-    } else if (path === '/user/:id' || path === '/sign_in') {
+    } else if (path === '/user/:id') {
       BaseActions.changeTab(2)
+    } else if (path === '/explore') {
+      BaseActions.changeTab(1)
+    } else if (path === '/sign_in' || path === '/sign_up') {
+      BaseActions.changeTab(-1)
     }
     // BaseActions.changeTab(match.path)
   }

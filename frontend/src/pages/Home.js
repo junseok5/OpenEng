@@ -1,5 +1,6 @@
 import React from 'react'
 import PageTemplate from 'components/common/PageTemplate'
+import HeaderContainer from 'containers/HeaderContainer'
 import ListHeaderContainer from 'containers/ListHeaderContainer'
 import SideMenu from 'components/common/SideMenu'
 import MainTemplate from 'components/common/MainTemplate'
@@ -7,7 +8,7 @@ import Introduction from 'components/intro/Introduction'
 import VideoListContainer from 'containers/VideoListContainer'
 import LoginBarContainer from 'containers/LoginBarContainer'
 import Base from 'containers/Base'
-// import TabsContainer from 'containers/TabsContainer'
+import TabsContainer from 'containers/TabsContainer'
 
 const Home = ({ match }) => {
   const { tag, channel, keyword } = match.params
@@ -15,8 +16,9 @@ const Home = ({ match }) => {
   return (
     <PageTemplate>
       <Base />
+      <HeaderContainer />
       <SideMenu tag={tag} />
-      {/* <TabsContainer /> */}
+      <TabsContainer />
       <MainTemplate>
         {!tag && !channel && !keyword && <Introduction />}
         {keyword && <ListHeaderContainer keyword={keyword} />}
