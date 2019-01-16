@@ -55,6 +55,21 @@ class LoginFormContainer extends Component {
     }
   }
 
+  _socialLogin = async provider => {
+    try {
+      await AuthActions.providerLogin(provider)
+
+      const { socialInfo } = this.props
+
+      await AuthActions.socialLogin({
+        provider,
+        accessToken: socialInfo.accessToken,
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   componentDidMount() {
     AuthActions.initialize()
   }
@@ -67,6 +82,7 @@ class LoginFormContainer extends Component {
         _onChangeForm={this._onChangeForm}
         _onSubmit={this._onSubmit}
         _onKeyPress={this._onKeyPress}
+        _socialLogin={this._socialLogin}
       />
     )
   }
@@ -77,6 +93,7 @@ LoginFormContainer.propTypes = {
   message: PropTypes.string,
   result: PropTypes.any,
   error: PropTypes.any,
+  socialInfo: PropTypes.any,
 }
 
 export default connect(state => ({
@@ -84,4 +101,5 @@ export default connect(state => ({
   message: state.auth.message,
   result: state.auth.result,
   error: state.auth.error,
+  socialInfo: state.auth.socialInfo,
 }))(withRouter(LoginFormContainer))

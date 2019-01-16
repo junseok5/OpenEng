@@ -11,7 +11,8 @@ const LoginForm = ({
   message,
   _onChangeForm,
   _onSubmit,
-  _onKeyPress
+  _onKeyPress,
+  _socialLogin
 }) => {
   return (
     <div className={cx('login-form')}>
@@ -76,13 +77,23 @@ const LoginForm = ({
             <div className={cx('_social-icon')}>
               <FaFacebookSquare />
             </div>
-            <div className={cx('_social-text')}>Facebook으로 로그인</div>
+            <div
+              className={cx('_social-text')}
+              onClick={() => _socialLogin('facebook')}
+            >
+              Facebook으로 로그인
+            </div>
           </div>
           <div className={cx('_google _social-button')}>
             <div className={cx('_social-icon')}>
               <FaGoogle />
             </div>
-            <div className={cx('_social-text')}>Google로 로그인</div>
+            <div
+              className={cx('_social-text')}
+              onClick={() => _socialLogin('google')}
+            >
+              Google로 로그인
+            </div>
           </div>
         </div>
       </div>
@@ -103,7 +114,8 @@ LoginForm.propTypes = {
   message: PropTypes.string,
   _onChangeForm: PropTypes.func,
   _onSubmit: PropTypes.func,
-  _onKeyPress: PropTypes.func
+  _onKeyPress: PropTypes.func,
+  _socialLogin: PropTypes.func
 }
 
 export default LoginForm

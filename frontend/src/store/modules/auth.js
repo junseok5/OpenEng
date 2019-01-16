@@ -2,6 +2,7 @@ import { createAction, handleActions } from 'redux-actions'
 import produce from 'immer'
 import { pender } from 'redux-pender'
 import * as AuthAPI from 'lib/api/auth'
+import social from 'lib/social'
 
 // action types
 const INITIALIZE = 'auth/INITIALIZE'
@@ -10,6 +11,8 @@ const CHANGE_REGISTER_FORM = 'auth/CHANGE_REGISTER_FORM'
 const SET_MESSAGE = 'auth/SET_MESSAGE'
 const LOCAL_LOGIN = 'auth/LOCAL_LOGIN'
 const LOCAL_REGISTER = 'auth/LOCAL_REGISTER'
+const PROVIDER_LOGIN = 'auth/PROVIDER_LOGIN'
+const SOCIAL_LOGIN = 'auth/SOCIAL_LOGIN'
 const CHECK_LOGIN = 'auth/CHECK_LOGIN'
 const LOGOUT = 'auth/LOGOUT'
 
@@ -20,6 +23,12 @@ export const changeRegisterForm = createAction(CHANGE_REGISTER_FORM)
 export const setMessage = createAction(SET_MESSAGE)
 export const localLogin = createAction(LOCAL_LOGIN, AuthAPI.localLogin)
 export const localRegister = createAction(LOCAL_REGISTER, AuthAPI.localRegister)
+export const providerLogin = createAction(
+  PROVIDER_LOGIN,
+  provider => social[provider](),
+  provider => provider
+)
+export const socialLogin = createAction(SOCIAL_LOGIN, AuthAPI.socialLogin)
 export const checkLogin = createAction(CHECK_LOGIN, AuthAPI.checkLogin)
 export const logout = createAction(LOGOUT, AuthAPI.logout)
 
@@ -36,7 +45,8 @@ const initialState = {
   },
   message: '',
   result: null,
-  error: null
+  error: null,
+  socialInfo: null
 }
 
 // reducer
@@ -88,6 +98,25 @@ export default handleActions(
         return produce(state, draft => {
           draft.error = data
         })
+      }
+    }),
+    ...pender({
+      type: PROVIDER_LOGIN,
+      onSuccess: (state, action) => {
+        const { payload: accessToken, meta: provider } = action
+        return produce(state, draft => {
+          draft.socialInfo = {
+            accessToken,
+            provider
+          }
+        })
+      }
+    }),
+    ...pender({
+      type: SOCIAL_LOGIN,
+      onSuccess: (state, action) => {
+        const { data } = action.payload
+        console.log(data)
       }
     }),
     ...pender({
