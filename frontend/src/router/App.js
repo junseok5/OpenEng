@@ -10,7 +10,7 @@ import {
   Register,
   Search,
   User,
-  Videos
+  Video
 } from 'pages'
 
 // const Home = Loadable({
@@ -60,7 +60,7 @@ const App = () => {
       <Route path='/tag/:tag' component={Home} />
       <Route path='/channel/:channel' component={Home} />
       <Route path='/keyword/:keyword' component={Home} />
-      <Route path='/videos/:id' component={Videos} />
+      <Route path='/videos/:id' component={Video} />
       <Route path='/search' component={Search} />
       <Route path='/sign_in' component={Login} />
       <Route path='/sign_up' component={Register} />

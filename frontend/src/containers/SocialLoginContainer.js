@@ -25,7 +25,6 @@ class SocialLoginContainer extends Component {
       const { result } = this.props
 
       if (result) {
-        console.log(result)
         UserActions.setUser(result)
         storage.set('login', true)
 

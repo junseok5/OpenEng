@@ -10,7 +10,6 @@ class TabsContainer extends Component {
   _changeTab = () => {
     const { match } = this.props
     const { path } = match
-    console.log(path)
 
     if (path === '/') {
       BaseActions.changeTab(0)

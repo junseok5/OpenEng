@@ -15,7 +15,7 @@ class ProfileContainer extends Component {
 
       BaseActions.changeModal({ name: 'loading', value: true })
       await AuthActions.logout()
-      UserActions.setUser(null)
+      UserActions.initialize()
       storage.set('login', false)
       BaseActions.changeModal({ name: 'loading', value: false })
 

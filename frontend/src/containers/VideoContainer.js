@@ -21,8 +21,6 @@ class VideoContainer extends Component {
   }
 
   _onReady = e => {
-    console.log(e.target)
-
     this._listenKeyEvent()
     VideoActions.setYoutube({
       playerReady: true,
@@ -61,7 +59,7 @@ class VideoContainer extends Component {
       }
 
       const timer = setInterval(() => {
-        const { sectionRepeat, subtitle, cursor } = this.props
+        const { sectionRepeat } = this.props
         const currentTime = player.getCurrentTime()
 
         VideoActions.setYoutube({ currentTime, playing: true })
@@ -127,7 +125,6 @@ class VideoContainer extends Component {
     const { cursor, player, subtitle } = this.props
 
     if (cursor === 0) return
-    // const prevCursor = cursor % 2 === 0 ? cursor - 2 : cursor - 3
     const prevCursor = cursor - 1
     const prevStart = subtitle[prevCursor].start
     const prevSubtitle = subtitle[prevCursor].contents
@@ -146,7 +143,6 @@ class VideoContainer extends Component {
 
     if (cursor >= subtitle.length - 1) return
 
-    // const nextCursor = cursor % 2 === 0 ? cursor + 1 : cursor + 2
     const nextCursor = cursor + 1
     const nextStart = subtitle[nextCursor].start
     const nextSubtitle = subtitle[nextCursor].contents
@@ -163,30 +159,45 @@ class VideoContainer extends Component {
     VideoActions.setYoutube({ sectionRepeat: !sectionRepeat })
   }
 
+  // _sectionRepeat = async currentTime => {
+  //   const { cursor } = this.props
+
+  //   if (cursor === 0 || cursor === 1) {
+  //     this._autoChangeCursor(currentTime)
+  //     return
+  //   }
+
+  //   const { subtitle } = this.props
+
+  //   if (currentTime >= subtitle[cursor].end) {
+  //     if (cursor % 2 === 0) {
+  //       this._skipPrev()
+  //       return
+  //     }
+  //   }
+
+  //   if (cursor >= subtitle.length - 1) return
+
+  //   if (currentTime >= subtitle[cursor + 1].start) {
+  //     VideoActions.setYoutube({
+  //       cursor: cursor + 1,
+  //       subtitleContents: subtitle[cursor + 1].contents,
+  //     })
+  //   }
+  // }
+
   _sectionRepeat = async currentTime => {
     const { cursor } = this.props
 
-    if (cursor === 0 || cursor === 1) {
+    if (cursor === 0) {
       this._autoChangeCursor(currentTime)
       return
     }
 
-    const { subtitle } = this.props
+    const { subtitle, player } = this.props
 
     if (currentTime >= subtitle[cursor].end) {
-      if (cursor % 2 === 0) {
-        this._skipPrev()
-        return
-      }
-    }
-
-    if (cursor >= subtitle.length - 1) return
-
-    if (currentTime >= subtitle[cursor + 1].start) {
-      VideoActions.setYoutube({
-        cursor: cursor + 1,
-        subtitleContents: subtitle[cursor + 1].contents,
-      })
+      player.seekTo(subtitle[cursor].start)
     }
   }
 

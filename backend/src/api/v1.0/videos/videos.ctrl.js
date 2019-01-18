@@ -5,15 +5,15 @@ exports.list = async ctx => {
   const page = parseInt(ctx.query.page || 1, 10)
   const { tag, channel, keyword } = ctx.query
 
+  const baseQuery = { published: 'public' }
   let query = {}
-  query = tag && { tags: tag }
-  query = channel && { ...query, channel }
-  query = keyword
-    ? {
-      ...query,
-      $text: { $search: keyword }
-    }
-    : { ...query }
+  query = channel && { ...baseQuery, channel }
+  query = tag && { ...baseQuery, tags: tag }
+  query = keyword && {
+    ...baseQuery,
+    $text: { $search: keyword }
+  }
+  // : { ...query }
 
   if (page < 1) {
     ctx.status = 400

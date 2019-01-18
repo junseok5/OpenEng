@@ -14,6 +14,11 @@ const Video = new Schema({
     text: true
   },
   tags: [String],
+  level: String,
+  published: {
+    type: String,
+    default: 'private'
+  },
   views: {
     type: Number,
     default: 0
