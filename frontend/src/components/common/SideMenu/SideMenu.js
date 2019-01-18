@@ -35,6 +35,14 @@ const SideMenu = ({ tag, channel }) => {
           </Link>
         </ul>
       </div>
+      <div className={cx('side-menu-bottom')}>
+        <div className={cx('bottom-item')}>
+          <Link to='/policy/privacy'>개인정보처리방침</Link>
+        </div>
+        <div className={cx('bottom-item')}>
+          <Link to='/policy/terms'>이용약관</Link>
+        </div>
+      </div>
     </div>
   )
 }

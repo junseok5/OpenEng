@@ -1,0 +1,23 @@
+.privacy-view {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: $oc-gray-7;
+
+    span {
+      color: $main-color;
+    }
+
+    a {
+      cursor: pointer;
+    }
+  }
+
+  p.list {
+    margin-left: 1rem;
+  }
+}

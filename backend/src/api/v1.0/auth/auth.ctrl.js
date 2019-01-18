@@ -1,5 +1,6 @@
 const Joi = require('joi')
 const User = require('database/models/User')
+const Log = require('database/models/Log')
 const { getProfile } = require('lib/getSocialProfile')
 
 // Regex definition
@@ -52,6 +53,13 @@ exports.localRegister = async ctx => {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7
     })
+
+    const log = new Log({
+      event: 'local register',
+      subject: user._id
+    })
+
+    log.save()
   } catch (e) {
     ctx.throw(500, e)
   }
@@ -107,6 +115,13 @@ exports.localLogin = async ctx => {
       displayName,
       thumbnail
     }
+
+    const log = new Log({
+      event: 'local login',
+      subject: _id
+    })
+
+    log.save()
   } catch (e) {
     ctx.throw(500, e)
   }
@@ -210,6 +225,13 @@ exports.socialLogin = async ctx => {
       displayName,
       thumbnail
     }
+
+    const log = new Log({
+      event: 'social login',
+      subject: _id
+    })
+
+    log.save()
     return
   }
 
@@ -251,8 +273,15 @@ exports.socialLogin = async ctx => {
         displayName,
         thumbnail
       }
+
+      const log = new Log({
+        event: 'social duplicate register',
+        subject: _id
+      })
+
+      log.save()
     } else {
-      // user was not registered
+      // if user was not registered
       try {
         user = await User.socialRegister({
           email: profile.email,
@@ -271,6 +300,13 @@ exports.socialLogin = async ctx => {
         displayName: user.displayName,
         thumbnail: user.thumbnail
       }
+
+      const log = new Log({
+        event: 'social register',
+        subject: user._id
+      })
+
+      log.save()
     }
   }
 }
@@ -309,4 +345,13 @@ exports.logout = ctx => {
   })
 
   ctx.status = 204
+
+  const { user } = ctx
+
+  const log = new Log({
+    event: 'logout',
+    subject: user._id
+  })
+
+  log.save()
 }

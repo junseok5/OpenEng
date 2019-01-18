@@ -4,6 +4,7 @@ import cx from 'classnames'
 import './Profile.scss'
 
 import ErrorInfo from 'components/common/ErrorInfo'
+import { Link } from 'react-router-dom'
 
 const Profile = ({ meta, message, _logout }) => {
   if (message) {
@@ -29,7 +30,9 @@ const Profile = ({ meta, message, _logout }) => {
 
         <div className={cx('profile-contents')}>
           <div className={cx('content')}>건의하기</div>
-          <div className={cx('content')}>개인정보취급방침</div>
+          <div className={cx('content')}>
+            <Link to='/policy/privacy'>개인정보취급방침</Link>
+          </div>
           <div className={cx('content')}>이용약관</div>
         </div>
       </div>

@@ -75,6 +75,10 @@
       .video-card-channel {
         color: $oc-gray-7;
         font-size: 0.9rem;
+
+        span {
+          cursor: pointer;
+        }
       }
     }
   }

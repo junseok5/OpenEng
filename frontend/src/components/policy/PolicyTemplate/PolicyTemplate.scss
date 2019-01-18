@@ -1,0 +1,36 @@
+.policy-template {
+  width: 800px;
+  margin: 0 auto;
+
+  .policy-header {
+    h2 {
+      color: $main-color;
+      margin-bottom: 3rem;
+
+      span {
+        cursor: pointer;
+      }
+    }
+
+    .header-nav {
+      border-bottom: 1px solid $oc-gray-3;
+      display: flex;
+
+      .header-menu {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+
+        font-size: 1.2rem;
+        color: $oc-gray-7;
+
+        cursor: pointer;
+
+        &.active {
+          color: black;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

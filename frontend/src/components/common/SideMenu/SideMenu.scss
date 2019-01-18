@@ -3,7 +3,7 @@
   left: 0;
   top: 4rem;
   width: 300px;
-  height: 100%;
+  height: calc(100% - 4rem);
   padding-top: 1rem;
 
   background: $oc-gray-1;
@@ -67,6 +67,26 @@
 
         overflow: hidden;
       }
+    }
+  }
+
+  .side-menu-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    border-top: 1px solid $oc-gray-3;
+
+    display: flex;
+    justify-content: flex-end;
+
+    .bottom-item {
+      margin: 1rem 0.2rem;
+
+      color: $oc-gray-6;
+      font-size: 0.9rem;
+      cursor: pointer;
     }
   }
 }
