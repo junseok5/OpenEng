@@ -2,53 +2,7 @@ import React from 'react'
 import Loadable from 'react-loadable'
 import { Route, Switch } from 'react-router-dom'
 import Loading from 'components/common/Loading'
-import {
-  Explore,
-  Home,
-  Login,
-  // NotFound,
-  Register,
-  Search,
-  User,
-  Video,
-  // Privacy,
-  // Terms,
-} from 'pages'
-
-// const Home = Loadable({
-//   loader: () => import('pages/Home'),
-//   loading: Loading,
-// })
-
-// const Videos = Loadable({
-//   loader: () => import('pages/Videos'),
-//   loading: Loading,
-// })
-
-// const Search = Loadable({
-//   loader: () => import('pages/Search'),
-//   loading: Loading,
-// })
-
-// const Login = Loadable({
-//   loader: () => import('pages/Login'),
-//   loading: Loading,
-// })
-
-// const Register = Loadable({
-//   loader: () => import('pages/Register'),
-//   loading: Loading,
-// })
-
-// const User = Loadable({
-//   loader: () => import('pages/User'),
-//   loading: Loading,
-// })
-
-// const Explore = Loadable({
-//   loader: () => import('pages/Explore'),
-//   loading: Loading,
-// })
+import { Explore, Home, Login, Register, Search, User, Video } from 'pages'
 
 const Privacy = Loadable({
   loader: () => import('pages/Privacy'),

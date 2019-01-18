@@ -5,6 +5,7 @@ import './Profile.scss'
 
 import ErrorInfo from 'components/common/ErrorInfo'
 import { Link } from 'react-router-dom'
+import { FaFacebookMessenger } from 'react-icons/fa'
 
 const Profile = ({ meta, message, _logout }) => {
   if (message) {
@@ -29,7 +30,14 @@ const Profile = ({ meta, message, _logout }) => {
         </div>
 
         <div className={cx('profile-contents')}>
-          <div className={cx('content')}>건의하기</div>
+          <div className={cx('content')}>
+            <a href='https://m.me/290530095155620' target='_blank'>
+              <div className={cx('content-icon')}>
+                <FaFacebookMessenger />
+              </div>
+              <div className={cx('content-text')}>건의하기</div>
+            </a>
+          </div>
           <div className={cx('content')}>
             <Link to='/policy/privacy'>개인정보취급방침</Link>
           </div>
