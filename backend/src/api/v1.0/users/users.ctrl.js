@@ -1,4 +1,4 @@
-const User = require('database/models/user')
+const User = require('database/models/User')
 
 exports.getUserInfo = async ctx => {
   const { user } = ctx

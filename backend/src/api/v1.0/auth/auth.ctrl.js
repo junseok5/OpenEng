@@ -291,6 +291,12 @@ exports.socialLogin = async ctx => {
           accessToken,
           socialId: profile.id
         })
+
+        const token = await user.generateToken()
+        ctx.cookies.set('access_token', token, {
+          httpOnly: true,
+          maxAge: 1000 * 60 * 60 * 24 * 7
+        })
       } catch (e) {
         ctx.throw(500, e)
       }

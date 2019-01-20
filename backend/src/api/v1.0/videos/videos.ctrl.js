@@ -1,4 +1,4 @@
-const Video = require('database/models/video')
+const Video = require('database/models/Video')
 // const Joi = require('joi')
 
 exports.list = async ctx => {
