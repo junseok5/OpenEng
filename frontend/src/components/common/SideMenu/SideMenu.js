@@ -26,6 +26,7 @@ const SideMenu = ({ tag, channel }) => {
               <div className={cx('menu-img')}>
                 <img
                   src='https://yt3.ggpht.com/a-/AAuE7mCyzC1-No0_qQSIIj7adykHC3veXX3UxTJxrQ=s288-mo-c-c0xffffffff-rj-k-no'
+                  alt='Team Coco'
                   className={cx('_cover-photo')}
                   draggable='false'
                 />

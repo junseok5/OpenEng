@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import './Header.scss'
 
-import { FiSearch, FiX, FiUser } from 'react-icons/fi'
+import { FiSearch, FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
 const Header = ({

@@ -2,7 +2,15 @@ import React from 'react'
 import Loadable from 'react-loadable'
 import { Route, Switch } from 'react-router-dom'
 import Loading from 'components/common/Loading'
-import { Explore, Home, Login, Register, Search, User, Video } from 'pages'
+import {
+  Explore,
+  Home,
+  Login,
+  Register,
+  Search,
+  User,
+  Video,
+} from 'pages/index.async'
 
 const Privacy = Loadable({
   loader: () => import('pages/Privacy'),
