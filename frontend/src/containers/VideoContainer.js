@@ -264,7 +264,7 @@ class VideoContainer extends Component {
           <title>{this.props.video.title}</title>
           <meta property="og:title" content={this.props.video.title} />
           <meta property="og:type" content="video.movie" />
-          {/* <meta property="og:url" content="" /> */}
+          <meta property="og:url" content={`https://openeng.org/videos/${this.props.id}`} />
           <meta
             property="og:image"
             content={`https://img.youtube.com/vi/${
