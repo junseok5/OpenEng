@@ -47,7 +47,7 @@ createServer(
   {
     email: 'vkehrkrl82@gmail.com',
     agreeTos: true,
-    debug: true,
+    debug: false,
     domains: ['openeng.org', ['openeng.org', 'www.openeng.org']],
     dir: '~/etc/letsencrypt',
     ports: {
