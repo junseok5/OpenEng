@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+const createServer = require('lib/letsencrypt')
 const Koa = require('koa')
 const Router = require('koa-router')
 const KoaBody = require('koa-body')
@@ -14,7 +15,7 @@ const staticPath = path.join(__dirname, '../../frontend/build')
 
 db.connect()
 
-const { PORT: port } = process.env
+const { HTTP_PORT: httpPort, HTTPS_PORT: httpsPort } = process.env
 const app = new Koa()
 
 app.use(KoaBody({ multipart: true }))
@@ -37,6 +38,22 @@ app.use(async ctx => {
   await ctx.render('index.html')
 })
 
-app.listen(port, () => {
-  console.log(`Listenint to port ${port}`)
-})
+createServer(
+  {
+    email: 'vkehrkrl82@gmail.com',
+    debug: true,
+    agreeTos: true,
+    domains: ['openeng.org', 'www.openeng.org'],
+    configDir: '/etc/letsencrypt',
+    ports: {
+      http: httpPort,
+      https: httpsPort
+    },
+    version: 'v02'
+  },
+  app.callback()
+)
+
+// app.listen(httpPort, () => {
+//   console.log(`Listenint to port ${httpPort}`)
+// })
