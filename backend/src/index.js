@@ -41,7 +41,7 @@ app.use(async ctx => {
 createServer(
   {
     email: 'vkehrkrl82@gmail.com',
-    debug: true,
+    debug: process.env.NODE_ENV === 'development' && true,
     agreeTos: true,
     domains: ['openeng.org', 'www.openeng.org'],
     configDir: '/etc/letsencrypt',
