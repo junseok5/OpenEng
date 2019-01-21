@@ -54,10 +54,9 @@ function createServer(opts, app) {
     agreeTos: opts.agreeTos,
     approveDomains,
     configDir: opts.dir || DEFAULT_DIR,
-    server: 'https://acme-v02.api.letsencrypt.org/directory',
-    // server: opts.debug
-    //   ? 'https://acme-staging-v02.api.letsencrypt.org/directory'
-    //   : 'https://acme-v02.api.letsencrypt.org/directory',
+    server: opts.debug
+      ? 'https://acme-staging-v02.api.letsencrypt.org/directory'
+      : 'https://acme-v02.api.letsencrypt.org/directory',
     version: opts.version
   }).listen(opts.ports.http, opts.ports.https)
 }
