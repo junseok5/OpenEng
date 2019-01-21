@@ -49,7 +49,7 @@ createServer(
       http: httpPort,
       https: httpsPort
     },
-    version: 'v02'
+    version: 'draft-11'
   },
   app.callback()
 )
